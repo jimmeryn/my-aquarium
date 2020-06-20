@@ -4,11 +4,11 @@ import { LeftMenuState } from "../../store";
 import GroupComponent from "./GroupComponent";
 
 const LeftMenu: React.FunctionComponent = () => {
-  const dataElement = useSelector(
-    (state: LeftMenuState) => state.reducer.aquariums
+  return (
+    <div className="left-menu">
+      <GroupComponent />
+    </div>
   );
-
-  return <div className="NavBar-left">{/* <GroupComponent /> */}</div>;
 };
 
 export default LeftMenu;

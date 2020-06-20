@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 
 import { IData } from "../../store/data/types";
 
-export default class GroupComponent {
+import RenderGroupComponent from "./RenderGroupComponent";
+
+export default class GroupComponent extends React.Component {
   render() {
-    return <div></div>;
+    return RenderGroupComponent();
   }
 }
