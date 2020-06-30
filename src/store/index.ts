@@ -1,12 +1,8 @@
-import { createStore, combineReducers } from "redux";
-import reducer from "./data/reducers/reducers";
+import { createStore } from "redux";
+import reducer from "./reducers";
 
-const rootReducer = combineReducers({
-  reducer
-});
-
-export type State = ReturnType<typeof rootReducer>;
+export type State = ReturnType<typeof reducer>;
 
 export default function configureStore() {
-  return createStore(rootReducer);
+  return createStore(reducer);
 }

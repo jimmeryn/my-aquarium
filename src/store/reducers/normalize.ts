@@ -4,7 +4,7 @@ import {
   AquariumData,
   UnnormalizedParam,
   Refills
-} from "../types";
+} from "../types/types";
 
 function addAquariumIdToArray(
   aquariumId: number,
@@ -24,8 +24,7 @@ function normalizeParam(
   const params = Object.keys(aquariumData).reduce(
     (params, currentParam) =>
       currentParam !== "date" && currentParam !== "aquariumId"
-        ? // TODO error fix: implicitly an 'any' type - no index signature.
-          [...params, { [currentParam]: aquariumData[currentParam] }]
+        ? [...params, { [currentParam]: aquariumData[currentParam] }]
         : params,
     []
   );
