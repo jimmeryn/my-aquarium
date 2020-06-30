@@ -1,0 +1,24 @@
+.left-menu {
+  background-color: rgb(120, 200, 200);
+  height: 95vh;
+  width: 20vw;
+  overflow-x: auto;
+  padding: 2px 2px 2px 2px;
+}
+
+.param-list,
+.param,
+.refill {
+  width: 100%;
+}
+
+.param-list {
+  margin: 0 10px 10px 0;
+}
+
+.group-list-title {
+  white-space: nowrap;
+  font-family: "Droid serif", serif;
+  line-height: 20px;
+  margin: 0;
+}

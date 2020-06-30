@@ -32,20 +32,7 @@ code {
   display: flex;
 }
 
-.top-nav {
-  background-color: rgb(0, 100, 255);
-  height: 5vh;
-  width: 100vw;
-}
-
-.left-menu {
-  background-color: rgba(0, 102, 255, 0.5);
-  height: 95vh;
-  width: 20vw;
-}
-
 .center {
-  background-color: rgb(195, 0, 255);
   height: 95vh;
   width: 80vw;
 }
@@ -64,10 +51,8 @@ code {
   }
   .top-nav {
   }
-  /* TODO: Add active and not active state - default not active */
+  /* TODO: Add active and not active state - default not active + some hamburger?*/
   .left-menu {
-    height: 95vh;
-    width: 0vw;
   }
   .center {
   }
