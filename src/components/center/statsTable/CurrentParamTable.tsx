@@ -53,6 +53,18 @@ const CurrentParamTable: React.FunctionComponent = () => (
               <TableCell key={1}>10 June 2020</TableCell>
               <TableCell key={2}>123.12</TableCell>
             </TableRow>
+            <TableRow hover role="checkbox" tabIndex={1} key={1}>
+              <TableCell key={1}>10 June 2020</TableCell>
+              <TableCell key={2}>123.12</TableCell>
+            </TableRow>
+            <TableRow hover role="checkbox" tabIndex={1} key={1}>
+              <TableCell key={1}>10 June 2020</TableCell>
+              <TableCell key={2}>123.12</TableCell>
+            </TableRow>
+            <TableRow hover role="checkbox" tabIndex={1} key={1}>
+              <TableCell key={1}>10 June 2020</TableCell>
+              <TableCell key={2}>123.12</TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </TableContainer>

@@ -1,6 +1,6 @@
 .top-nav {
   background-color: rgb(120, 150, 200);
-  height: 5vh;
+  min-height: 5vh;
   width: 100vw;
   display: flex;
 }
