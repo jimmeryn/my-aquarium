@@ -2,6 +2,8 @@ export interface UnnormalizedStateData {
   aquariums: Aquarium[];
 }
 
+// TODO: Add upper and lower bound for params
+
 // TODO: [key: string]: number
 export interface UnnormalizedParam {
   date: string;
@@ -12,6 +14,7 @@ export interface UnnormalizedParam {
   GH: number;
   NO2: number;
   NO3: number;
+  [key: string]: string | number;
 }
 
 export interface Aquarium {
