@@ -1,10 +1,9 @@
 import * as React from "react";
 
 const Hamburger = () => {
+  // change redux state to open or close navigation
   const [hamActive, setHamActive] = React.useState(false);
   const hamClass = `hamburger${hamActive ? "--active" : ""}`;
-  const menuClass = `dropdown${hamActive ? "--active" : ""}`;
-  const [activeButton, setActiveButton] = React.useState(0);
 
   return (
     <button className={hamClass} onClick={() => setHamActive(!hamActive)}>
