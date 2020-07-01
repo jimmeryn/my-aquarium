@@ -1,5 +1,5 @@
 .left-menu {
-  background-color: rgb(120, 200, 200);
+  background-color: #e0e0e0;
   height: 95vh;
   width: 20vw;
   overflow-x: auto;
@@ -21,4 +21,24 @@
   font-family: "Droid serif", serif;
   line-height: 20px;
   margin: 0;
+  color: #505050;
+}
+
+/* ********************************************************************************** */
+/* *************************** MEDIA 800PX ****************************************** */
+/* ********************************************************************************** */
+@media only screen and (max-width: 800px) {
+  /* TODO: Add active and not active state - default not active + some hamburger?*/
+  .left-menu {
+    visibility: hidden;
+    display: none;
+  }
+
+  .left-menu--active {
+    z-index: 9999;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #e0e0e0;
+  }
 }

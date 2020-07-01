@@ -32,11 +32,6 @@ code {
   display: flex;
 }
 
-.center {
-  height: 95vh;
-  width: 80vw;
-}
-
 /* ********************************************************************************** */
 /* *************************** MEDIA 800PX ****************************************** */
 /* ********************************************************************************** */
@@ -46,14 +41,5 @@ code {
   }
   .App {
     height: auto;
-  }
-  .app-container {
-  }
-  .top-nav {
-  }
-  /* TODO: Add active and not active state - default not active + some hamburger?*/
-  .left-menu {
-  }
-  .center {
   }
 }
