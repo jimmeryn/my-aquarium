@@ -5,10 +5,24 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { ListSubheader } from "@material-ui/core";
+import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: "100%",
+      backgroundColor: "#e0e0e0"
+    },
+    heading: {
+      fontSize: theme.typography.pxToRem(15),
+      fontWeight: theme.typography.fontWeightRegular
+    }
+  })
+);
 
 const GroupComponentList: React.FunctionComponent = () => (
   <div>
-    <ExpansionPanel>
+    <ExpansionPanel className={useStyles().root}>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <ListSubheader>
           <h2 className="group-list-title">Aquarium 1</h2>
@@ -16,7 +30,7 @@ const GroupComponentList: React.FunctionComponent = () => (
       </ExpansionPanelSummary>
       <GroupComponent />
     </ExpansionPanel>
-    <ExpansionPanel>
+    <ExpansionPanel className={useStyles().root}>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <ListSubheader>
           <h2 className="group-list-title">Aquarium 2</h2>
