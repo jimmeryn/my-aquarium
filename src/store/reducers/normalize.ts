@@ -6,7 +6,7 @@ import {
   Refill,
   Aquarium,
   UnnormalizedAquarium
-} from "../types/types";
+} from "../types";
 
 // NOTE: Not pretty but doing it's job.
 // For future: use data from backend (database),
@@ -33,20 +33,16 @@ const createParam = (
   date: string,
   name: string,
   value: number
-) => ({
-  id: 0, // id added later -> when all params are in one array
-  aquariumId,
-  date,
-  name,
-  value
-});
-
-const createRefill = (aquariumId: number, date: string, value: number) => ({
-  id: 0, // id added later -> when all refills are in one array
-  aquariumId,
-  date,
-  value
-});
+) => {
+  const [day, month, year] = date.split(".");
+  return {
+    id: 0, // id added later -> when all params are in one array
+    aquariumId,
+    date: new Date(`${year}-${month}-${day}`),
+    name,
+    value
+  };
+};
 
 /**
  * Refactoring param.
@@ -86,12 +82,16 @@ const getParamsById = (aquariums: UnnormalizedAquarium[]) =>
     .reduce((acc, val) => acc.concat(...val), [])
     .map((e, i) => ({ ...e, id: i }));
 
-const refactorRefill = (refill: UnnormalizedParam, aquariumId: number) => ({
-  id: 0,
-  aquariumId,
-  date: refill.date,
-  value: refill.value
-});
+const refactorRefill = (refill: UnnormalizedParam, aquariumId: number) => {
+  const [day, month, year] = refill.date.split(".");
+  return {
+    id: 0, // id added later -> when all params are in one array
+    aquariumId,
+    date: new Date(`${year}-${month}-${day}`),
+    name,
+    value: refill.value
+  };
+};
 
 const getRefillsById = (aquariums: UnnormalizedAquarium[]) =>
   aquariums
@@ -113,7 +113,11 @@ const getAquariumsById = (
   aquariums.reduce(
     (aquariumArray, currentAquarium) => [
       ...aquariumArray,
-      refactorAquarium(currentAquarium, params, refills)
+      refactorAquarium(
+        currentAquarium,
+        params.filter(e => e.aquariumId === currentAquarium.id),
+        refills.filter(e => e.aquariumId === currentAquarium.id)
+      )
     ],
     []
   );
