@@ -1,4 +1,4 @@
-import { ActionTypes, ADD_AQUARIUM, ADD_AQUARIUM_DATA } from "../types/types";
+import { ActionTypes, ADD_AQUARIUM, ADD_AQUARIUM_DATA } from "../types";
 
 // function addParam() {}
 
