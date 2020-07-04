@@ -25,7 +25,7 @@ const GroupComponentList: React.FunctionComponent = () => (
     <ExpansionPanel className={useStyles().root}>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <ListSubheader>
-          <h2 className="group-list-title">Aquarium 1</h2>
+          <div className="group-list-title">Aquarium 1</div>
         </ListSubheader>
       </ExpansionPanelSummary>
       <GroupComponent />
@@ -33,7 +33,7 @@ const GroupComponentList: React.FunctionComponent = () => (
     <ExpansionPanel className={useStyles().root}>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <ListSubheader>
-          <h2 className="group-list-title">Aquarium 2</h2>
+          <div className="group-list-title">Aquarium 2</div>
         </ListSubheader>
       </ExpansionPanelSummary>
       <GroupComponent />
