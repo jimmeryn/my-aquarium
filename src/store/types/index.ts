@@ -28,7 +28,7 @@ interface Data {
   id: number;
   aquariumId: number;
   //TODO: change to Date type. For now its just string
-  date: string;
+  date: Date;
   value: number | null;
 }
 
