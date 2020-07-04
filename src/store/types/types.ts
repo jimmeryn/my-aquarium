@@ -1,27 +1,27 @@
 export interface UnnormalizedStateData {
-  aquariums: Aquarium[];
+  aquariums: UnnormalizedAquarium[];
 }
 
 // TODO: Add upper and lower bound for params
 
-// TODO: [key: string]: number
 export interface UnnormalizedParam {
   date: string;
-  aquariumId: number;
-  Cl2: number;
-  pH: number;
-  KH: number;
-  GH: number;
-  NO2: number;
-  NO3: number;
   [key: string]: string | number;
+}
+
+export interface UnnormalizedAquarium {
+  id: number;
+  size: number;
+  data: UnnormalizedParam[];
+  waterRefills: UnnormalizedParam[];
 }
 
 export interface Aquarium {
   id: number;
+  name?: string;
   size: number;
-  data: AquariumData[];
-  waterRefills: Refills[];
+  params: Param[];
+  refills: Data[];
 }
 
 interface Data {
@@ -29,20 +29,14 @@ interface Data {
   aquariumId: number;
   //TODO: change to Date type. For now its just string
   date: string;
-}
-
-interface Param {
-  name: string;
   value: number | null;
 }
 
-export interface AquariumData extends Data {
-  params: Param[];
+export interface Param extends Data {
+  name: string;
 }
 
-export interface Refills extends Data {
-  liters: number;
-}
+export interface Refill extends Data {}
 
 export interface NormalizedObject<T> {
   byId: { [id: number]: T };
@@ -51,8 +45,8 @@ export interface NormalizedObject<T> {
 
 export interface State {
   aquariums: NormalizedObject<Aquarium>;
-  parameters: NormalizedObject<AquariumData>;
-  refills: NormalizedObject<Refills>;
+  parameters: NormalizedObject<Param>;
+  refills: NormalizedObject<Refill>;
 }
 
 // Describing different ACTION NAMES available
@@ -72,7 +66,7 @@ interface AddAquariumData {
   type: typeof ADD_AQUARIUM_DATA;
   id: number;
   payload: {
-    newData: AquariumData | Refills;
+    newData: Param | Refill;
   };
 }
 
