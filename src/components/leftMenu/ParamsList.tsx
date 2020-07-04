@@ -1,16 +1,16 @@
 import * as React from "react";
-import Param from "./Param";
+import ParamComp from "./Param";
+import { Param } from "src/store/types";
 
 // TODO: map on parma list
-const ParamList: React.FunctionComponent = () => (
+type ParamListProps = {
+  params: Param[];
+};
+const ParamList: React.FunctionComponent<ParamListProps> = ({ params }) => (
   <div className="param-list">
-    <Param />
-    <Param />
-    <Param />
-    <Param />
-    <Param />
-    <Param />
-    <Param />
+    {params.map(({ name, value }) => (
+      <ParamComp name={name} value={value} />
+    ))}
   </div>
 );
 

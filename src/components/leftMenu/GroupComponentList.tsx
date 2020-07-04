@@ -9,6 +9,8 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { ListSubheader } from "@material-ui/core";
 import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
 
+import { getLatestParams, getLatestRefill } from "./helperFunctions";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -23,10 +25,13 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const GroupComponentList: React.FunctionComponent = () => {
-  const { aquariums } = useSelector((state: State) => state);
+  const { allaquariumsIds, aquariumsById } = useSelector(
+    (state: State) => state.aquariums
+  );
+
   return (
     <div>
-      {aquariums.allaquariumsIds.map(aquariumId => (
+      {allaquariumsIds.map(aquariumId => (
         <ExpansionPanel className={useStyles().root} key={aquariumId}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <ListSubheader>
@@ -34,7 +39,10 @@ const GroupComponentList: React.FunctionComponent = () => {
                 1}`}</div>
             </ListSubheader>
           </ExpansionPanelSummary>
-          <GroupComponent aquarium={aquariums.aquariumsById[aquariumId]} />
+          <GroupComponent
+            params={getLatestParams(aquariumsById[aquariumId].params)}
+            refill={getLatestRefill(aquariumsById[aquariumId].refills)}
+          />
         </ExpansionPanel>
       ))}
     </div>
