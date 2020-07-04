@@ -1,19 +1,18 @@
+import { combineReducers } from "redux";
 import {
   ActionTypes,
   ADD_AQUARIUM,
   ADD_AQUARIUM_DATA,
-  Aquarium
-} from "../types/types";
-import { combineReducers } from "redux";
-
+  Aquarium,
+  State
+} from "../types";
 import normalize from "./normalize";
-import { State } from "../types/types";
 import aquarium from "./aquarium";
 
-const dataFromJson = normalize(require("../data.json"));
-console.log(dataFromJson);
+const dataFromJson = normalize(require("../data.json")).aquariums;
+
 const allaquariumsIds = (
-  state: number[] = dataFromJson.aquariums.allIds,
+  state: number[] = dataFromJson.allIds,
   action: ActionTypes
 ) => {
   switch (action.type) {
@@ -25,7 +24,7 @@ const allaquariumsIds = (
 };
 
 const aquariumsById = (
-  state: { [id: number]: Aquarium } = dataFromJson.aquariums.byId,
+  state: { [id: number]: Aquarium } = dataFromJson.byId,
   action: ActionTypes
 ) => {
   switch (action.type) {
