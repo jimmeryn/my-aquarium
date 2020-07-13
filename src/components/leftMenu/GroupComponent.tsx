@@ -17,8 +17,9 @@ const GroupComponent: React.FunctionComponent<GroupComponentProps> = ({
 }) => (
   <div>
     <List component="nav">
-      <ParamList params={params} key={`${index}paramList`} />
       <RefillComp latestRefill={refill} key={`${index}refills`} />
+      {/**TODO: Add new params button - opening dialog box where user can input date and values */}
+      <ParamList params={params} key={`${index}paramList`} />
     </List>
   </div>
 );
