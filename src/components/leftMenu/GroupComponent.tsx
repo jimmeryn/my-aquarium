@@ -7,16 +7,18 @@ import { Refill, Param } from "../../store/types";
 type GroupComponentProps = {
   params: Param[];
   refill: Refill;
+  index: number;
 };
 
 const GroupComponent: React.FunctionComponent<GroupComponentProps> = ({
   params,
-  refill
+  refill,
+  index
 }) => (
   <div>
     <List component="nav">
-      <ParamList params={params} key={"params"} />
-      <RefillComp latestRefill={refill} key={"refills"} />
+      <ParamList params={params} key={`${index}paramList`} />
+      <RefillComp latestRefill={refill} key={`${index}refills`} />
     </List>
   </div>
 );
