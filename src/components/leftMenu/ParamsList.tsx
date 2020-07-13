@@ -1,5 +1,5 @@
 import * as React from "react";
-import ParamComp from "./Param";
+import ParamComp from "./ParamComp";
 import { Param } from "src/store/types";
 
 // TODO: map on param list
