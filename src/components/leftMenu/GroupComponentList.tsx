@@ -26,11 +26,24 @@ const GroupComponentList: React.FunctionComponent = () => {
   const { allaquariumsIds, aquariumsById } = useSelector(
     (state: State) => state.aquariums
   );
+  const [expanded, setExpanded] = React.useState<string | false>(false);
+
+  const handleChange = (panel: string) => (
+    event: React.ChangeEvent<{}>,
+    isExpanded: boolean
+  ) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   return (
     <div>
       {allaquariumsIds.map((aquariumId, index) => (
-        <Accordion className={useStyles().root} key={aquariumId}>
+        <Accordion
+          className={useStyles().root}
+          key={aquariumId}
+          expanded={expanded === `panel${index}`}
+          onChange={handleChange(`panel${index}`)}
+        >
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <ListSubheader>
               <div className="group-list-title">{`Aquarium ${
