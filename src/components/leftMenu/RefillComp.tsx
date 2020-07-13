@@ -9,7 +9,7 @@ type RefillProps = {
 };
 
 const RefillComp: React.FunctionComponent<RefillProps> = ({ latestRefill }) => (
-  <ListItem divider>
+  <ListItem divider dense>
     <ListItemText
       primary={"Refill"}
       secondary={latestRefill ? `${latestRefill.value} [l]` : "No refills"}
