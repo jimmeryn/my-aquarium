@@ -1,75 +1,41 @@
 import * as React from "react";
-import RenderParamRows from "./RenderParamRows";
+import { useSelector } from "react-redux";
 
-import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
+import RenderTableBody from "./RenderTableBody";
+import { State } from "../../../store";
+import {
+  Paper,
+  Table,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow
+} from "@material-ui/core";
 
-const CurrentParamTable: React.FunctionComponent = () => (
-  <div className="current-param-table">
-    <Paper>
-      <TableContainer>
-        <Table stickyHeader size="small" aria-label="sticky dense table">
-          <TableHead>
-            <TableRow>
-              <TableCell key={0}>Data</TableCell>
-              <TableCell key={1}>Value</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow hover role="checkbox" tabIndex={1} key={1}>
-              <TableCell key={1}>10 June 2020</TableCell>
-              <TableCell key={2}>123.12</TableCell>
-            </TableRow>
-            <TableRow hover role="checkbox" tabIndex={1} key={1}>
-              <TableCell key={1}>10 June 2020</TableCell>
-              <TableCell key={2}>123.12</TableCell>
-            </TableRow>
-            <TableRow hover role="checkbox" tabIndex={1} key={1}>
-              <TableCell key={1}>10 June 2020</TableCell>
-              <TableCell key={2}>123.12</TableCell>
-            </TableRow>
-            <TableRow hover role="checkbox" tabIndex={1} key={1}>
-              <TableCell key={1}>10 June 2020</TableCell>
-              <TableCell key={2}>123.12</TableCell>
-            </TableRow>
-            <TableRow hover role="checkbox" tabIndex={1} key={1}>
-              <TableCell key={1}>10 June 2020</TableCell>
-              <TableCell key={2}>123.12</TableCell>
-            </TableRow>
-            <TableRow hover role="checkbox" tabIndex={1} key={1}>
-              <TableCell key={1}>10 June 2020</TableCell>
-              <TableCell key={2}>123.12</TableCell>
-            </TableRow>
-            <TableRow hover role="checkbox" tabIndex={1} key={1}>
-              <TableCell key={1}>10 June 2020</TableCell>
-              <TableCell key={2}>123.12</TableCell>
-            </TableRow>
-            <TableRow hover role="checkbox" tabIndex={1} key={1}>
-              <TableCell key={1}>10 June 2020</TableCell>
-              <TableCell key={2}>123.12</TableCell>
-            </TableRow>
-            <TableRow hover role="checkbox" tabIndex={1} key={1}>
-              <TableCell key={1}>10 June 2020</TableCell>
-              <TableCell key={2}>123.12</TableCell>
-            </TableRow>
-            <TableRow hover role="checkbox" tabIndex={1} key={1}>
-              <TableCell key={1}>10 June 2020</TableCell>
-              <TableCell key={2}>123.12</TableCell>
-            </TableRow>
-            <TableRow hover role="checkbox" tabIndex={1} key={1}>
-              <TableCell key={1}>10 June 2020</TableCell>
-              <TableCell key={2}>123.12</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Paper>
-  </div>
-);
+const CurrentParamTable: React.FunctionComponent = () => {
+  const { aquariumsById } = useSelector((state: State) => state.aquariums);
+  const filterName = "no3";
+  const params = aquariumsById[0].params
+    .filter(e => e.name.toLocaleLowerCase() === filterName.toLowerCase())
+    .reverse();
+  return (
+    <div className="current-param-table">
+      <Paper>
+        <TableContainer>
+          <Table stickyHeader size="small" aria-label="sticky dense table">
+            <TableHead>
+              <TableRow>
+                <TableCell key={0}>Data</TableCell>
+                <TableCell key={1}>Value</TableCell>
+              </TableRow>
+            </TableHead>
+            {/** TODO: Add redux state for filtering current visiable param */}
+            {RenderTableBody(params)}
+          </Table>
+        </TableContainer>
+      </Paper>
+    </div>
+  );
+};
 
 export default CurrentParamTable;
