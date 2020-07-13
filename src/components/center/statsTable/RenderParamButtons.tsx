@@ -2,7 +2,9 @@ import * as React from "react";
 import ParamButton from "./ParamButton";
 import Tabs from "@material-ui/core/Tabs";
 
-const RenderParamButtons = () => (
+const RenderParamButtons: React.FunctionComponent<{
+  paramNames: string[];
+}> = ({ paramNames }) => (
   <div>
     <Tabs
       value={"tabs"}
@@ -12,16 +14,9 @@ const RenderParamButtons = () => (
       scrollButtons="auto"
       aria-label="scrollable auto tabs example"
     >
-      <ParamButton />
-      <ParamButton />
-      <ParamButton />
-      <ParamButton />
-      <ParamButton />
-      <ParamButton />
-      <ParamButton />
-      <ParamButton />
-      <ParamButton />
-      <ParamButton />
+      {paramNames.map((paramName, i) => (
+        <ParamButton paramName={paramName} index={i} />
+      ))}
     </Tabs>
   </div>
 );

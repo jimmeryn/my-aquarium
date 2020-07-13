@@ -1,5 +1,5 @@
 import * as React from "react";
-import ParamButtonList from "./ParamButtonsList";
+import ParamButtonList from "./ParamButtonList";
 import CurrentParamTable from "./CurrentParamTable";
 import GraphModifyList from "./GraphModifiList";
 
