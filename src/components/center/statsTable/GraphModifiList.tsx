@@ -10,8 +10,9 @@ const GraphModifyList: React.FunctionComponent = () => (
       //   setValue(newValue);
       // }}
     >
-      <GraphModifyButton label={"Show current"} />
-      <GraphModifyButton label={"Add current"} />
+      {/** TODO: rename "current" to param/refil currently shown in the table */}
+      <GraphModifyButton label={'Show "current" on the graph'} />
+      <GraphModifyButton label={'Add "current" to the graph'} />
     </BottomNavigation>
   </div>
 );

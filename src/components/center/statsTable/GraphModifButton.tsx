@@ -7,7 +7,7 @@ const GraphModifyButton: React.FunctionComponent<{ label: string }> = ({
   <BottomNavigationAction
     label={label}
     showLabel
-    onClick={() => console.log("Clicked")}
+    onClick={() => console.log("Clicked Graph modify button")}
   />
 );
 
