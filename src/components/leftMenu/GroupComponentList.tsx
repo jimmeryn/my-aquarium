@@ -3,11 +3,9 @@ import { useSelector } from "react-redux";
 import GroupComponent from "./GroupComponent";
 import { State } from "../../store";
 
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { ListSubheader } from "@material-ui/core";
+import { Accordion, AccordionSummary, ListSubheader } from "@material-ui/core";
 import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { getLatestParams, getLatestRefill } from "./helperFunctions";
 
@@ -31,19 +29,21 @@ const GroupComponentList: React.FunctionComponent = () => {
 
   return (
     <div>
-      {allaquariumsIds.map(aquariumId => (
-        <ExpansionPanel className={useStyles().root} key={aquariumId}>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+      {allaquariumsIds.map((aquariumId, index) => (
+        <Accordion className={useStyles().root} key={aquariumId}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <ListSubheader>
-              <div className="group-list-title">{`Aquarium ${aquariumId +
-                1}`}</div>
+              <div className="group-list-title">{`Aquarium ${
+                aquariumId + 1
+              }`}</div>
             </ListSubheader>
-          </ExpansionPanelSummary>
+          </AccordionSummary>
           <GroupComponent
             params={getLatestParams(aquariumsById[aquariumId].params)}
             refill={getLatestRefill(aquariumsById[aquariumId].refills)}
+            index={index}
           />
-        </ExpansionPanel>
+        </Accordion>
       ))}
     </div>
   );
