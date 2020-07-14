@@ -8,6 +8,7 @@ import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { getLatestParams, getLatestRefill } from "./helperFunctions";
+import NewParamPanel from "./NewParamPanel";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,6 +38,8 @@ const GroupComponentList: React.FunctionComponent = () => {
 
   return (
     <div>
+      <NewParamPanel />
+
       {allaquariumsIds.map((aquariumId, index) => (
         <Accordion
           className={useStyles().root}
