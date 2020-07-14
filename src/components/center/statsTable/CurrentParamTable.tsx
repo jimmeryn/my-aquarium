@@ -1,8 +1,6 @@
 import * as React from "react";
-import { useSelector } from "react-redux";
 
 import RenderTableBody from "./RenderTableBody";
-import { State } from "../../../store";
 import {
   Paper,
   Table,
@@ -11,13 +9,17 @@ import {
   TableHead,
   TableRow
 } from "@material-ui/core";
+import { Aquarium } from "src/store/types";
 
-const CurrentParamTable: React.FunctionComponent = () => {
-  const { aquariumsById } = useSelector((state: State) => state.aquariums);
-  const filterName = "no3";
-  const params = aquariumsById[0].params
-    .filter(e => e.name.toLocaleLowerCase() === filterName.toLowerCase())
+// TODO: CurrentParamTable + CurrentParamFilteredTable
+const CurrentParamTable: React.FunctionComponent<{
+  aquarium: Aquarium;
+  filter: string;
+}> = ({ aquarium, filter }) => {
+  const params = aquarium.params
+    .filter(e => e.name.toLocaleLowerCase() === filter.toLowerCase())
     .reverse();
+
   return (
     <div className="current-param-table">
       <Paper>
