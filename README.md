@@ -20,7 +20,7 @@ This app was created with:
 
 # Clone the repo
 
-git clone ghttps://github.com/jimmeryn/my-aquarium.git
+git clone https://github.com/jimmeryn/my-aquarium.git
 
 # Go to the repo
 
