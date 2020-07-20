@@ -1,36 +1,10 @@
 .top-nav {
-  background-color: #2c5189;
-  height: 6vh;
+  background-color: #009be5;
+  height: 7vh;
   width: 100vw;
   display: flex;
-}
-
-.title {
-  width: 90%;
-  height: 100%;
-  color: #cef0d4;
-  font-family: "Droid serif", serif;
-  font-size: 26px;
-  font-weight: 400;
-  font-style: italic;
-  line-height: 44px;
-  margin: -5px 10px 0;
-  text-align: left;
-}
-
-.login {
-  width: 10%;
-  height: 100%;
-  display: flex;
-  text-align: center;
-}
-
-.login > * {
-  padding: 0 1vw 0 1vw;
-}
-
-.message-icon {
-  margin-top: 10px;
+  box-shadow: 0 4px 4px #0000003a;
+  position: sticky;
 }
 
 .hamburger,
@@ -111,8 +85,6 @@
     transform: translateY(-7px) rotate(-45deg);
   }
   .top-nav {
-    position: -webkit-sticky;
-    position: sticky;
     top: 0;
   }
 }
