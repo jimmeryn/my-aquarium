@@ -25,11 +25,13 @@ code {
 .App {
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .app-container {
+  width: 81vw;
   display: flex;
+  flex-direction: column;
 }
 
 /* ********************************************************************************** */
@@ -41,5 +43,8 @@ code {
   }
   .App {
     height: auto;
+  }
+  .app-container {
+    width: 100vw;
   }
 }
