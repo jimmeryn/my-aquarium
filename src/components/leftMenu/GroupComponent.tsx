@@ -2,7 +2,7 @@ import * as React from "react";
 import RefillComp from "./RefillComp";
 import ParamList from "./ParamsList";
 import List from "@material-ui/core/List";
-import { Refill, Param } from "../../store/types";
+import { Refill, Param } from "src/store/types";
 
 type GroupComponentProps = {
   params: Param[];

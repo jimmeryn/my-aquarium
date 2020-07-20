@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import ParamButtonList from "./ParamButtonList";
 import CurrentParamTable from "./CurrentParamTable";
 import GraphModifyList from "./GraphModifiList";
-import { State } from "../../../store";
+import { State } from "src/store";
 
 const StatsTable: React.FunctionComponent = () => {
   const { allaquariumsIds, aquariumsById } = useSelector(

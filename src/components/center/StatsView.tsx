@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import Graph from "./Graph";
 import StatsTable from "./statsTable/StatsTable";
-import { State } from "../../store";
+import { State } from "src/store";
 
 const StatsView: React.FunctionComponent = () => {
   const { aquariumsById, allaquariumsIds } = useSelector(

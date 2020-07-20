@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
-import { State } from "../../../store";
+import { State } from "src/store";
 import RenderParamButtons from "./RenderParamButtons";
 import AppBar from "@material-ui/core/AppBar";
 

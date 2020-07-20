@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
 import GroupComponent from "./GroupComponent";
-import { State } from "../../store";
+import { State } from "src/store";
 
 import { Accordion, AccordionSummary, ListSubheader } from "@material-ui/core";
 import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";

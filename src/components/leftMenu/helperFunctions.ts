@@ -1,8 +1,11 @@
-import { Param, Refill } from "../../store/types";
+import { Param, Refill } from "src/store/types";
 
 export const getLatestParams = (params: Param[]): Param[] => {
   const latestParamDate = new Date(
-    Math.max.apply(null, params.map(e => new Date(e.date)))
+    Math.max.apply(
+      null,
+      params.map(e => new Date(e.date))
+    )
   );
   return params.filter(
     e => e.date.toISOString() === latestParamDate.toISOString()
