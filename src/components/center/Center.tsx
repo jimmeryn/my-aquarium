@@ -1,9 +1,14 @@
 import * as React from "react";
 import StatsView from "./StatsView";
-import WelcomePage from "./WelcomePage";
-const Center: React.FunctionComponent = () => {
+import LandingPage from "./LandingPage";
+
+const Center: React.FunctionComponent<{ isLandingPageOpen: boolean }> = ({
+  isLandingPageOpen
+}) => {
   return (
-    <div className="center">{false ? <WelcomePage /> : <StatsView />}</div>
+    <div className="center">
+      {isLandingPageOpen ? <LandingPage /> : <StatsView />}
+    </div>
   );
 };
 

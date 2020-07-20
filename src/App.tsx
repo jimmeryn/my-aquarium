@@ -9,14 +9,17 @@ import LeftMenu from "./components/leftMenu/LeftMenu";
 import TopNav from "./components/topNav/TopNav";
 import Center from "./components/center/Center";
 
-const App: React.FunctionComponent = () => (
-  <div className="App">
-    <TopNav />
-    <div className="app-container">
-      <LeftMenu />
-      <Center />
+const App: React.FunctionComponent = () => {
+  const [isLandingPageOpen, changeLandingPageState] = React.useState(true);
+  return (
+    <div className="App">
+      <LeftMenu isLandingPageOpen={isLandingPageOpen} />
+      <div className="app-container">
+        <TopNav />
+        <Center isLandingPageOpen={isLandingPageOpen} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default App;
