@@ -10,9 +10,9 @@
     "experimentalDecorators": true,
     "allowJs": true,
     "baseUrl": "./",
-    "include": ["src/components", "custom.d.ts"],
     "paths": {
       "components/*": ["src/components/*"]
     }
-  }
+  },
+  "include": ["src/components", "custom.d.ts"]
 }
