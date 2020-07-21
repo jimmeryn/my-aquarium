@@ -10,11 +10,11 @@
 }
 
 .landing-page svg {
-  width: 80%;
+  height: 50vh;
 }
 
 .head {
-  margin: 3vw 30vw 20vh 6vw;
+  margin: 3vw 27vw 15vh 6vw;
   padding: 0;
 }
 
@@ -24,7 +24,7 @@
   font-style: normal;
   font-weight: 10;
   font-size: 36px;
-  line-height: 52px;
+  line-height: 40px;
   text-align: right;
   text-transform: capitalize;
   color: #000000;

@@ -7,19 +7,62 @@
 
 .title {
   height: 7vh;
-  font-family: "Poppins";
-
-  font-size: 24px;
-  line-height: 36px;
-  display: flex;
+  width: 100%;
   align-items: center;
+  background-color: #232f3e;
+}
+
+.title * {
+  width: 100%;
+}
+
+.title h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: 1em;
+  line-height: 36px;
   text-align: center;
   color: #bdc1c5;
+  margin: 0;
 }
-.title > * {
+
+.refill {
   width: 100%;
+}
+
+.param-value span,
+.refill-value span {
+  color: #bdc1c5;
+  white-space: nowrap;
+  font-family: "Poppins";
   font-style: normal;
-  font-weight: bold;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.param-value p {
+  float: right;
+  color: #ffffff !important;
+  white-space: nowrap;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.refill-value p {
+  color: #ffffff !important;
+  white-space: nowrap;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.MuiButton-label {
+  color: #bdc1c5;
+  padding-right: 0;
+  margin-right: 0;
 }
 
 .param-list,
@@ -28,14 +71,17 @@
   width: 100%;
 }
 
-.param-list {
-  margin: 0 10px 10px 0;
-}
-
 .group-list-title {
   white-space: nowrap;
-  line-height: 15px;
-  font-size: 1.5vw;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 7vh;
+  color: #ffffff;
+  text-align: center;
+  background-color: #232f3e;
+  margin: 0;
 }
 
 /* ********************************************************************************** */

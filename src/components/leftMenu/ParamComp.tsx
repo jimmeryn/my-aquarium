@@ -14,7 +14,8 @@ const ParamComp: React.FunctionComponent<ParamCompType> = ({
   index
 }: ParamCompType) => (
   <ListItem button divider key={index} dense>
-    <ListItemText primary={name} secondary={`${value}[mg/l]`} />
+    <ListItemText className="param-value" primary={name} />
+    <ListItemText className="param-value" secondary={`${value}[mg/l]`} />
   </ListItem>
 );
 
