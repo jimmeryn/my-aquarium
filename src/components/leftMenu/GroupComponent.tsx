@@ -1,25 +1,25 @@
 import * as React from "react";
 import RefillComp from "./RefillComp";
 import ParamList from "./ParamsList";
+import NewParamComp from "./NewParamComp";
 import List from "@material-ui/core/List";
 import { Refill, Param } from "src/store/types";
 
 type GroupComponentProps = {
   params: Param[];
   refill: Refill;
-  index: number;
 };
 
 const GroupComponent: React.FunctionComponent<GroupComponentProps> = ({
   params,
-  refill,
-  index
+  refill
 }) => (
   <div>
     <List component="nav">
-      <RefillComp latestRefill={refill} key={`${index}refills`} />
+      <RefillComp latestRefill={refill} />
+      <NewParamComp />
       {/**TODO: Add new params button - opening dialog box where user can input date and values */}
-      <ParamList params={params} key={`${index}paramList`} />
+      <ParamList params={params} />
     </List>
   </div>
 );
