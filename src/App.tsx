@@ -10,10 +10,13 @@ import TopNav from "./components/topNav/TopNav";
 import Center from "./components/center/Center";
 
 const App: React.FunctionComponent = () => {
-  const [isLandingPageOpen, changeLandingPageState] = React.useState(true);
+  const [isLandingPageOpen, changeLandingPageState] = React.useState(false);
   return (
     <div className="App">
-      <LeftMenu isLandingPageOpen={isLandingPageOpen} />
+      <LeftMenu
+        isLandingPageOpen={isLandingPageOpen}
+        changeLandingPageState={changeLandingPageState}
+      />
       <div className="app-container">
         <TopNav />
         <Center isLandingPageOpen={isLandingPageOpen} />
