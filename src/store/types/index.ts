@@ -52,7 +52,7 @@ export interface State {
 // Describing different ACTION NAMES available
 export const ADD_AQUARIUM = "ADD_AQUARIUM";
 export const ADD_AQUARIUM_DATA = "ADD_AQUARIUM_DATA";
-export const SET_VISIBILITY = "SET_VISIBILITY";
+export const SET_VISIBLE_AQUARIUM = "SET_VISIBLE_AQUARIUM";
 
 interface AddAquarium {
   type: typeof ADD_AQUARIUM;
@@ -71,9 +71,9 @@ interface AddAquariumData {
   };
 }
 
-interface SetVisibility {
-  type: typeof SET_VISIBILITY;
+interface SetVisibleAquarium {
+  type: typeof SET_VISIBLE_AQUARIUM;
   id: number | null;
 }
 
-export type ActionTypes = AddAquarium | AddAquariumData | SetVisibility;
+export type ActionTypes = AddAquarium | AddAquariumData | SetVisibleAquarium;
