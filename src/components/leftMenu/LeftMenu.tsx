@@ -2,23 +2,22 @@ import * as React from "react";
 import Title from "./Title";
 import AquariumViewList from "./AquariumViewList";
 import LandingPageList from "./LandingPageList";
-import { useSelector } from "react-redux";
-import { State } from "src/store";
+import { Aquarium } from "src/store/types";
 
 const LeftMenu: React.FunctionComponent<{
-  isLandingPageOpen: boolean;
-  changeLandingPageState: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ isLandingPageOpen, changeLandingPageState }) => {
-  const { allaquariumsIds, aquariumsById } = useSelector(
-    (state: State) => state.aquariums
-  );
+  visibleAquarium: number;
+  allaquariumsIds: number[];
+  aquariumsById: {
+    [id: number]: Aquarium;
+  };
+}> = ({ visibleAquarium, allaquariumsIds, aquariumsById }) => {
   return (
     <div className="left-menu">
-      <Title changeLandingPageState={changeLandingPageState} />
-      {isLandingPageOpen ? (
-        <LandingPageList allaquariumsIds={allaquariumsIds} />
+      <Title />
+      {visibleAquarium !== -1 ? (
+        <AquariumViewList aquarium={aquariumsById[visibleAquarium]} />
       ) : (
-        <AquariumViewList aquarium={aquariumsById[0]} />
+        <LandingPageList allaquariumsIds={allaquariumsIds} />
       )}
     </div>
   );

@@ -1,11 +1,9 @@
 import * as React from "react";
 import { Button } from "@material-ui/core";
 
-const Title: React.FunctionComponent<{
-  changeLandingPageState: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ changeLandingPageState }) => (
+const Title: React.FunctionComponent = () => (
   <div className="title">
-    <Button onClick={() => changeLandingPageState(true)}>
+    <Button>
       <h1>My Aquarium</h1>
     </Button>
   </div>
