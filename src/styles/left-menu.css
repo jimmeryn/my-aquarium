@@ -75,13 +75,19 @@
   white-space: nowrap;
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 14px;
   line-height: 7vh;
   color: #ffffff;
   text-align: center;
   background-color: #232f3e;
   margin: 0;
+}
+
+.group-list-title-button {
+  width: 100% !important;
+  padding: 0 !important;
+  background-color: #232f3e !important;
 }
 
 .divider {
