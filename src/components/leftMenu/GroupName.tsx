@@ -2,7 +2,7 @@ import * as React from "react";
 import { Button } from "@material-ui/core";
 import DividerComponent from "./DividerComponent";
 
-const GroupListTitleComponent: React.FunctionComponent<{
+const GroupName: React.FunctionComponent<{
   name?: string;
   index: number;
 }> = ({ name, index }) => (
@@ -15,4 +15,4 @@ const GroupListTitleComponent: React.FunctionComponent<{
   </div>
 );
 
-export default GroupListTitleComponent;
+export default GroupName;

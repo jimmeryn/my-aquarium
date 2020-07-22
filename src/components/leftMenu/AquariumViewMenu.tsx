@@ -3,24 +3,23 @@ import { Grid } from "@material-ui/core";
 
 import { getLatestParams, getLatestRefill } from "./helperFunctions";
 import { Aquarium } from "src/store/types";
+import GroupName from "./GroupName";
+import GroupList from "./GroupList";
 
-import GroupComponent from "./GroupComponent";
-import GroupListTitleComponent from "./GroupListTitleComponent";
-
-const AquariumViewList: React.FunctionComponent<{
+const AquariumViewMenu: React.FunctionComponent<{
   aquarium: Aquarium;
 }> = ({ aquarium }) => (
   <Grid container spacing={0} direction="column" alignItems="stretch">
     <Grid item xs>
-      <GroupListTitleComponent name={aquarium.name} index={aquarium.id} />
+      <GroupName name={aquarium.name} index={aquarium.id} />
     </Grid>
     <Grid item xs>
-      <GroupComponent
-        params={getLatestParams(aquarium.params)}
+      <GroupList
         refill={getLatestRefill(aquarium.refills)}
+        params={getLatestParams(aquarium.params)}
       />
     </Grid>
   </Grid>
 );
 
-export default AquariumViewList;
+export default AquariumViewMenu;

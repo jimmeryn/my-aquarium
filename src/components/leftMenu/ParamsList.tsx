@@ -1,5 +1,5 @@
 import * as React from "react";
-import ParamComp from "./ParamComponent";
+import ParamComponent from "./ParamComponent";
 import { Param } from "src/store/types";
 
 // TODO: map on param list
@@ -10,7 +10,7 @@ type ParamListProps = {
 const ParamList: React.FunctionComponent<ParamListProps> = ({ params }) => (
   <div className="param-list">
     {params.map(({ name, value }, index) => (
-      <ParamComp name={name} value={value} index={index} />
+      <ParamComponent name={name} value={value} index={index} />
     ))}
   </div>
 );

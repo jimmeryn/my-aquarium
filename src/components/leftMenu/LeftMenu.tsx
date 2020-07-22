@@ -1,7 +1,7 @@
 import * as React from "react";
 import Title from "./Title";
-import AquariumViewList from "./AquariumViewList";
-import LandingPageList from "./LandingPageList";
+import AquariumViewMenu from "./AquariumViewMenu";
+import LandingPageMenu from "./LandingPageMenu";
 import { Aquarium } from "src/store/types";
 
 const LeftMenu: React.FunctionComponent<{
@@ -15,9 +15,9 @@ const LeftMenu: React.FunctionComponent<{
     <div className="left-menu">
       <Title />
       {visibleAquarium !== -1 ? (
-        <AquariumViewList aquarium={aquariumsById[visibleAquarium]} />
+        <AquariumViewMenu aquarium={aquariumsById[visibleAquarium]} />
       ) : (
-        <LandingPageList allaquariumsIds={allaquariumsIds} />
+        <LandingPageMenu allaquariumsIds={allaquariumsIds} />
       )}
     </div>
   );
