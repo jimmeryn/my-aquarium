@@ -2,6 +2,10 @@ import * as React from "react";
 import Title from "./Title";
 import AquariumViewMenu from "./AquariumViewMenu";
 import LandingPageMenu from "./LandingPageMenu";
+import {
+  ActionTypes,
+  SET_VISIBLE_AQUARIUM
+} from "../../store/types/actionTypes";
 import { Aquarium } from "src/store/types";
 
 const LeftMenu: React.FunctionComponent<{
