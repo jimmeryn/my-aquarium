@@ -73,7 +73,7 @@ interface AddAquariumData {
 
 interface SetVisibleAquarium {
   type: typeof SET_VISIBLE_AQUARIUM;
-  id: number | null;
+  id: number;
 }
 
 export type ActionTypes = AddAquarium | AddAquariumData | SetVisibleAquarium;

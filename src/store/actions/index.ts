@@ -23,7 +23,7 @@ function addAquarium(size: number, name?: string): ActionTypes {
   };
 }
 
-export const setVisibility = (visibleAquariumId: number | null) => {
+export const setVisibility = (visibleAquariumId: number) => {
   return {
     type: SET_VISIBILITY,
     id: visibleAquariumId
