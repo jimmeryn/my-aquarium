@@ -1,7 +1,7 @@
 import * as React from "react";
-import RefillComp from "./RefillComp";
+import RefillComp from "./RefillComponent";
 import ParamList from "./ParamsList";
-import NewParamComp from "./NewParamComp";
+import NewParamComp from "./NewParamComponent";
 import List from "@material-ui/core/List";
 import { Refill, Param } from "src/store/types";
 
