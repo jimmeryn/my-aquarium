@@ -13,5 +13,6 @@
     "paths": {
       "components/*": ["src/components/*"]
     }
-  }
+  },
+  "include": ["src/components", "custom.d.ts"]
 }
