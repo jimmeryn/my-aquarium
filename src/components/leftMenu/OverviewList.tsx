@@ -6,14 +6,19 @@ import OverviewComponent from "./OverviewComponent";
 const OverviewList: React.FunctionComponent<{
   name?: string;
   index: number;
-}> = ({ name, index }) => (
+  visibleAquariumDispatch: (id: number) => void;
+}> = ({ name, index, visibleAquariumDispatch }) => (
   <Grid container spacing={0} direction="column" alignItems="stretch">
-    <Grid item xs>
+    <Grid item xs onClick={() => visibleAquariumDispatch(index)}>
       <GroupName name={name} index={index} />
     </Grid>
-    <Grid item xs>
+    <Grid item xs onClick={() => visibleAquariumDispatch(index)}>
       <OverviewComponent label={"Show Param"} />
+    </Grid>
+    <Grid item xs>
       <OverviewComponent label={"Add Param"} />
+    </Grid>
+    <Grid item xs>
       <OverviewComponent label={"Add Refill"} />
     </Grid>
   </Grid>
