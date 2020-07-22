@@ -47,33 +47,5 @@ export interface State {
   aquariums: NormalizedObject<Aquarium>;
   parameters: NormalizedObject<Param>;
   refills: NormalizedObject<Refill>;
+  visibleAquarium: number;
 }
-
-// Describing different ACTION NAMES available
-export const ADD_AQUARIUM = "ADD_AQUARIUM";
-export const ADD_AQUARIUM_DATA = "ADD_AQUARIUM_DATA";
-export const SET_VISIBLE_AQUARIUM = "SET_VISIBLE_AQUARIUM";
-
-interface AddAquarium {
-  type: typeof ADD_AQUARIUM;
-  id: number;
-  payload: {
-    size: number;
-    name?: string;
-  };
-}
-
-interface AddAquariumData {
-  type: typeof ADD_AQUARIUM_DATA;
-  id: number;
-  payload: {
-    newData: Param | Refill;
-  };
-}
-
-interface SetVisibleAquarium {
-  type: typeof SET_VISIBLE_AQUARIUM;
-  id: number;
-}
-
-export type ActionTypes = AddAquarium | AddAquariumData | SetVisibleAquarium;
