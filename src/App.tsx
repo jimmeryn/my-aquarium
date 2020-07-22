@@ -12,9 +12,12 @@ import { useSelector } from "react-redux";
 import { State } from "./store";
 
 const App: React.FunctionComponent = () => {
-  const { visibleAquarium } = useSelector((state: State) => state);
-  const { allaquariumsIds, aquariumsById } = useSelector(
-    (state: State) => state.aquariums
+  const { visibleAquarium, allaquariumsIds, aquariumsById } = useSelector(
+    (state: State) => ({
+      visibleAquarium: state.visibleAquarium,
+      allaquariumsIds: state.aquariums.allaquariumsIds,
+      aquariumsById: state.aquariums.aquariumsById
+    })
   );
 
   return (

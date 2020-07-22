@@ -2,8 +2,8 @@ import {
   ActionTypes,
   ADD_AQUARIUM,
   ADD_AQUARIUM_DATA,
-  SET_VISIBILITY
-} from "../types";
+  SET_VISIBLE_AQUARIUM
+} from "../types/actionTypes";
 
 // function addParam() {}
 
@@ -25,7 +25,7 @@ function addAquarium(size: number, name?: string): ActionTypes {
 
 export const setVisibility = (visibleAquariumId: number) => {
   return {
-    type: SET_VISIBILITY,
+    type: SET_VISIBLE_AQUARIUM,
     id: visibleAquariumId
   };
 };

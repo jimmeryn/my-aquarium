@@ -1,9 +1,9 @@
+import { Aquarium } from "../types";
 import {
   ActionTypes,
   ADD_AQUARIUM,
-  ADD_AQUARIUM_DATA,
-  Aquarium
-} from "../types";
+  ADD_AQUARIUM_DATA
+} from "../types/actionTypes";
 
 const aquarium = (aquariumState: Aquarium, action: ActionTypes) => {
   switch (action.type) {

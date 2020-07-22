@@ -1,11 +1,10 @@
 import { combineReducers } from "redux";
+import { Aquarium, State } from "../types";
 import {
   ActionTypes,
   ADD_AQUARIUM,
-  ADD_AQUARIUM_DATA,
-  Aquarium,
-  State
-} from "../types";
+  ADD_AQUARIUM_DATA
+} from "../types/actionTypes";
 import normalize from "./normalize";
 import aquarium from "./aquarium";
 

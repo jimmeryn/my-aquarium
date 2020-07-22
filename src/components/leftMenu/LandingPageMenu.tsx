@@ -4,10 +4,15 @@ import AddAquariumButton from "./AddAquariumButton";
 
 const LandingPageMenu: React.FunctionComponent<{
   allaquariumsIds: number[];
-}> = ({ allaquariumsIds }) => (
+  visibleAquariumDispatch: (id: number) => void;
+}> = ({ allaquariumsIds, visibleAquariumDispatch }) => (
   <div>
     {allaquariumsIds.map(i => (
-      <OverviewList index={i} key={i} />
+      <OverviewList
+        index={i}
+        key={i}
+        visibleAquariumDispatch={visibleAquariumDispatch}
+      />
     ))}
     <AddAquariumButton />
   </div>
