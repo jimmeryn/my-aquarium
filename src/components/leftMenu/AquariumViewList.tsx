@@ -1,17 +1,18 @@
 import * as React from "react";
-import GroupComponent from "./GroupComponent";
 import { Grid } from "@material-ui/core";
+
 import { getLatestParams, getLatestRefill } from "./helperFunctions";
 import { Aquarium } from "src/store/types";
+
+import GroupComponent from "./GroupComponent";
+import GroupListTitleComponent from "./GroupListTitleComponent";
 
 const AquariumViewList: React.FunctionComponent<{
   aquarium: Aquarium;
 }> = ({ aquarium }) => (
   <Grid container spacing={0} direction="column" alignItems="stretch">
     <Grid item xs>
-      <h3 className="group-list-title">
-        {aquarium.name ?? `Aquarium #${aquarium.id + 1}`}
-      </h3>
+      <GroupListTitleComponent name={aquarium.name} index={aquarium.id} />
     </Grid>
     <Grid item xs>
       <GroupComponent
