@@ -1,0 +1,1 @@
+    visibleAquarium: -1
