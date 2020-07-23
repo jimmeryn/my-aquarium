@@ -1,4 +1,4 @@
-.top-nav {
+.nav {
   background-color: #009be5;
   height: 7vh;
   width: 100vw;
@@ -84,7 +84,7 @@
   .hamburger--active .hamburger-inner::after {
     transform: translateY(-7px) rotate(-45deg);
   }
-  .top-nav {
+  .nav {
     top: 0;
   }
 }
