@@ -1,28 +1,27 @@
 import * as React from "react";
 import { Tabs, Tab } from "@material-ui/core";
-import { createStyles, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import { Aquarium } from "src/models";
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    tab: {
-      minWidth: 100,
-      width: 100
-    }
-  })
-);
 
 const ParamButtonList: React.FunctionComponent<{
   aquariumsById: {
     [id: number]: Aquarium;
   };
   visibleAquarium: number;
+  filter: string;
   onClick: (filter: string) => void;
-}> = ({ aquariumsById, visibleAquarium, onClick }) => {
-  // TODO: change from 0 to number of current filter,
-  //       or in redux state chnage to default value
-  const [value, setValue] = React.useState(0);
+}> = ({ aquariumsById, visibleAquarium, onClick, filter }) => {
+  const initValue: { [key: string]: number } = { refills: 0 };
+  const [value, setValue] = React.useState(
+    [...new Set(aquariumsById[visibleAquarium].params.map(e => e.name))].reduce(
+      (acc, cur, i) => {
+        acc[cur] = i + 1;
+        return acc;
+      },
+      initValue
+    )[`${filter}`]
+  );
+
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -44,7 +43,6 @@ const ParamButtonList: React.FunctionComponent<{
             ...new Set(aquariumsById[visibleAquarium].params.map(e => e.name))
           ].map((paramName, i) => (
             <Tab
-              className={useStyles().tab}
               label={paramName}
               key={i}
               onClick={e => {

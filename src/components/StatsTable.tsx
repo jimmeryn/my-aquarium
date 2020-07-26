@@ -16,6 +16,7 @@ const StatsTable: React.FunctionComponent<{
         aquariumsById={aquariumsById}
         visibleAquarium={visibleAquarium}
         onClick={paramFilterDispatch}
+        filter={paramFilter}
       />
       <CurrentParamTable
         aquarium={aquariumsById[visibleAquarium]}
