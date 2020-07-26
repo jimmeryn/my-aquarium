@@ -1,5 +1,5 @@
 import * as React from "react";
-import StatsView from "../components/StatsView";
+import StatsView from "../containers/StatsView";
 import LandingPage from "../components/LandingPage";
 import { useSelector } from "react-redux";
 import { State } from "../store";
