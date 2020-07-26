@@ -5,7 +5,7 @@ import BottomNavigation from "@material-ui/core/BottomNavigation";
 const GraphModifiButtonsList: React.FunctionComponent = () => (
   <div className="graph-modify-list">
     <BottomNavigation value={10}>
-      {/** TODO: rename "current" to param/refil currently shown in the table */}
+      {/** TODO: working buttons would be nice */}
       <GraphModifyButton label={"Show"} />
       <GraphModifyButton label={"Add"} />
     </BottomNavigation>

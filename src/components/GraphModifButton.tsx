@@ -1,9 +1,12 @@
 import * as React from "react";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 
-const GraphModifyButton: React.FunctionComponent<{ label: string }> = ({
-  label
-}) => (
+const GraphModifyButton: React.FunctionComponent<{
+  label: string;
+  /** TODO: */
+  // onClick: any;
+  // filter: string;
+}> = ({ label }) => (
   <BottomNavigationAction
     label={label}
     showLabel
