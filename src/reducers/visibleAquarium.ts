@@ -1,6 +1,6 @@
 import { ActionTypes, SET_VISIBLE_AQUARIUM } from "../actions/actionTypes";
 
-const visibleAquarium = (state: number = -1, action: ActionTypes) => {
+const visibleAquarium = (state = -1, action: ActionTypes) => {
   switch (action.type) {
     case SET_VISIBLE_AQUARIUM:
       return action.id;
