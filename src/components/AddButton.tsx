@@ -6,6 +6,7 @@ const AddButton: React.FunctionComponent<{
   className: string;
   name: string;
   value?: number | string;
+  // TODO: any!
   onClick?: any;
   active?: boolean;
 }> = ({ className, onClick, name, value, active }) => (
