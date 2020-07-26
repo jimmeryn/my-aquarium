@@ -4,6 +4,7 @@ import { Param, Refill } from "../models";
 export const ADD_AQUARIUM = "ADD_AQUARIUM";
 export const ADD_AQUARIUM_DATA = "ADD_AQUARIUM_DATA";
 export const SET_VISIBLE_AQUARIUM = "SET_VISIBLE_AQUARIUM";
+export const CHANGE_PARAM_FILTER = "CHANGE_PARAM_FILTER";
 
 interface AddAquarium {
   readonly type: typeof ADD_AQUARIUM;
@@ -27,4 +28,13 @@ interface SetVisibleAquarium {
   id: number;
 }
 
-export type ActionTypes = AddAquarium | AddAquariumData | SetVisibleAquarium;
+interface ChagneParamFilter {
+  readonly type: typeof CHANGE_PARAM_FILTER;
+  filter: string;
+}
+
+export type ActionTypes =
+  | AddAquarium
+  | AddAquariumData
+  | SetVisibleAquarium
+  | ChagneParamFilter;
