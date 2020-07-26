@@ -7,17 +7,20 @@ import {
   TableHead,
   TableRow
 } from "@material-ui/core";
-import renderTableBody from "./renderTableBody";
-import { Aquarium } from "src/models";
+import ParamTableBody from "./ParamTableBody";
+import { Aquarium, Param, Refill } from "../models";
 
 // TODO: CurrentParamTable + CurrentParamFilteredTable
 const CurrentParamTable: React.FunctionComponent<{
   aquarium: Aquarium;
   filter: string;
 }> = ({ aquarium, filter }) => {
-  const params = aquarium.params
-    .filter(e => e.name.toLocaleLowerCase() === filter.toLowerCase())
-    .reverse();
+  const params =
+    filter !== "refills"
+      ? aquarium.params
+          .filter(e => e.name.toLocaleLowerCase() === filter.toLowerCase())
+          .reverse()
+      : aquarium.refills;
 
   return (
     <div className="current-param-table">
@@ -30,8 +33,8 @@ const CurrentParamTable: React.FunctionComponent<{
                 <TableCell key={1}>Value</TableCell>
               </TableRow>
             </TableHead>
-            {/** TODO: Add redux state for filtering current visiable param */}
-            {renderTableBody(params)}
+            {/** TODO: I have no idea how this works... foud it on stackoverflow*/}
+            <ParamTableBody params={params as Param[] & Refill[]} />
           </Table>
         </TableContainer>
       </Paper>

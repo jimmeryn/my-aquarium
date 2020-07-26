@@ -1,11 +1,13 @@
 import * as React from "react";
 import Row from "./Row";
-import { Param } from "src/models";
+import { Param, Refill } from "src/models";
 import { TableBody } from "@material-ui/core";
 
-const renderTableBody = (params: Param[]) => (
+const ParamTableBody: React.FunctionComponent<{
+  params: Param[] & Refill[];
+}> = ({ params }) => (
   <TableBody>
-    {params.map(e => (
+    {params.map((e: Param | Refill) => (
       <Row
         date={e.date.toISOString().split("T")[0]}
         value={e.value}
@@ -15,4 +17,4 @@ const renderTableBody = (params: Param[]) => (
   </TableBody>
 );
 
-export default renderTableBody;
+export default ParamTableBody;
