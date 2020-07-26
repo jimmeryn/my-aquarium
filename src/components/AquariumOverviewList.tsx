@@ -24,7 +24,7 @@ const AquariumOverviewList: React.FunctionComponent<{
     <Grid item xs>
       <GroupButton
         className={"overview-component"}
-        name={`Show Param`}
+        name={"Show Params"}
         onClick={() => {
           visibleAquariumDispatch(index);
         }}
