@@ -3,14 +3,15 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 
 const GraphModifyButton: React.FunctionComponent<{
   label: string;
-  /** TODO: */
-  // onClick: any;
-  // filter: string;
-}> = ({ label }) => (
+  onClick: () => void;
+}> = ({ label, onClick }) => (
   <BottomNavigationAction
     label={label}
     showLabel
-    onClick={() => console.log("Clicked Graph modify button")}
+    onClick={e => {
+      e.preventDefault;
+      onClick();
+    }}
   />
 );
 
