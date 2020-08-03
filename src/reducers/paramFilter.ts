@@ -1,4 +1,4 @@
-import { ActionTypes, CHANGE_PARAM_FILTER } from "../actions/actionTypes";
+import { ActionTypes, CHANGE_PARAM_FILTER } from "../actions";
 
 const paramFilter = (state = "refills", action: ActionTypes) => {
   switch (action.type) {

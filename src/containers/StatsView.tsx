@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import Graph from "../components/Graph";
-import { ActionTypes, CHANGE_PARAM_FILTER } from "../actions/actionTypes";
+import { ActionTypes, CHANGE_PARAM_FILTER } from "../actions";
 import { State } from "../store";
 import { useSelector, useDispatch } from "react-redux";
 import StatsTable from "../components/StatsTable";

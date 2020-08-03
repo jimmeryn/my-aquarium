@@ -2,7 +2,7 @@ import * as React from "react";
 import { useDispatch } from "react-redux";
 
 import { Aquarium } from "../models";
-import { ActionTypes, SET_VISIBLE_AQUARIUM } from "../actions/actionTypes";
+import { ActionTypes, SET_VISIBLE_AQUARIUM } from "../actions";
 import { getLatestParams, getLatestRefill } from "../api/filteringFunctions";
 import { Grid } from "@material-ui/core";
 import AquariumGroupList from "./AquariumGroupList";

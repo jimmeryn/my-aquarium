@@ -1,4 +1,4 @@
-import { ActionTypes, SET_VISIBLE_AQUARIUM } from "../actions/actionTypes";
+import { ActionTypes, SET_VISIBLE_AQUARIUM } from "../actions";
 
 const visibleAquarium = (state = -1, action: ActionTypes) => {
   switch (action.type) {

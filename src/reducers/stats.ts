@@ -1,8 +1,4 @@
-import {
-  GraphActionTypes,
-  ADD_GRAPH_DATA,
-  SHOW_ON_GRAPH
-} from "../actions/actionTypes";
+import { GraphActionTypes, ADD_GRAPH_DATA, SHOW_ON_GRAPH } from "../actions";
 
 interface graphState {
   labels: string[];
