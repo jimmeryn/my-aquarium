@@ -11,15 +11,19 @@ const ParamButtonList: React.FunctionComponent<{
   filter: string;
   onClick: (filter: string) => void;
 }> = ({ aquariumsById, visibleAquarium, onClick, filter }) => {
-  const initValue: { [key: string]: number } = { refills: 0 };
+  const initValue: { [key: string]: number } = {};
+  const paramList = [
+    ...new Set([
+      "refills",
+      ...aquariumsById[visibleAquarium].params.map(e => e.name)
+    ])
+  ];
+  paramList;
   const [value, setValue] = React.useState(
-    [...new Set(aquariumsById[visibleAquarium].params.map(e => e.name))].reduce(
-      (acc, cur, i) => {
-        acc[cur] = i + 1;
-        return acc;
-      },
-      initValue
-    )[`${filter}`]
+    paramList.reduce((acc, cur, i) => {
+      acc[cur] = i;
+      return acc;
+    }, initValue)[`${filter}`]
   );
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -38,10 +42,7 @@ const ParamButtonList: React.FunctionComponent<{
           scrollButtons="auto"
           aria-label="parameters tabs"
         >
-          {[
-            "refills",
-            ...new Set(aquariumsById[visibleAquarium].params.map(e => e.name))
-          ].map((paramName, i) => (
+          {paramList.map((paramName, i) => (
             <Tab
               label={paramName}
               key={i}
