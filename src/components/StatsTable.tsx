@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Aquarium } from "src/models";
 import ParamButtonList from "./ParamButtonList";
-import CurrentParamTable from "./ParamTable";
+import CurrentParamTable from "./CurrentParamTable";
 import GraphModifiButtonsList from "../containers/GraphModifiButtonsList";
 
 const StatsTable: React.FunctionComponent<{

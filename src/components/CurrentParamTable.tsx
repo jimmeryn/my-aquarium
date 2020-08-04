@@ -8,19 +8,16 @@ import {
   TableRow
 } from "@material-ui/core";
 import ParamTableBody from "./ParamTableBody";
-import { Aquarium, Param, Refill } from "../models";
+import { Aquarium } from "../models";
 
 // TODO: CurrentParamTable + CurrentParamFilteredTable
 const CurrentParamTable: React.FunctionComponent<{
   aquarium: Aquarium;
   filter: string;
 }> = ({ aquarium, filter }) => {
-  const params =
-    filter !== "refills"
-      ? aquarium.params
-          .filter(e => e.name.toLocaleLowerCase() === filter.toLowerCase())
-          .reverse()
-      : aquarium.refills;
+  const params = aquarium.params
+    .filter(e => e.name.toLocaleLowerCase() === filter.toLowerCase())
+    .reverse();
 
   return (
     <div className="current-param-table">
@@ -33,8 +30,7 @@ const CurrentParamTable: React.FunctionComponent<{
                 <TableCell key={1}>Value</TableCell>
               </TableRow>
             </TableHead>
-            {/** TODO: I have no idea how this works... foud it on stackoverflow*/}
-            <ParamTableBody params={params as Param[] & Refill[]} />
+            <ParamTableBody params={params} />
           </Table>
         </TableContainer>
       </Paper>
