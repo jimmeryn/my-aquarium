@@ -2,13 +2,13 @@ import { combineReducers } from "redux";
 import aquariums from "./aquariums";
 import visibleAquarium from "./visibleAquarium";
 import paramFilter from "./paramFilter";
-import stats from "./stats";
+import graphLabels from "./graphLabels";
 
 const reducer = combineReducers({
   aquariums,
   visibleAquarium,
   paramFilter,
-  stats
+  graphLabels
 });
 
 export default reducer;

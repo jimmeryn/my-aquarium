@@ -38,15 +38,11 @@ interface ChagneParamFilter {
 interface AddGraphData {
   readonly type: typeof ADD_GRAPH_DATA;
   label: string;
-  data: number[];
-  dates: string[];
 }
 
 interface ShowGraphData {
   readonly type: typeof SHOW_ON_GRAPH;
   label: string;
-  data: number[];
-  dates: string[];
 }
 
 export type GraphActionTypes = AddGraphData | ShowGraphData;
