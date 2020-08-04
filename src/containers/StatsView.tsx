@@ -12,37 +12,66 @@ const StatsView: React.FunctionComponent = () => {
   const paramFilterDispatch = (filter: string) =>
     dispatch({ type: CHANGE_PARAM_FILTER, filter });
 
-  const { aquariumsById, visibleAquarium, paramFilter } = useSelector(
+  const { aquariumsById, visibleAquarium, paramFilter, labels } = useSelector(
     (state: State) => ({
       aquariumsById: state.aquariums.aquariumsById,
       visibleAquarium: state.visibleAquarium,
-      paramFilter: state.paramFilter
+      paramFilter: state.paramFilter,
+      labels: state.graphLabels
     })
   );
-  // TODO: Get dates, values and labels currenty displayed on graph from redux state
+
+  // TODO: This code shouldyn't be so hard to understand...
+  const dates = [
+    ...new Set(
+      labels
+        .map(label =>
+          aquariumsById[visibleAquarium].params.reduce(
+            (paramsArray, currentParam) =>
+              currentParam.name === label
+                ? [
+                    currentParam.date.toISOString().split("T")[0],
+                    ...paramsArray
+                  ]
+                : paramsArray,
+            []
+          )
+        )
+        .reduce((ac, cur) => [...cur, ...ac], [])
+    )
+  ].sort();
+
+  // For every label create data array with name, value and date
+  // then create array based on dates (if param exist on given date use it if not set to null)
+  // Not pretty, but so far the best solution I could find...
+  const data = labels
+    .map(label =>
+      aquariumsById[visibleAquarium].params.reduce(
+        (paramsArray, currentParam) =>
+          currentParam.name === label
+            ? [
+                {
+                  name: currentParam.name,
+                  value: currentParam.value,
+                  date: currentParam.date.toISOString().split("T")[0]
+                },
+                ...paramsArray
+              ]
+            : paramsArray,
+        []
+      )
+    )
+    .map(dataArray =>
+      dates.map(date =>
+        dataArray.find(data => data.date === date)
+          ? dataArray.find(data => data.date === date).value
+          : null
+      )
+    );
+
   return (
     <div className="stats-view">
-      <Graph
-        dates={[
-          "10/04/2018",
-          "10/05/2018",
-          "10/06/2018",
-          "10/07/2018",
-          "10/08/2018",
-          "10/09/2018",
-          "10/10/2018",
-          "10/11/2018",
-          "10/12/2018",
-          "10/13/2018",
-          "10/14/2018",
-          "10/15/2018"
-        ]}
-        labels={["cl2", "no3"]}
-        paramData={[
-          [31, 21, 123, 123, 12, 65, 21, 12, 32, 41, 21, 54],
-          [22, 19, 27, 23, 22, 24, 17, 25, 23, 24, 20, 19]
-        ]}
-      />
+      <Graph dates={dates} labels={labels} paramData={data} />
       <StatsTable
         aquariumsById={aquariumsById}
         visibleAquarium={visibleAquarium}
