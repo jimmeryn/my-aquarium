@@ -10,7 +10,7 @@ const GroupButton: React.FunctionComponent<{
   onClick?: any;
   active?: boolean;
 }> = ({ className, typography, onClick, name, dividers = false, active }) => (
-  <div>
+  <React.Fragment>
     {dividers ? <Divider /> : null}
     <div className={className}>
       <Button
@@ -23,7 +23,7 @@ const GroupButton: React.FunctionComponent<{
       </Button>
     </div>
     {dividers ? <Divider /> : null}
-  </div>
+  </React.Fragment>
 );
 
 export default GroupButton;

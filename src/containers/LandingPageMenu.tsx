@@ -12,7 +12,7 @@ const LandingPageMenu: React.FunctionComponent<{
   const visibleAquariumDispatch = (id: number) =>
     dispatch({ type: SET_VISIBLE_AQUARIUM, id });
   return (
-    <div>
+    <React.Fragment>
       <GroupButton
         className={"title"}
         typography={"title-h1"}
@@ -34,7 +34,7 @@ const LandingPageMenu: React.FunctionComponent<{
         name="Add Aquarium"
         dividers={true}
       />
-    </div>
+    </React.Fragment>
   );
 };
 
