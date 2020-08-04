@@ -1,6 +1,8 @@
-import { Param, Refill } from "../models";
+import { Param } from "../models";
 
+// Duplicating gunction. TODO: refactoi into one function
 export const getLatestParams = (params: Param[]): Param[] => {
+  params = params.filter(param => param.name !== "refills");
   const latestParamDate = new Date(
     Math.max.apply(
       null,
@@ -12,11 +14,15 @@ export const getLatestParams = (params: Param[]): Param[] => {
   );
 };
 
-export const getLatestRefill = (refills: Refill[]) => {
-  const latestRefillDate = refills
-    .map(e => e.date)
-    .sort()
-    .reverse()[0];
-
-  return refills.filter(e => e.date === latestRefillDate)[0];
+export const getLatestRefill = (params: Param[]) => {
+  params = params.filter(param => param.name === "refills");
+  const latestRefillDate = new Date(
+    Math.max.apply(
+      null,
+      params.map(e => new Date(e.date))
+    )
+  );
+  return params.filter(
+    e => e.date.toISOString() === latestRefillDate.toISOString()
+  )[0];
 };

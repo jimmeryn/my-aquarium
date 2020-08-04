@@ -11,7 +11,7 @@ import GroupButton from "../components/GroupButton";
 const AquariumViewMenu: React.FunctionComponent<{
   aquarium: Aquarium;
 }> = ({ aquarium }) => {
-  const { name, id, refills, params } = aquarium;
+  const { name, id, params } = aquarium;
 
   const dispatch = useDispatch<React.Dispatch<ActionTypes>>();
   const visibleAquariumDispatch = (id: number) =>
@@ -40,7 +40,7 @@ const AquariumViewMenu: React.FunctionComponent<{
       </Grid>
       <Grid item xs>
         <AquariumGroupList
-          refill={getLatestRefill(refills)}
+          refill={getLatestRefill(params)}
           params={getLatestParams(params)}
         />
       </Grid>

@@ -1,11 +1,11 @@
 import * as React from "react";
-import { Param, Refill } from "../models";
+import { Param } from "../models";
 import { List } from "@material-ui/core";
 import ParamList from "../components/ParamsList";
 import AddButton from "../components/AddButton";
 
 const AquariumGroupList: React.FunctionComponent<{
-  refill?: Refill;
+  refill?: Param;
   params: Param[];
 }> = ({ refill, params }) => (
   <List component="nav">

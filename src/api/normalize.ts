@@ -1,11 +1,10 @@
 import {
   UnnormalizedStateData,
+  UnnormalizedParam,
+  UnnormalizedAquarium,
   State,
   Param,
-  UnnormalizedParam,
-  Refill,
-  Aquarium,
-  UnnormalizedAquarium
+  Aquarium
 } from "../models";
 
 // NOTE: Not pretty but doing it's job.
@@ -13,34 +12,39 @@ import {
 // no need for normalizing json
 export default function normalize({ aquariums }: UnnormalizedStateData): State {
   const paramsById = getParamsById(aquariums);
-  const refillsById = getRefillsById(aquariums);
-  const aquariumsById = getAquariumsById(aquariums, paramsById, refillsById);
+  const aquariumsById = getAquariumsById(aquariums, paramsById);
   return {
     aquariums: {
       byId: aquariumsById,
       allIds: aquariumsById.map(({ id }) => id)
     },
-    parameters: { byId: paramsById, allIds: paramsById.map(({ id }) => id) },
-    refills: {
-      byId: refillsById,
-      allIds: refillsById.map(({ id }: Refill) => id)
-    },
     visibleAquarium: -1
   };
 }
 
+const getParamsById = (aquariums: UnnormalizedAquarium[]): Param[] =>
+  aquariums
+    .map(aquarium =>
+      refactorAquariumData(
+        [...aquarium.waterRefills, ...aquarium.data],
+        aquarium.id
+      )
+    )
+    .reduce((acc, val) => acc.concat(...val), [])
+    .map((e, i) => ({ ...e, id: i }));
+
 const createParam = (
   aquariumId: number,
   date: string,
-  name: string,
-  value: number
-) => {
+  value: number,
+  name?: string
+): Param => {
   const [day, month, year] = date.split(".");
   return {
     id: 0, // id added later -> when all params are in one array
     aquariumId,
     date: new Date(`${year}-${month}-${day}`),
-    name,
+    name: name !== "value" ? name : "refills",
     value
   };
 };
@@ -65,59 +69,29 @@ function refactorParam(param: UnnormalizedParam, aquariumId: number): Param[] {
   const { date, ...params } = param;
   return Object.keys(params).reduce((all, cur) => {
     return cur !== "date"
-      ? [...all, createParam(aquariumId, date, cur, params[cur] as number)]
+      ? [...all, createParam(aquariumId, date, params[cur] as number, cur)]
       : all;
   }, []);
 }
+
 const refactorAquariumData = (
   aquariumData: UnnormalizedParam[],
   aquariumId: number
 ) =>
   aquariumData
-    .map((e, i) => refactorParam(e, aquariumId))
+    .map(e => refactorParam(e, aquariumId))
     .reduce((acc, val) => acc.concat(val), []);
-
-const getParamsById = (aquariums: UnnormalizedAquarium[]) =>
-  aquariums
-    .map(e => refactorAquariumData(e.data, e.id))
-    .reduce((acc, val) => acc.concat(...val), [])
-    .map((e, i) => ({ ...e, id: i }));
-
-const refactorRefill = (refill: UnnormalizedParam, aquariumId: number) => {
-  const [day, month, year] = refill.date.split(".");
-  return {
-    id: 0, // id added later -> when all params are in one array
-    aquariumId,
-    date: new Date(`${year}-${month}-${day}`),
-    name,
-    value: refill.value
-  };
-};
-
-const getRefillsById = (aquariums: UnnormalizedAquarium[]) =>
-  aquariums
-    .reduce(
-      (refillsById, currentAquarium, aquariumId) => [
-        ...refillsById,
-        currentAquarium.waterRefills.map(e => refactorRefill(e, aquariumId))
-      ],
-      []
-    )
-    .reduce((acc, val) => acc.concat(...val), [])
-    .map((e: UnnormalizedParam, i: number) => ({ ...e, id: i }));
 
 const getAquariumsById = (
   aquariums: UnnormalizedAquarium[],
-  params: Param[],
-  refills: Refill[]
+  params: Param[]
 ): Aquarium[] =>
   aquariums.reduce(
     (aquariumArray, currentAquarium) => [
       ...aquariumArray,
       refactorAquarium(
         currentAquarium,
-        params.filter(e => e.aquariumId === currentAquarium.id),
-        refills.filter(e => e.aquariumId === currentAquarium.id)
+        params.filter(e => e.aquariumId === currentAquarium.id)
       )
     ],
     []
@@ -125,11 +99,9 @@ const getAquariumsById = (
 
 const refactorAquarium = (
   { id, size }: UnnormalizedAquarium,
-  params: Param[],
-  refills: Refill[]
+  params: Param[]
 ) => ({
   id,
   size,
-  params,
-  refills
+  params
 });
