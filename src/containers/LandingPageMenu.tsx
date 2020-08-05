@@ -1,7 +1,12 @@
 import * as React from "react";
 import AquariumOverviewList from "../components/AquariumOverviewList";
 import GroupButton from "../components/GroupButton";
-import { ActionTypes, SET_VISIBLE_AQUARIUM } from "../actions";
+import {
+  ActionTypes,
+  SET_VISIBLE_AQUARIUM,
+  MenuActionTypes,
+  SET_MENU_STATE
+} from "../actions";
 import { useDispatch } from "react-redux";
 
 const LandingPageMenu: React.FunctionComponent<{

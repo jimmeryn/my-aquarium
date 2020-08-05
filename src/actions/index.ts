@@ -4,9 +4,13 @@ import { Param } from "../models";
 export const ADD_AQUARIUM = "ADD_AQUARIUM";
 export const ADD_AQUARIUM_DATA = "ADD_AQUARIUM_DATA";
 export const SET_VISIBLE_AQUARIUM = "SET_VISIBLE_AQUARIUM";
+
 export const CHANGE_PARAM_FILTER = "CHANGE_PARAM_FILTER";
+
 export const ADD_GRAPH_DATA = "ADD_GRAPH_DATA";
 export const SHOW_ON_GRAPH = "SHOW_ON_GRAPH";
+
+export const SET_MENU_STATE = "SET_MENU_STATE";
 
 interface AddAquarium {
   readonly type: typeof ADD_AQUARIUM;
@@ -45,8 +49,12 @@ interface ShowGraphData {
   label: string;
 }
 
-export type GraphActionTypes = AddGraphData | ShowGraphData;
+interface SetMenuState {
+  readonly type: typeof SET_MENU_STATE;
+}
 
+export type GraphActionTypes = AddGraphData | ShowGraphData;
+export type MenuActionTypes = SetMenuState;
 export type ActionTypes =
   | AddAquarium
   | AddAquariumData
