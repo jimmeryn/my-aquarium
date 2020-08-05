@@ -1,10 +1,16 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
 
+import { Grid } from "@material-ui/core";
 import { Aquarium } from "../models";
+import {
+  ActionTypes,
   SET_VISIBLE_AQUARIUM,
   MenuActionTypes,
   SET_MENU_STATE,
+  GraphActionTypes,
+  SHOW_ON_GRAPH
+} from "../actions";
 import { getLatestParams, getLatestRefill } from "../api/filteringFunctions";
 import AquariumGroupList from "../components/AquariumGroupList";
 import GroupButton from "../components/GroupButton";
@@ -20,6 +26,10 @@ const AquariumViewMenu: React.FunctionComponent<{
 
   const dispatchMenu = useDispatch<React.Dispatch<MenuActionTypes>>();
   const setMenuStateDispatch = () => dispatchMenu({ type: SET_MENU_STATE });
+
+  const dispatchGraph = useDispatch<React.Dispatch<GraphActionTypes>>();
+  const showOnGraphDispatch = (paramFilter: string) => () =>
+    dispatchGraph({ type: SHOW_ON_GRAPH, label: paramFilter });
 
   return (
     <Grid container spacing={0} direction="column" alignItems="stretch">
@@ -49,6 +59,7 @@ const AquariumViewMenu: React.FunctionComponent<{
           refill={getLatestRefill(params)}
           params={getLatestParams(params)}
           onClick={setMenuStateDispatch}
+          paramClick={showOnGraphDispatch}
         />
       </Grid>
     </Grid>
