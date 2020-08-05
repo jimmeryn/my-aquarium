@@ -18,6 +18,10 @@
   padding: 0;
 }
 
+.fish-bowl {
+  max-width: 90%;
+}
+
 .landing-page h1 {
   margin: 0;
   font-family: "Poppins";
@@ -87,5 +91,13 @@
   }
   .stats-table {
     max-width: 100vw;
+  }
+
+  .head {
+    margin: 10vh 10vw 5vh 6vw;
+  }
+
+  .landing-page h2 {
+    margin-left: 0;
   }
 }

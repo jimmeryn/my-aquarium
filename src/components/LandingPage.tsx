@@ -8,7 +8,7 @@ const LandingPage: React.FunctionComponent = () => (
       <h2>{"Collect and display data"}</h2>
       <h2>{"from your fish tanks"}</h2>
     </div>
-    <FishBowl />
+    <FishBowl className="fish-bowl" />
   </div>
 );
 

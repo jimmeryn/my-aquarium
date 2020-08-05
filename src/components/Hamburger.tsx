@@ -1,12 +1,18 @@
 import * as React from "react";
 
-const Hamburger = () => {
-  // change redux state to open or close navigation
-  const [hamActive, setHamActive] = React.useState(false);
-  const hamClass = `hamburger${hamActive ? "--active" : ""}`;
+var classNames = require("classnames");
+
+const Hamburger: React.FunctionComponent<{
+  active: boolean;
+  setActive: any;
+}> = ({ active, setActive }) => {
+  const hamClass = classNames({
+    hamburger: !active,
+    "hamburger--active": active
+  });
 
   return (
-    <button className={hamClass} onClick={() => setHamActive(!hamActive)}>
+    <button className={hamClass} onClick={() => setActive(!active)}>
       <span className="hamburger-box">
         <span className="hamburger-inner"></span>
       </span>
