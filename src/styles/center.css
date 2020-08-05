@@ -18,6 +18,10 @@
   padding: 0;
 }
 
+.fish-bowl {
+  max-width: 90%;
+}
+
 .landing-page h1 {
   margin: 0;
   font-family: "Poppins";
