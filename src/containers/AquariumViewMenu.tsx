@@ -18,6 +18,9 @@ const AquariumViewMenu: React.FunctionComponent<{
   const visibleAquariumDispatch = (id: number) =>
     dispatch({ type: SET_VISIBLE_AQUARIUM, id });
 
+  const dispatchMenu = useDispatch<React.Dispatch<MenuActionTypes>>();
+  const setMenuStateDispatch = () => dispatchMenu({ type: SET_MENU_STATE });
+
   return (
     <Grid container spacing={0} direction="column" alignItems="stretch">
       <GroupButton
@@ -26,6 +29,7 @@ const AquariumViewMenu: React.FunctionComponent<{
         name={"My Aquarium"}
         onClick={() => {
           visibleAquariumDispatch(-1);
+          setMenuStateDispatch();
         }}
       />
       <Grid item xs>
@@ -36,6 +40,7 @@ const AquariumViewMenu: React.FunctionComponent<{
           dividers={true}
           onClick={() => {
             visibleAquariumDispatch(id);
+            setMenuStateDispatch();
           }}
         />
       </Grid>
@@ -43,6 +48,7 @@ const AquariumViewMenu: React.FunctionComponent<{
         <AquariumGroupList
           refill={getLatestRefill(params)}
           params={getLatestParams(params)}
+          onClick={setMenuStateDispatch}
         />
       </Grid>
     </Grid>

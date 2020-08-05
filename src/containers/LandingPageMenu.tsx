@@ -13,9 +13,13 @@ const LandingPageMenu: React.FunctionComponent<{
   allaquariumsIds: number[];
 }> = ({ allaquariumsIds }) => {
   const dispatch = useDispatch<React.Dispatch<ActionTypes>>();
+  const dispatchMenu = useDispatch<React.Dispatch<MenuActionTypes>>();
 
   const visibleAquariumDispatch = (id: number) =>
     dispatch({ type: SET_VISIBLE_AQUARIUM, id });
+
+  const setMenuStateDispatch = () => dispatchMenu({ type: SET_MENU_STATE });
+
   return (
     <React.Fragment>
       <GroupButton
@@ -24,13 +28,14 @@ const LandingPageMenu: React.FunctionComponent<{
         name={"My Aquarium"}
         onClick={() => {
           visibleAquariumDispatch(-1);
+          setMenuStateDispatch();
         }}
       />
       {allaquariumsIds.map(i => (
         <AquariumOverviewList
           index={i}
           key={i}
-          visibleAquariumDispatch={visibleAquariumDispatch}
+          setMenuActive={setMenuStateDispatch}
         />
       ))}
       <GroupButton

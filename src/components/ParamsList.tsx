@@ -3,10 +3,13 @@ import { Param } from "../models";
 import ParamButton from "./ParamButton";
 
 // TODO: map on param list
-const ParamList: React.FunctionComponent<{ params: Param[] }> = ({
-  params
-}) => (
-  <div className="param-list">
+  onClick: () => void;
+  <div
+    className="param-list"
+    onClick={() => {
+      onClick();
+    }}
+  >
     {params.map(({ name, value }, index) => (
       <ParamButton
         className="param-value"

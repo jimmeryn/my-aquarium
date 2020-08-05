@@ -4,11 +4,10 @@ import GroupButton from "./GroupButton";
 
 const AquariumOverviewList: React.FunctionComponent<{
   index: number;
-  // TODO: change visibleAquariumDispatch to something like setCurrentlyVisibleAquariumIndex
-  // (component not avare that it's using dispatch or state)
-  visibleAquariumDispatch: (id: number) => void;
+  setVisibleAquariumIndex: (index: number) => void;
+  setMenuActive: () => void;
   aquariumName?: string;
-}> = ({ index, visibleAquariumDispatch, aquariumName }) => (
+}> = ({ index, setVisibleAquariumIndex, setMenuActive, aquariumName }) => (
   <Grid container spacing={0} direction="column" alignItems="stretch">
     <Grid item xs>
       <GroupButton
@@ -17,7 +16,8 @@ const AquariumOverviewList: React.FunctionComponent<{
         name={aquariumName ?? `Aquarium #${index + 1}`}
         dividers={true}
         onClick={() => {
-          visibleAquariumDispatch(index);
+          setVisibleAquariumIndex(index);
+          setMenuActive();
         }}
       />
     </Grid>
@@ -26,7 +26,8 @@ const AquariumOverviewList: React.FunctionComponent<{
         className={"overview-component"}
         name={"Show Params"}
         onClick={() => {
-          visibleAquariumDispatch(index);
+          setVisibleAquariumIndex(index);
+          setMenuActive();
         }}
       />
     </Grid>
