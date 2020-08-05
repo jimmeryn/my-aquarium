@@ -1,9 +1,9 @@
 import * as React from "react";
-import Hamburger from "./Hamburger";
+import HamburgerActive from "../containers/HamburgerActive";
 
 const Nav: React.FunctionComponent = () => (
   <div className="nav">
-    <Hamburger />
+    <HamburgerActive />
   </div>
 );
 
