@@ -35,6 +35,7 @@ const LandingPageMenu: React.FunctionComponent<{
         <AquariumOverviewList
           index={i}
           key={i}
+          setVisibleAquariumIndex={visibleAquariumDispatch}
           setMenuActive={setMenuStateDispatch}
         />
       ))}
