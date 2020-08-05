@@ -1,3 +1,4 @@
+.menu--active,
 .menu {
   background-color: #18202c;
   height: 100vh;
@@ -124,16 +125,17 @@
 /* ********************************************************************************** */
 @media only screen and (max-width: 800px) {
   /* TODO: Add active and not active state - default not active + some hamburger?*/
-  .left-menu {
+  .menu {
     visibility: hidden;
     display: none;
   }
 
-  .left-menu--active {
-    z-index: 9999;
+  .menu--active {
+    background-color: #18202c;
     position: absolute;
-    width: 100vw;
+    z-index: 3;
+    width: 80vw;
     height: 100vh;
-    background-color: #e0e0e0;
+    overflow-y: auto;
   }
 }
