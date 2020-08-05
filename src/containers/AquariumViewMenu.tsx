@@ -6,8 +6,7 @@ import { Aquarium } from "../models";
   MenuActionTypes,
   SET_MENU_STATE,
 import { getLatestParams, getLatestRefill } from "../api/filteringFunctions";
-import { Grid } from "@material-ui/core";
-import AquariumGroupList from "./AquariumGroupList";
+import AquariumGroupList from "../components/AquariumGroupList";
 import GroupButton from "../components/GroupButton";
 
 const AquariumViewMenu: React.FunctionComponent<{
