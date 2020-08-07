@@ -45,7 +45,7 @@
 
 .param-value p {
   float: right;
-  color: #ffffff !important;
+  color: #ffffff;
   white-space: nowrap;
   font-family: "Poppins";
   font-style: normal;
@@ -54,7 +54,7 @@
 }
 
 .refill-value p {
-  color: #ffffff !important;
+  color: #ffffff;
   white-space: nowrap;
   font-family: "Poppins";
   font-style: normal;
@@ -86,7 +86,7 @@
 }
 
 .group-list-title-button {
-  background-color: #232f3e !important;
+  background-color: #232f3e;
 }
 
 .group-list-title-button,
