@@ -24,7 +24,8 @@ const theme = createMuiTheme({
 const Dialog: React.FunctionComponent<{
   isDialogOpen: boolean;
   title: string;
-}> = ({ isDialogOpen, title }) => {
+  unit: string;
+}> = ({ isDialogOpen, title, unit }) => {
   const dialogClass = classNames({
     dialog: isDialogOpen,
     "dialog--hidden": !isDialogOpen
@@ -51,7 +52,9 @@ const Dialog: React.FunctionComponent<{
           label="Value"
           id="standard-start-adornment"
           InputProps={{
-            endAdornment: <InputAdornment position="start">[l]</InputAdornment>
+            endAdornment: (
+              <InputAdornment position="start">{`[${unit}]`}</InputAdornment>
+            )
           }}
         />
         <MuiPickersUtilsProvider utils={DateFnsUtils}>

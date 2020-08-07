@@ -56,7 +56,7 @@ const Menu: React.FunctionComponent = () => {
       ) : (
         <AquariumViewMenu aquarium={aquariumsById[visibleAquarium]} />
       )}
-      <Dialog isDialogOpen={true} title={"Add Value"} />
+      <Dialog isDialogOpen={true} title={"Add Value"} unit={"mg/l"} />
     </div>
   );
 };
