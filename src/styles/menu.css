@@ -120,6 +120,10 @@
   max-width: 50%;
 }
 
+.close-button {
+  visibility: hidden;
+  display: none;
+}
 /* ********************************************************************************** */
 /* *************************** MEDIA 800PX ****************************************** */
 /* ********************************************************************************** */
@@ -137,5 +141,32 @@
     width: 80vw;
     height: 100vh;
     overflow-y: auto;
+  }
+  .close-button {
+    visibility: visible;
+    display: block;
+    position: absolute;
+    right: 32px;
+    top: 46px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+  }
+
+  .close-button:before,
+  .close-button:after {
+    position: absolute;
+    content: " ";
+    height: 33px;
+    width: 2px;
+    background-color: #ffffff;
+  }
+
+  .close-button:before {
+    transform: rotate(45deg);
+  }
+
+  .close-button:after {
+    transform: rotate(-45deg);
   }
 }
