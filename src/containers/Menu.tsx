@@ -1,9 +1,12 @@
 import * as React from "react";
-import AquariumViewMenu from "./AquariumViewMenu";
-import LandingPageMenu from "./LandingPageMenu";
+
 import { useSelector, useDispatch } from "react-redux";
 import { State } from "../store";
 import { MenuActionTypes, SET_MENU_STATE } from "../actions";
+
+import AquariumViewMenu from "./AquariumViewMenu";
+import LandingPageMenu from "./LandingPageMenu";
+import Dialog from "../components/Dialog";
 
 const classNames = require("classnames");
 
@@ -53,6 +56,7 @@ const Menu: React.FunctionComponent = () => {
       ) : (
         <AquariumViewMenu aquarium={aquariumsById[visibleAquarium]} />
       )}
+      <Dialog isDialogOpen={true} title={"Add Value"} />
     </div>
   );
 };
