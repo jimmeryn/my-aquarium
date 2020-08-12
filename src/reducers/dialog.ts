@@ -1,9 +1,16 @@
-import { UIActionTypes, SET_DIALOG_STATE } from "../actions";
+import {
+  UIActionTypes,
+  SET_DIALOG_STATE,
+  DialogVariant,
+  HIDDEN
+} from "../actions";
 
-const dialog = (state = false, action: UIActionTypes) => {
+const dialog = (state: DialogVariant = HIDDEN, action: UIActionTypes) => {
   switch (action.type) {
     case SET_DIALOG_STATE:
-      return !state;
+      return state !== action.variant && action.variant
+        ? action.variant
+        : HIDDEN;
     default:
       return state;
   }

@@ -54,8 +54,21 @@ interface SetMenuState {
   readonly type: typeof SET_MENU_STATE;
 }
 
+// Dialog variants
+export const REFILL = "REFILL";
+export const PARAMS = "PARAMS";
+export const AQUARIUM = "AQUARIUM";
+export const HIDDEN = "HIDDEN";
+
+export type DialogVariant =
+  | typeof REFILL
+  | typeof PARAMS
+  | typeof AQUARIUM
+  | typeof HIDDEN;
+
 interface SetDialogState {
   readonly type: typeof SET_DIALOG_STATE;
+  readonly variant: DialogVariant;
 }
 
 export type GraphActionTypes = AddGraphData | ShowGraphData;
