@@ -21,18 +21,25 @@ const theme = createMuiTheme({
   }
 });
 
-const Dialog: React.FunctionComponent<{
+const DialogComponent: React.FunctionComponent<{
+  selectedDate: Date;
+  setSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
   isDialogOpen: boolean;
   title: string;
   unit: string;
-}> = ({ isDialogOpen, title, unit }) => {
+  onClose: any;
+}> = ({
+  selectedDate,
+  setSelectedDate,
+  isDialogOpen,
+  title,
+  unit,
+  onClose
+}) => {
   const dialogClass = classNames({
     dialog: isDialogOpen,
     "dialog--hidden": !isDialogOpen
   });
-  const [selectedDate, setSelectedDate] = React.useState<Date | null>(
-    new Date()
-  );
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
@@ -41,7 +48,7 @@ const Dialog: React.FunctionComponent<{
   return (
     <div className={dialogClass}>
       <div className="dialog-title-wrappper">
-        <CloseButton />
+        <CloseButton onClick={onClose} />
         <div className="dialog-title">{title}</div>
         <Divider />
       </div>
@@ -77,7 +84,7 @@ const Dialog: React.FunctionComponent<{
         className={"dialog-button"}
         typography={"group-list-title"}
         onClick={() => {
-          console.log("clicked");
+          onClose();
         }}
         name="Submit"
       />
@@ -85,4 +92,4 @@ const Dialog: React.FunctionComponent<{
   );
 };
 
-export default Dialog;
+export default DialogComponent;
