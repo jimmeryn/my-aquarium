@@ -14,12 +14,14 @@ const Menu: React.FunctionComponent = () => {
     visibleAquarium,
     allaquariumsIds,
     aquariumsById,
-    menuState
+    menuState,
+    dialogState
   } = useSelector((state: State) => ({
     visibleAquarium: state.visibleAquarium,
     allaquariumsIds: state.aquariums.allaquariumsIds,
     aquariumsById: state.aquariums.aquariumsById,
-    menuState: state.userInterface.menu
+    menuState: state.userInterface.menu,
+    dialogState: state.userInterface.dialog
   }));
   const menuClass = classNames({ menu: !menuState, "menu--active": menuState });
 
@@ -30,7 +32,7 @@ const Menu: React.FunctionComponent = () => {
       ) : (
         <AquariumViewMenu aquarium={aquariumsById[visibleAquarium]} />
       )}
-      <Dialog title={"Add Value"} unit={"mg/l"} />
+      <Dialog variant={dialogState} />
     </div>
   );
 };
