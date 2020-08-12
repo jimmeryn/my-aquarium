@@ -6,7 +6,7 @@ import { UIActionTypes, SET_MENU_STATE } from "../actions";
 
 import AquariumViewMenu from "./AquariumViewMenu";
 import LandingPageMenu from "./LandingPageMenu";
-import Dialog from "../components/Dialog";
+import Dialog from "./Dialog";
 
 const classNames = require("classnames");
 
@@ -56,7 +56,7 @@ const Menu: React.FunctionComponent = () => {
       ) : (
         <AquariumViewMenu aquarium={aquariumsById[visibleAquarium]} />
       )}
-      <Dialog isDialogOpen={true} title={"Add Value"} unit={"mg/l"} />
+      <Dialog title={"Add Value"} unit={"mg/l"} />
     </div>
   );
 };
