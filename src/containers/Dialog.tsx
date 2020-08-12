@@ -1,34 +1,60 @@
 import * as React from "react";
 import DialogComponent from "../components/DialogComponent";
-import { useSelector, useDispatch } from "react-redux";
-import { State } from "../store";
+import { useDispatch } from "react-redux";
+import { DialogVariant, REFILL, PARAMS, AQUARIUM, HIDDEN } from "../actions";
 import { UIActionTypes, SET_DIALOG_STATE } from "../actions";
 
 const Dialog: React.FunctionComponent<{
-  title: string;
-  unit: string;
-}> = ({ title, unit }) => {
+  variant: DialogVariant;
+}> = ({ variant }) => {
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(
     new Date()
   );
 
-  const { dialogState } = useSelector((state: State) => ({
-    dialogState: state.userInterface.dialog
-  }));
+  const dispatch = useDispatch<React.Dispatch<UIActionTypes>>();
+  const setDialogState = (variant: DialogVariant) =>
+    dispatch({ type: SET_DIALOG_STATE, variant });
 
-  const dispatchMenu = useDispatch<React.Dispatch<UIActionTypes>>();
-  const setDialogStateDispatch = () => dispatchMenu({ type: SET_DIALOG_STATE });
+  // TODO: DRY - return one dialog component but with different params based on variant
+  // if always returning component than we need to add classname --hidden back.
+  // Currently just returning null, so no dialog is visible
+  return (() => {
+    switch (variant) {
+      case REFILL:
+        return (
+          <DialogComponent
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            title={"New Water Refill"}
+            unit={"l"}
+            onClose={() => setDialogState(HIDDEN)}
+          />
+        );
+      case PARAMS:
+        return (
+          <DialogComponent
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            title={"New Parameters"}
+            unit={"mg/l"}
+            onClose={() => setDialogState(HIDDEN)}
+          />
+        );
+      case AQUARIUM:
+        return (
+          <DialogComponent
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            title={"New Aquarium"}
+            unit={"l"}
+            onClose={() => setDialogState(HIDDEN)}
+          />
+        );
 
-  return (
-    <DialogComponent
-      selectedDate={selectedDate}
-      setSelectedDate={setSelectedDate}
-      isDialogOpen={dialogState}
-      title={title}
-      unit={unit}
-      onClose={setDialogStateDispatch}
-    />
-  );
+      default:
+        return null;
+    }
+  })();
 };
 
 export default Dialog;
