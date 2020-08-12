@@ -8,20 +8,28 @@ const AquariumGroupList: React.FunctionComponent<{
   refill?: Param;
   params: Param[];
   onClick: () => void;
-  addButtonClick: () => void;
+  addParamClick: () => void;
+  addRefillClick: () => void;
   paramClick: (paramFilter: string) => () => void;
-}> = ({ refill, params, onClick, paramClick, addButtonClick }) => (
+}> = ({
+  refill,
+  params,
+  onClick,
+  paramClick,
+  addParamClick,
+  addRefillClick
+}) => (
   <List component="nav">
     <AddButton
       className="refill-value"
       name="Refill"
       value={refill ? `${refill.value} [l]` : "No refills"}
-      onClick={() => addButtonClick()}
+      onClick={() => addRefillClick()}
     />
     <AddButton
       className="param-value"
       name="Parameters"
-      onClick={() => addButtonClick()}
+      onClick={() => addParamClick()}
     />
     <ParamList params={params} onClick={onClick} paramClick={paramClick} />
   </List>
