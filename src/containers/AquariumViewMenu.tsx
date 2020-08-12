@@ -62,6 +62,7 @@ const AquariumViewMenu: React.FunctionComponent<{
           params={getLatestParams(params)}
           onClick={setMenuStateDispatch}
           paramClick={showOnGraphDispatch}
+          addButtonClick={setDialogStateDispatch}
         />
       </Grid>
     </Grid>

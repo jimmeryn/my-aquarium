@@ -39,6 +39,7 @@ const LandingPageMenu: React.FunctionComponent<{
           key={i}
           setVisibleAquariumIndex={visibleAquariumDispatch}
           setMenuActive={setMenuStateDispatch}
+          setDialogActive={setDialogStateDispatch}
         />
       ))}
       <GroupButton
@@ -46,6 +47,7 @@ const LandingPageMenu: React.FunctionComponent<{
         typography="group-list-title"
         name="Add Aquarium"
         dividers={true}
+        onClick={setDialogStateDispatch}
       />
     </React.Fragment>
   );
