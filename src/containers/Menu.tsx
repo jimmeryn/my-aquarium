@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { State } from "../store";
-import { MenuActionTypes, SET_MENU_STATE } from "../actions";
+import { UIActionTypes, SET_MENU_STATE } from "../actions";
 
 import AquariumViewMenu from "./AquariumViewMenu";
 import LandingPageMenu from "./LandingPageMenu";
@@ -38,10 +38,10 @@ const Menu: React.FunctionComponent = () => {
     visibleAquarium: state.visibleAquarium,
     allaquariumsIds: state.aquariums.allaquariumsIds,
     aquariumsById: state.aquariums.aquariumsById,
-    menuState: state.menu
+    menuState: state.userInterface.menu
   }));
 
-  const dispatchMenu = useDispatch<React.Dispatch<MenuActionTypes>>();
+  const dispatchMenu = useDispatch<React.Dispatch<UIActionTypes>>();
   const setMenuStateDispatch = () => dispatchMenu({ type: SET_MENU_STATE });
 
   const wrapperRef = React.useRef(null);

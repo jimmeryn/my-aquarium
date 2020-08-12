@@ -6,10 +6,11 @@ import { Aquarium } from "../models";
 import {
   ActionTypes,
   SET_VISIBLE_AQUARIUM,
-  MenuActionTypes,
+  UIActionTypes,
   SET_MENU_STATE,
   GraphActionTypes,
-  SHOW_ON_GRAPH
+  SHOW_ON_GRAPH,
+  SET_DIALOG_STATE
 } from "../actions";
 import { getLatestParams, getLatestRefill } from "../api/filteringFunctions";
 import AquariumGroupList from "../components/AquariumGroupList";
@@ -24,8 +25,9 @@ const AquariumViewMenu: React.FunctionComponent<{
   const visibleAquariumDispatch = (id: number) =>
     dispatch({ type: SET_VISIBLE_AQUARIUM, id });
 
-  const dispatchMenu = useDispatch<React.Dispatch<MenuActionTypes>>();
+  const dispatchMenu = useDispatch<React.Dispatch<UIActionTypes>>();
   const setMenuStateDispatch = () => dispatchMenu({ type: SET_MENU_STATE });
+  const setDialogStateDispatch = () => dispatchMenu({ type: SET_DIALOG_STATE });
 
   const dispatchGraph = useDispatch<React.Dispatch<GraphActionTypes>>();
   const showOnGraphDispatch = (paramFilter: string) => () =>

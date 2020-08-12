@@ -4,8 +4,9 @@ import GroupButton from "../components/GroupButton";
 import {
   ActionTypes,
   SET_VISIBLE_AQUARIUM,
-  MenuActionTypes,
-  SET_MENU_STATE
+  UIActionTypes,
+  SET_MENU_STATE,
+  SET_DIALOG_STATE
 } from "../actions";
 import { useDispatch } from "react-redux";
 
@@ -13,12 +14,13 @@ const LandingPageMenu: React.FunctionComponent<{
   allaquariumsIds: number[];
 }> = ({ allaquariumsIds }) => {
   const dispatch = useDispatch<React.Dispatch<ActionTypes>>();
-  const dispatchMenu = useDispatch<React.Dispatch<MenuActionTypes>>();
+  const dispatchMenu = useDispatch<React.Dispatch<UIActionTypes>>();
 
   const visibleAquariumDispatch = (id: number) =>
     dispatch({ type: SET_VISIBLE_AQUARIUM, id });
 
   const setMenuStateDispatch = () => dispatchMenu({ type: SET_MENU_STATE });
+  const setDialogStateDispatch = () => dispatchMenu({ type: SET_DIALOG_STATE });
 
   return (
     <React.Fragment>

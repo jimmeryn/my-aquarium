@@ -3,14 +3,14 @@ import aquariums from "./aquariums";
 import visibleAquarium from "./visibleAquarium";
 import paramFilter from "./paramFilter";
 import graphLabels from "./graphLabels";
-import menu from "./menu";
+import userInterface from "./userInterface";
 
 const reducer = combineReducers({
   aquariums,
   visibleAquarium,
   paramFilter,
   graphLabels,
-  menu
+  userInterface
 });
 
 export default reducer;
