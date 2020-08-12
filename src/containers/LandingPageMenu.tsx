@@ -13,8 +13,7 @@ import { useDispatch } from "react-redux";
 const LandingPageMenu: React.FunctionComponent<{
   allaquariumsIds: number[];
 }> = ({ allaquariumsIds }) => {
-  const dispatch = useDispatch<React.Dispatch<ActionTypes>>();
-  const dispatchMenu = useDispatch<React.Dispatch<UIActionTypes>>();
+  const dispatch = useDispatch<React.Dispatch<ActionTypes | UIActionTypes>>();
 
   const visibleAquariumDispatch = (id: number) =>
     dispatch({ type: SET_VISIBLE_AQUARIUM, id });

@@ -10,7 +10,10 @@ import {
   SET_MENU_STATE,
   GraphActionTypes,
   SHOW_ON_GRAPH,
-  SET_DIALOG_STATE
+  SET_DIALOG_STATE,
+  DialogVariant,
+  REFILL,
+  PARAMS
 } from "../actions";
 import { getLatestParams, getLatestRefill } from "../api/filteringFunctions";
 import AquariumGroupList from "../components/AquariumGroupList";
@@ -21,17 +24,17 @@ const AquariumViewMenu: React.FunctionComponent<{
 }> = ({ aquarium }) => {
   const { name, id, params } = aquarium;
 
-  const dispatch = useDispatch<React.Dispatch<ActionTypes>>();
+  const dispatch = useDispatch<
+    React.Dispatch<ActionTypes | UIActionTypes | GraphActionTypes>
+  >();
   const visibleAquariumDispatch = (id: number) =>
     dispatch({ type: SET_VISIBLE_AQUARIUM, id });
+  const setMenuStateDispatch = () => dispatch({ type: SET_MENU_STATE });
+  const setDialogStateDispatch = (variant: DialogVariant) =>
+    dispatch({ type: SET_DIALOG_STATE, variant });
 
-  const dispatchMenu = useDispatch<React.Dispatch<UIActionTypes>>();
-  const setMenuStateDispatch = () => dispatchMenu({ type: SET_MENU_STATE });
-  const setDialogStateDispatch = () => dispatchMenu({ type: SET_DIALOG_STATE });
-
-  const dispatchGraph = useDispatch<React.Dispatch<GraphActionTypes>>();
   const showOnGraphDispatch = (paramFilter: string) => () =>
-    dispatchGraph({ type: SHOW_ON_GRAPH, label: paramFilter });
+    dispatch({ type: SHOW_ON_GRAPH, label: paramFilter });
 
   return (
     <Grid container spacing={0} direction="column" alignItems="stretch">
@@ -42,6 +45,7 @@ const AquariumViewMenu: React.FunctionComponent<{
         onClick={() => {
           visibleAquariumDispatch(-1);
           setMenuStateDispatch();
+          setDialogStateDispatch(null);
         }}
       />
       <Grid item xs>
@@ -62,7 +66,8 @@ const AquariumViewMenu: React.FunctionComponent<{
           params={getLatestParams(params)}
           onClick={setMenuStateDispatch}
           paramClick={showOnGraphDispatch}
-          addButtonClick={setDialogStateDispatch}
+          addRefillClick={() => setDialogStateDispatch(REFILL)}
+          addParamClick={() => setDialogStateDispatch(PARAMS)}
         />
       </Grid>
     </Grid>
