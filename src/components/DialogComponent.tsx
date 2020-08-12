@@ -13,8 +13,6 @@ import Divider from "./Divider";
 import GroupButton from "./GroupButton";
 import CloseButton from "./CloseButton";
 
-const classNames = require("classnames");
-
 const theme = createMuiTheme({
   palette: {
     type: "dark"
@@ -24,29 +22,16 @@ const theme = createMuiTheme({
 const DialogComponent: React.FunctionComponent<{
   selectedDate: Date;
   setSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
-  isDialogOpen: boolean;
   title: string;
   unit: string;
   onClose: any;
-}> = ({
-  selectedDate,
-  setSelectedDate,
-  isDialogOpen,
-  title,
-  unit,
-  onClose
-}) => {
-  const dialogClass = classNames({
-    dialog: isDialogOpen,
-    "dialog--hidden": !isDialogOpen
-  });
-
+}> = ({ selectedDate, setSelectedDate, title, unit, onClose }) => {
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
   };
 
   return (
-    <div className={dialogClass}>
+    <div className="dialog">
       <div className="dialog-title-wrappper">
         <CloseButton onClick={onClose} />
         <div className="dialog-title">{title}</div>

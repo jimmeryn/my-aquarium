@@ -6,11 +6,10 @@ import { GraphActionTypes, ADD_GRAPH_DATA, SHOW_ON_GRAPH } from "../actions";
 import { State } from "../store";
 
 const GraphModifiButtonsList: React.FunctionComponent = () => {
-  const { paramFilter, labels } = useSelector((state: State) => ({
+  const { paramFilter } = useSelector((state: State) => ({
     aquariumsById: state.aquariums.aquariumsById,
     visibleAquarium: state.visibleAquarium,
-    paramFilter: state.paramFilter,
-    labels: state.graphLabels
+    paramFilter: state.paramFilter
   }));
 
   const dispatch = useDispatch<React.Dispatch<GraphActionTypes>>();
