@@ -23,31 +23,33 @@ const Dialog: React.FunctionComponent<{
       case REFILL:
         return (
           <DialogComponent
+            title={"New Water Refill"}
+            onClose={() => setDialogState(HIDDEN)}
+            label={"Value"}
+            unit={"mg/l"}
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
-            title={"New Water Refill"}
-            unit={"l"}
-            onClose={() => setDialogState(HIDDEN)}
           />
         );
       case PARAMS:
         return (
           <DialogComponent
+            title={"New Parameters"}
+            onClose={() => setDialogState(HIDDEN)}
+            table={true}
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
-            title={"New Parameters"}
-            unit={"mg/l"}
-            onClose={() => setDialogState(HIDDEN)}
           />
         );
       case AQUARIUM:
         return (
           <DialogComponent
+            title={"New Aquarium"}
+            onClose={() => setDialogState(HIDDEN)}
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
-            title={"New Aquarium"}
+            label={"Aquarium Size"}
             unit={"l"}
-            onClose={() => setDialogState(HIDDEN)}
           />
         );
 
