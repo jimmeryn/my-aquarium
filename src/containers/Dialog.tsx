@@ -50,6 +50,7 @@ const Dialog: React.FunctionComponent<{
             setSelectedDate={setSelectedDate}
             label={"Aquarium Size"}
             unit={"l"}
+            dateLabel={"Start Date"}
           />
         );
 

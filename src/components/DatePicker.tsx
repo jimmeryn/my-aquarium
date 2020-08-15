@@ -9,7 +9,8 @@ import {
 const DatePicker: React.FunctionComponent<{
   selectedDate: Date;
   setSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
-}> = ({ selectedDate, setSelectedDate }) => {
+  label?: string;
+}> = ({ selectedDate, setSelectedDate, label }) => {
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
   };
@@ -22,7 +23,7 @@ const DatePicker: React.FunctionComponent<{
         format="dd/MM/yyyy"
         margin="normal"
         id="date-picker-inline"
-        label="Date"
+        label={label ? label : "Date"}
         value={selectedDate}
         onChange={handleDateChange}
         autoOk={true}

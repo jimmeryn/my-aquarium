@@ -24,6 +24,7 @@ const DialogComponent: React.FunctionComponent<{
   table?: boolean;
   selectedDate?: Date;
   setSelectedDate?: React.Dispatch<React.SetStateAction<Date>>;
+  dateLabel?: string;
 }> = ({
   title,
   onClose,
@@ -31,7 +32,8 @@ const DialogComponent: React.FunctionComponent<{
   unit,
   table,
   selectedDate,
-  setSelectedDate
+  setSelectedDate,
+  dateLabel
 }) => {
   return (
     <div className="dialog">
@@ -47,6 +49,7 @@ const DialogComponent: React.FunctionComponent<{
           <DatePicker
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
+            label={dateLabel}
           />
         ) : null}
       </ThemeProvider>
