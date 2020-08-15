@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { Aquarium, State } from "../models";
 import { ActionTypes, ADD_AQUARIUM, ADD_AQUARIUM_DATA } from "../actions";
-import normalize from "../api/normalize";
+import normalize from "./normalize";
 import aquarium from "./aquarium";
 
 const dataFromJson = normalize(require("../store/data.json")).aquariums;
