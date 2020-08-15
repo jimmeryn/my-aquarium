@@ -1,6 +1,9 @@
 import { Param } from "../models";
 
-// Duplicating gunction. TODO: refactoi into one function
+// TODO: Add API - currently data is from JSON file and cannot be saved.
+// Filtering state to get latest params or latest refill
+
+// Duplicating function. TODO: refacto into one function
 export const getLatestParams = (params: Param[]): Param[] => {
   params = params.filter(param => param.name !== "refills");
   const latestParamDate = new Date(
