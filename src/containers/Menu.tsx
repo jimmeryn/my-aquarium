@@ -23,7 +23,10 @@ const Menu: React.FunctionComponent = () => {
     menuState: state.userInterface.menu,
     dialogState: state.userInterface.dialog
   }));
-  const menuClass = classNames({ menu: !menuState, "menu--active": menuState });
+  const menuClass = classNames({
+    menu: window.innerWidth > 800 || !menuState,
+    "menu--active": menuState
+  });
 
   return (
     <div className={menuClass}>
