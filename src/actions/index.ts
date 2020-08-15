@@ -11,6 +11,7 @@ export const ADD_GRAPH_DATA = "ADD_GRAPH_DATA";
 export const SHOW_ON_GRAPH = "SHOW_ON_GRAPH";
 
 export const SET_MENU_STATE = "SET_MENU_STATE";
+export const SET_DIALOG_STATE = "SET_DIALOG_STATE";
 
 interface AddAquarium {
   readonly type: typeof ADD_AQUARIUM;
@@ -53,8 +54,25 @@ interface SetMenuState {
   readonly type: typeof SET_MENU_STATE;
 }
 
+// Dialog variants
+export const REFILL = "REFILL";
+export const PARAMS = "PARAMS";
+export const AQUARIUM = "AQUARIUM";
+export const HIDDEN = "HIDDEN";
+
+export type DialogVariant =
+  | typeof REFILL
+  | typeof PARAMS
+  | typeof AQUARIUM
+  | typeof HIDDEN;
+
+interface SetDialogState {
+  readonly type: typeof SET_DIALOG_STATE;
+  readonly variant: DialogVariant;
+}
+
 export type GraphActionTypes = AddGraphData | ShowGraphData;
-export type MenuActionTypes = SetMenuState;
+export type UIActionTypes = SetMenuState | SetDialogState;
 export type ActionTypes =
   | AddAquarium
   | AddAquariumData

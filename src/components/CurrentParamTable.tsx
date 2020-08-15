@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  Paper,
   Table,
   TableCell,
   TableContainer,
@@ -21,19 +20,17 @@ const CurrentParamTable: React.FunctionComponent<{
 
   return (
     <div className="current-param-table">
-      <Paper>
-        <TableContainer>
-          <Table stickyHeader size="small" aria-label="sticky dense table">
-            <TableHead>
-              <TableRow>
-                <TableCell key={0}>Data</TableCell>
-                <TableCell key={1}>Value</TableCell>
-              </TableRow>
-            </TableHead>
-            <ParamTableBody params={params} />
-          </Table>
-        </TableContainer>
-      </Paper>
+      <TableContainer>
+        <Table stickyHeader size="small" aria-label="sticky dense table">
+          <TableHead>
+            <TableRow>
+              <TableCell key={0}>Data</TableCell>
+              <TableCell key={1}>Value</TableCell>
+            </TableRow>
+          </TableHead>
+          <ParamTableBody params={params} />
+        </Table>
+      </TableContainer>
     </div>
   );
 };

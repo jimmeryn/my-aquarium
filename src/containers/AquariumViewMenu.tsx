@@ -6,10 +6,15 @@ import { Aquarium } from "../models";
 import {
   ActionTypes,
   SET_VISIBLE_AQUARIUM,
-  MenuActionTypes,
+  UIActionTypes,
   SET_MENU_STATE,
   GraphActionTypes,
-  SHOW_ON_GRAPH
+  SHOW_ON_GRAPH,
+  SET_DIALOG_STATE,
+  DialogVariant,
+  REFILL,
+  PARAMS,
+  HIDDEN
 } from "../actions";
 import { getLatestParams, getLatestRefill } from "../api/filteringFunctions";
 import AquariumGroupList from "../components/AquariumGroupList";
@@ -20,16 +25,22 @@ const AquariumViewMenu: React.FunctionComponent<{
 }> = ({ aquarium }) => {
   const { name, id, params } = aquarium;
 
-  const dispatch = useDispatch<React.Dispatch<ActionTypes>>();
+  const dispatch = useDispatch<
+    React.Dispatch<ActionTypes | UIActionTypes | GraphActionTypes>
+  >();
   const visibleAquariumDispatch = (id: number) =>
     dispatch({ type: SET_VISIBLE_AQUARIUM, id });
+  const setMenuStateDispatch = () => dispatch({ type: SET_MENU_STATE });
+  const setDialogStateDispatch = (variant: DialogVariant) =>
+    dispatch({ type: SET_DIALOG_STATE, variant });
 
-  const dispatchMenu = useDispatch<React.Dispatch<MenuActionTypes>>();
-  const setMenuStateDispatch = () => dispatchMenu({ type: SET_MENU_STATE });
+  const showOnGraphDispatch = (paramFilter: string) =>
+    dispatch({ type: SHOW_ON_GRAPH, label: paramFilter });
 
-  const dispatchGraph = useDispatch<React.Dispatch<GraphActionTypes>>();
-  const showOnGraphDispatch = (paramFilter: string) => () =>
-    dispatchGraph({ type: SHOW_ON_GRAPH, label: paramFilter });
+  const handleParamClick = (paramFilter: string) => () => {
+    showOnGraphDispatch(paramFilter);
+    setDialogStateDispatch(HIDDEN);
+  };
 
   return (
     <Grid container spacing={0} direction="column" alignItems="stretch">
@@ -40,6 +51,7 @@ const AquariumViewMenu: React.FunctionComponent<{
         onClick={() => {
           visibleAquariumDispatch(-1);
           setMenuStateDispatch();
+          setDialogStateDispatch(null);
         }}
       />
       <Grid item xs>
@@ -58,8 +70,10 @@ const AquariumViewMenu: React.FunctionComponent<{
         <AquariumGroupList
           refill={getLatestRefill(params)}
           params={getLatestParams(params)}
-          onClick={setMenuStateDispatch}
-          paramClick={showOnGraphDispatch}
+          handleAddButton={setMenuStateDispatch}
+          handleParamClick={handleParamClick}
+          handleRefillClick={() => setDialogStateDispatch(REFILL)}
+          handleAddParamClick={() => setDialogStateDispatch(PARAMS)}
         />
       </Grid>
     </Grid>

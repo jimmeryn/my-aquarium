@@ -6,8 +6,19 @@ const AquariumOverviewList: React.FunctionComponent<{
   index: number;
   setVisibleAquariumIndex: (index: number) => void;
   setMenuActive: () => void;
+  setDialogHidden: () => void;
+  setDialogParams: () => void;
+  setDialogRefill: () => void;
   aquariumName?: string;
-}> = ({ index, setVisibleAquariumIndex, setMenuActive, aquariumName }) => (
+}> = ({
+  index,
+  setVisibleAquariumIndex,
+  setMenuActive,
+  setDialogHidden,
+  setDialogParams,
+  setDialogRefill,
+  aquariumName
+}) => (
   <Grid container spacing={0} direction="column" alignItems="stretch">
     <Grid item xs>
       <GroupButton
@@ -18,6 +29,7 @@ const AquariumOverviewList: React.FunctionComponent<{
         onClick={() => {
           setVisibleAquariumIndex(index);
           setMenuActive();
+          setDialogHidden();
         }}
       />
     </Grid>
@@ -28,14 +40,23 @@ const AquariumOverviewList: React.FunctionComponent<{
         onClick={() => {
           setVisibleAquariumIndex(index);
           setMenuActive();
+          setDialogHidden();
         }}
       />
     </Grid>
     <Grid item xs>
-      <GroupButton className={"overview-component"} name={"Add Param"} />
+      <GroupButton
+        className={"overview-component"}
+        name={"Add Params"}
+        onClick={setDialogParams}
+      />
     </Grid>
     <Grid item xs>
-      <GroupButton className={"overview-component"} name={"Add Refill"} />
+      <GroupButton
+        className={"overview-component"}
+        name={"Add Refill"}
+        onClick={setDialogRefill}
+      />
     </Grid>
   </Grid>
 );

@@ -18,7 +18,6 @@ const ParamButtonList: React.FunctionComponent<{
       ...aquariumsById[visibleAquarium].params.map(e => e.name)
     ])
   ];
-  paramList;
   const [value, setValue] = React.useState(
     paramList.reduce((acc, cur, i) => {
       acc[cur] = i;

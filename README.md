@@ -18,8 +18,8 @@ This app was created with:
 
 App was designed using Figma.
 
-- [Desktop](https://www.figma.com/proto/MmxKQ4CFX38pcG0OFOUXRy/my-aquarium-ideas?node-id=14%3A39&viewport=231%2C193%2C0.2859589159488678&scaling=scale-down)
-- [Mobile](https://www.figma.com/proto/MmxKQ4CFX38pcG0OFOUXRy/my-aquarium-ideas?node-id=23%3A121&viewport=124%2C217%2C0.4348958432674408&scaling=scale-down)
+- [Desktop](https://www.figma.com/proto/MmxKQ4CFX38pcG0OFOUXRy/my-aquarium-ideas?node-id=7%3A3&scaling=scale-down)
+- [Mobile](https://www.figma.com/proto/MmxKQ4CFX38pcG0OFOUXRy/my-aquarium-ideas?node-id=23%3A121&scaling=scale-down)
 
 ## Development setup
 

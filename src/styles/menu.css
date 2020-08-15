@@ -45,7 +45,7 @@
 
 .param-value p {
   float: right;
-  color: #ffffff !important;
+  color: #ffffff;
   white-space: nowrap;
   font-family: "Poppins";
   font-style: normal;
@@ -54,7 +54,7 @@
 }
 
 .refill-value p {
-  color: #ffffff !important;
+  color: #ffffff;
   white-space: nowrap;
   font-family: "Poppins";
   font-style: normal;
@@ -86,7 +86,7 @@
 }
 
 .group-list-title-button {
-  background-color: #232f3e !important;
+  background-color: #232f3e;
 }
 
 .group-list-title-button,
@@ -98,6 +98,8 @@
 .divider {
   border: 1px solid #313b49;
   margin: 0;
+  width: 100%;
+  max-height: 1px;
 }
 
 .overview-component,
@@ -108,7 +110,9 @@
 }
 
 .dialog {
-  width: 40vw;
+  visibility: visible;
+  width: 30vw;
+  min-width: 400px;
   height: 80vh;
   background-color: #232f3e;
   border-radius: 15px;
@@ -118,13 +122,64 @@
   left: 55%;
   transform: translate(-50%, -50%);
   max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dialog > * {
+  width: 50%;
+}
+
+.dialog-button {
+  width: 70%;
+  border-radius: 15px;
+  background-color: #313b49;
+  margin-bottom: 80px;
+}
+
+.dialog-button > * {
+  width: 100%;
+}
+
+.dialog-title-wrappper {
+  width: 100%;
+}
+
+.dialog-title {
+  font-family: "Poppins";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  color: #bdc1c5;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.dialog--hidden {
+  visibility: hidden;
+  display: none;
+}
+
+.close-button {
+  visibility: hidden;
+  display: none;
+}
+
+.dialog .MuiTypography-colorTextSecondary {
+  color: #ffffff;
+}
+
+.new-param-table {
+  width: 60% !important;
+  max-height: 30%;
 }
 
 /* ********************************************************************************** */
 /* *************************** MEDIA 800PX ****************************************** */
 /* ********************************************************************************** */
 @media only screen and (max-width: 800px) {
-  /* TODO: Add active and not active state - default not active + some hamburger?*/
   .menu {
     visibility: hidden;
     display: none;
@@ -137,5 +192,68 @@
     width: 80vw;
     height: 100vh;
     overflow-y: auto;
+  }
+
+  .dialog {
+    visibility: visible;
+    min-width: 100vw;
+    min-height: 100vh;
+    border-radius: 0;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+  }
+
+  .dialog > * {
+    width: 70%;
+  }
+
+  .dialog-title-wrappper {
+    width: 100%;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .dialog-title {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .close-button {
+    visibility: visible;
+    display: block;
+    position: absolute;
+    right: 32px;
+    top: 46px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    cursor: pointer;
+  }
+
+  .close-button:before,
+  .close-button:after {
+    position: absolute;
+    content: " ";
+    height: 33px;
+    width: 2px;
+    background-color: #ffffff;
+  }
+
+  .close-button:before {
+    transform: rotate(45deg);
+  }
+
+  .close-button:after {
+    transform: rotate(-45deg);
+  }
+
+  .dialog-button {
+    margin-bottom: 100px;
+  }
+
+  .new-param-table {
+    width: 70% !important;
+    max-height: 40%;
   }
 }

@@ -4,21 +4,27 @@ import GroupButton from "../components/GroupButton";
 import {
   ActionTypes,
   SET_VISIBLE_AQUARIUM,
-  MenuActionTypes,
-  SET_MENU_STATE
+  UIActionTypes,
+  SET_MENU_STATE,
+  SET_DIALOG_STATE,
+  DialogVariant,
+  REFILL,
+  PARAMS,
+  AQUARIUM,
+  HIDDEN
 } from "../actions";
 import { useDispatch } from "react-redux";
 
 const LandingPageMenu: React.FunctionComponent<{
   allaquariumsIds: number[];
 }> = ({ allaquariumsIds }) => {
-  const dispatch = useDispatch<React.Dispatch<ActionTypes>>();
-  const dispatchMenu = useDispatch<React.Dispatch<MenuActionTypes>>();
+  const dispatch = useDispatch<React.Dispatch<ActionTypes | UIActionTypes>>();
 
   const visibleAquariumDispatch = (id: number) =>
     dispatch({ type: SET_VISIBLE_AQUARIUM, id });
-
-  const setMenuStateDispatch = () => dispatchMenu({ type: SET_MENU_STATE });
+  const setMenuStateDispatch = () => dispatch({ type: SET_MENU_STATE });
+  const setDialogStateDispatch = (variant: DialogVariant) =>
+    dispatch({ type: SET_DIALOG_STATE, variant });
 
   return (
     <React.Fragment>
@@ -29,6 +35,7 @@ const LandingPageMenu: React.FunctionComponent<{
         onClick={() => {
           visibleAquariumDispatch(-1);
           setMenuStateDispatch();
+          setDialogStateDispatch(HIDDEN);
         }}
       />
       {allaquariumsIds.map(i => (
@@ -37,6 +44,9 @@ const LandingPageMenu: React.FunctionComponent<{
           key={i}
           setVisibleAquariumIndex={visibleAquariumDispatch}
           setMenuActive={setMenuStateDispatch}
+          setDialogHidden={() => setDialogStateDispatch(HIDDEN)}
+          setDialogParams={() => setDialogStateDispatch(PARAMS)}
+          setDialogRefill={() => setDialogStateDispatch(REFILL)}
         />
       ))}
       <GroupButton
@@ -44,6 +54,7 @@ const LandingPageMenu: React.FunctionComponent<{
         typography="group-list-title"
         name="Add Aquarium"
         dividers={true}
+        onClick={() => setDialogStateDispatch(AQUARIUM)}
       />
     </React.Fragment>
   );
