@@ -13,7 +13,8 @@ import {
   SET_DIALOG_STATE,
   DialogVariant,
   REFILL,
-  PARAMS
+  PARAMS,
+  HIDDEN
 } from "../actions";
 import { getLatestParams, getLatestRefill } from "../api/filteringFunctions";
 import AquariumGroupList from "../components/AquariumGroupList";
@@ -33,8 +34,13 @@ const AquariumViewMenu: React.FunctionComponent<{
   const setDialogStateDispatch = (variant: DialogVariant) =>
     dispatch({ type: SET_DIALOG_STATE, variant });
 
-  const showOnGraphDispatch = (paramFilter: string) => () =>
+  const showOnGraphDispatch = (paramFilter: string) =>
     dispatch({ type: SHOW_ON_GRAPH, label: paramFilter });
+
+  const handleParamClick = (paramFilter: string) => () => {
+    showOnGraphDispatch(paramFilter);
+    setDialogStateDispatch(HIDDEN);
+  };
 
   return (
     <Grid container spacing={0} direction="column" alignItems="stretch">
@@ -64,10 +70,10 @@ const AquariumViewMenu: React.FunctionComponent<{
         <AquariumGroupList
           refill={getLatestRefill(params)}
           params={getLatestParams(params)}
-          onClick={setMenuStateDispatch}
-          paramClick={showOnGraphDispatch}
-          addRefillClick={() => setDialogStateDispatch(REFILL)}
-          addParamClick={() => setDialogStateDispatch(PARAMS)}
+          handleAddButton={setMenuStateDispatch}
+          handleParamClick={handleParamClick}
+          handleRefillClick={() => setDialogStateDispatch(REFILL)}
+          handleAddParamClick={() => setDialogStateDispatch(PARAMS)}
         />
       </Grid>
     </Grid>
