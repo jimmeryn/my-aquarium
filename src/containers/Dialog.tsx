@@ -30,7 +30,7 @@ const Dialog: React.FunctionComponent<{
             title={"New Water Refill"}
             onClose={() => setDialogState(HIDDEN)}
             label={"Value"}
-            unit={"mg/l"}
+            unit={"l"}
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
           />
