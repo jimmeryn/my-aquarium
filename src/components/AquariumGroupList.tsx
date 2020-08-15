@@ -7,31 +7,35 @@ import AddButton from "./AddButton";
 const AquariumGroupList: React.FunctionComponent<{
   refill?: Param;
   params: Param[];
-  onClick: () => void;
-  addParamClick: () => void;
-  addRefillClick: () => void;
-  paramClick: (paramFilter: string) => () => void;
+  handleAddButton: () => void;
+  handleAddParamClick: () => void;
+  handleRefillClick: () => void;
+  handleParamClick: (paramFilter: string) => () => void;
 }> = ({
   refill,
   params,
-  onClick,
-  paramClick,
-  addParamClick,
-  addRefillClick
+  handleAddButton,
+  handleParamClick,
+  handleAddParamClick,
+  handleRefillClick
 }) => (
   <List component="nav">
     <AddButton
       className="refill-value"
       name="Refill"
       value={refill ? `${refill.value} [l]` : "No refills"}
-      onClick={() => addRefillClick()}
+      onClick={handleRefillClick}
     />
     <AddButton
       className="param-value"
       name="Parameters"
-      onClick={() => addParamClick()}
+      onClick={handleAddParamClick}
     />
-    <ParamList params={params} onClick={onClick} paramClick={paramClick} />
+    <ParamList
+      params={params}
+      handleAddButton={handleAddButton}
+      handleParamClick={handleParamClick}
+    />
   </List>
 );
 
