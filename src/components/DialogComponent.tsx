@@ -12,7 +12,7 @@ const DialogComponent: React.FunctionComponent<{
   onClose: any;
   label?: string;
   unit?: string;
-  table?: boolean;
+  paramNames?: string[];
   selectedDate?: Date;
   setSelectedDate?: React.Dispatch<React.SetStateAction<Date>>;
   dateLabel?: string;
@@ -21,7 +21,7 @@ const DialogComponent: React.FunctionComponent<{
   onClose,
   label,
   unit,
-  table,
+  paramNames,
   selectedDate,
   setSelectedDate,
   dateLabel
@@ -33,15 +33,15 @@ const DialogComponent: React.FunctionComponent<{
         <div className="dialog-title">{title}</div>
         <Divider />
       </div>
-        {label ? <TextInput label={label} unit={unit} /> : null}
-        {table ? <ParamTableInput /> : null}
-        {selectedDate && setSelectedDate ? (
-          <DatePicker
-            selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
-            label={dateLabel}
-          />
-        ) : null}
+      {label ? <TextInput label={label} unit={unit} /> : null}
+      {paramNames ? <DialogParamTable paramNames={paramNames} /> : null}
+      {selectedDate && setSelectedDate ? (
+        <DatePicker
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          label={dateLabel}
+        />
+      ) : null}
       <GroupButton
         className={"dialog-button"}
         typography={"group-list-title"}

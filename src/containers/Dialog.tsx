@@ -1,8 +1,9 @@
 import * as React from "react";
 import DialogComponent from "../components/DialogComponent";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { DialogVariant, REFILL, PARAMS, AQUARIUM, HIDDEN } from "../actions";
 import { UIActionTypes, SET_DIALOG_STATE } from "../actions";
+import { State } from "../store";
 
 const Dialog: React.FunctionComponent<{
   variant: DialogVariant;
@@ -14,6 +15,9 @@ const Dialog: React.FunctionComponent<{
   const dispatch = useDispatch<React.Dispatch<UIActionTypes>>();
   const setDialogState = (variant: DialogVariant) =>
     dispatch({ type: SET_DIALOG_STATE, variant });
+
+  const { aquariumsById } = useSelector((state: State) => state.aquariums);
+  const paramList = [...new Set([...aquariumsById[0].params.map(e => e.name)])];
 
   // TODO: DRY - return one dialog component but with different params based on variant
   // if always returning component than we need to add classname --hidden back.
@@ -36,7 +40,7 @@ const Dialog: React.FunctionComponent<{
           <DialogComponent
             title={"New Parameters"}
             onClose={() => setDialogState(HIDDEN)}
-            table={true}
+            paramNames={paramList}
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
           />
