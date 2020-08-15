@@ -1,20 +1,11 @@
 import * as React from "react";
 
-import { createMuiTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
-
 import Divider from "./Divider";
 import GroupButton from "./GroupButton";
 import CloseButton from "./CloseButton";
 import DatePicker from "./DatePicker";
-import ParamTableInput from "./ParamTableInput";
+import DialogParamTable from "./DialogParamTable";
 import TextInput from "./TextInput";
-
-const darkTheme = createMuiTheme({
-  palette: {
-    type: "dark"
-  }
-});
 
 const DialogComponent: React.FunctionComponent<{
   title: string;
@@ -42,7 +33,6 @@ const DialogComponent: React.FunctionComponent<{
         <div className="dialog-title">{title}</div>
         <Divider />
       </div>
-      <ThemeProvider theme={darkTheme}>
         {label ? <TextInput label={label} unit={unit} /> : null}
         {table ? <ParamTableInput /> : null}
         {selectedDate && setSelectedDate ? (
@@ -52,7 +42,6 @@ const DialogComponent: React.FunctionComponent<{
             label={dateLabel}
           />
         ) : null}
-      </ThemeProvider>
       <GroupButton
         className={"dialog-button"}
         typography={"group-list-title"}
