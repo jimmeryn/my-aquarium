@@ -6,9 +6,7 @@ import { SET_MENU_STATE, UIActionTypes } from "../actions";
 import Hamburger from "../components/Hamburger";
 
 const HamburgerActive = () => {
-  const { menuState } = useSelector((state: State) => ({
-    menuState: state.userInterface.menu
-  }));
+  const menuState = useSelector((state: State) => state.userInterface.menu);
 
   const dispatch = useDispatch<React.Dispatch<UIActionTypes>>();
   const setMenuStateDispatch = () => dispatch({ type: SET_MENU_STATE });
