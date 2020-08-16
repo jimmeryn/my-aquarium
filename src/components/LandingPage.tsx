@@ -1,5 +1,5 @@
 import * as React from "react";
-import FishBowl from "../assets/fishbowl.svg";
+import FishBowlComponent from "./FishBowlComponent";
 
 const LandingPage: React.FunctionComponent = () => (
   <div className="landing-page">
@@ -8,7 +8,7 @@ const LandingPage: React.FunctionComponent = () => (
       <h2>{"Collect and display data"}</h2>
       <h2>{"from your fish tanks"}</h2>
     </div>
-    <FishBowl className="fish-bowl" />
+    <FishBowlComponent />
   </div>
 );
 
