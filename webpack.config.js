@@ -9,7 +9,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, "/dist"),
-    filename: "main.js"
+    filename: "[name].bundle.js",
+    chunkFilename: "[name].bundle.js"
   },
   module: {
     rules: [
@@ -27,6 +28,11 @@ module.exports = {
         use: ["@svgr/webpack"]
       }
     ]
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
