@@ -66,14 +66,15 @@ const FishBowlComponent = () => {
       { transformOrigin: "50% 100%" }
     );
 
+    // Show timeline
     const tl = gsap.timeline({ defaults: { ease: "Power3.inOut" } });
     tl.fromTo(
-      [tank, tankShadow],
+      tank,
       { x: "-=300" },
       { duration: 0.5, x: "+=300", autoAlpha: 1 }
     );
     tl.fromTo(
-      tankInner,
+      [tankInner, tankShadow],
       { x: "-=300" },
       { duration: 0.5, x: "+=300", autoAlpha: 0.3 },
       "-=0.5"
@@ -126,6 +127,7 @@ const FishBowlComponent = () => {
     tl.to(data3, { autoAlpha: 1 }, "-=0.3");
     tl.to(data2, { autoAlpha: 1 }, "-=0.2");
 
+    // Get datas childrens
     const ball1b = data1.children[0],
       ball1s = data1.children[3],
       ball2b = data2.children[0],
@@ -133,6 +135,7 @@ const FishBowlComponent = () => {
       ball3b = data3.children[0],
       ball3s = data3.children[2];
 
+    // Loop timeline
     const tl2 = gsap.timeline({
       defaults: { ease: "Power3.inOut", repeat: -1, yoyo: true }
     });
