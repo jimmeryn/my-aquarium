@@ -98,7 +98,7 @@ const FishBowlComponent = () => {
     tl.to(fish2, { duration: 0.5, autoAlpha: 1 }, "-=0.45");
 
     tl.fromTo(
-      [flower1Line, flower1Stone, flower1StoneShadow],
+      [flower1Line, flower1Stone],
       { scaleY: 0 },
       {
         scaleY: 1,
@@ -108,10 +108,29 @@ const FishBowlComponent = () => {
       "-=0.5"
     );
 
+    tl.fromTo(
+      flower1StoneShadow,
+      { scaleY: 0 },
+      {
+        scaleY: 1,
+        duration: 0.3,
+        autoAlpha: 0.5
+      },
+      "-=0.3"
+    );
+
     tl.to(flower1F, {
       duration: 0.3,
       autoAlpha: 1
     });
+    tl.to(
+      flower1FShadows,
+      {
+        duration: 0.3,
+        autoAlpha: 0.3
+      },
+      "-=0.2"
+    );
 
     tl.fromTo(
       flower2,
@@ -144,14 +163,46 @@ const FishBowlComponent = () => {
       transformOrigin: "50% 50%"
     });
 
-    tl2.fromTo(ball1b, { duration: 3, scale: 0.85 }, { scale: 1 }, "-=3");
-    tl2.fromTo(ball1s, { duration: 3, scale: 0.85 }, { scale: 1 });
+    gsap.set(square, {
+      transformOrigin: "100% 100%"
+    });
 
-    tl2.fromTo(ball2b, { duration: 3, scale: 0.85 }, { scale: 1 }, "-=0.1");
-    tl2.fromTo(ball2s, { duration: 3, scale: 0.85 }, { scale: 1 }, "-=0.15");
+    tl2.fromTo(fish1, { rotateZ: "-=10" }, { duration: 3, rotateZ: "+=10" });
+    tl2.fromTo(fish2, { rotateZ: "-=10" }, { duration: 2, rotateZ: "+=10" });
 
-    tl2.fromTo(ball3b, { duration: 3, scale: 0.85 }, { scale: 1 }, "-=0.2");
-    tl2.fromTo(ball3s, { duration: 3, scale: 0.85 }, { scale: 1 }, "-=0.24");
+    tl2.fromTo(
+      water1,
+      { rotateZ: "-=3" },
+      { duration: 3, rotateZ: "+=3" },
+      "-=2"
+    );
+    tl2.fromTo(
+      water2,
+      { rotateZ: "-=2" },
+      { duration: 2, rotateZ: "+=2" },
+      "-=3"
+    );
+    tl2.fromTo(
+      water3,
+      { rotateZ: "-=1" },
+      { duration: 1, rotateZ: "+=1" },
+      "-=2"
+    );
+
+    tl2.fromTo(
+      [flower1F, flower1FShadows, flower1Line, flower2],
+      { rotateZ: "-=3" },
+      { duration: 2, ease: "Power2.inOut", rotateZ: "+=3" }
+    );
+
+    tl2.fromTo(ball1b, { scale: 0.85 }, { duration: 3, scale: 1 }, "-=3");
+    tl2.fromTo(ball1s, { scale: 0.85 }, { duration: 3, scale: 1 });
+
+    tl2.fromTo(ball2b, { scale: 0.85 }, { duration: 3, scale: 1 }, "-=0.1");
+    tl2.fromTo(ball2s, { scale: 0.85 }, { duration: 3, scale: 1 }, "-=0.15");
+
+    tl2.fromTo(ball3b, { scale: 0.85 }, { duration: 3, scale: 1 }, "-=0.2");
+    tl2.fromTo(ball3s, { scale: 0.85 }, { duration: 3, scale: 1 }, "-=0.24");
   }, [false]);
 
   return (
