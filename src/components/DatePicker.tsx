@@ -5,6 +5,14 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker
 } from "@material-ui/pickers";
+import { createMuiTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
+
+const theme = createMuiTheme({
+  palette: {
+    type: "dark"
+  }
+});
 
 const DatePicker: React.FunctionComponent<{
   selectedDate: Date;
@@ -16,22 +24,24 @@ const DatePicker: React.FunctionComponent<{
   };
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <KeyboardDatePicker
-        disableToolbar
-        variant="inline"
-        format="dd/MM/yyyy"
-        margin="normal"
-        id="date-picker-inline"
-        label={label ? label : "Date"}
-        value={selectedDate}
-        onChange={handleDateChange}
-        autoOk={true}
-        KeyboardButtonProps={{
-          "aria-label": "change date"
-        }}
-      />
-    </MuiPickersUtilsProvider>
+    <ThemeProvider theme={theme}>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <KeyboardDatePicker
+          disableToolbar
+          variant="inline"
+          format="dd/MM/yyyy"
+          margin="normal"
+          id="date-picker-inline"
+          label={label ? label : "Date"}
+          value={selectedDate}
+          onChange={handleDateChange}
+          autoOk={true}
+          KeyboardButtonProps={{
+            "aria-label": "change date"
+          }}
+        />
+      </MuiPickersUtilsProvider>
+    </ThemeProvider>
   );
 };
 
