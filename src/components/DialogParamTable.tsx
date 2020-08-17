@@ -11,16 +11,9 @@ import {
   withStyles
 } from "@material-ui/core";
 
-const styles = {
-  input: {
-    color: "white"
-  }
-};
-
 const DialogParamTable: React.FunctionComponent<{
   paramNames: string[];
-  classes: any;
-}> = ({ paramNames, classes }) => {
+}> = ({ paramNames }) => {
   return (
     <TableContainer className="new-param-table">
       <Table size={window.innerWidth < 800 ? "medium" : "small"}>
@@ -38,15 +31,13 @@ const DialogParamTable: React.FunctionComponent<{
               <TableCell key={1} className="dialog-table-cell">
                 {paramName}
               </TableCell>
-              <TableCell key={2} align="center">
+              <TableCell key={2} align="center" className="dialog-table-cell">
                 <TextField
                   id="number-input"
                   defaultValue={0}
-                  margin="none"
                   InputLabelProps={{
                     shrink: true
                   }}
-                  inputProps={{ min: 0, style: { textAlign: "center" } }}
                   InputProps={{
                     className: "dialog-table-cell",
                     disableUnderline: true
@@ -61,4 +52,4 @@ const DialogParamTable: React.FunctionComponent<{
   );
 };
 
-export default withStyles(styles)(DialogParamTable);
+export default DialogParamTable;
