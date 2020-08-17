@@ -178,6 +178,11 @@
 
 .dialog-table-cell {
   color: white !important;
+  border-bottom: none !important;
+}
+
+.dialog-table-cell * {
+  text-align: center;
 }
 
 .value {
