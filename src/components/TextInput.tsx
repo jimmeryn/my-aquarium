@@ -1,11 +1,5 @@
 import * as React from "react";
-import { TextField, InputAdornment, withStyles } from "@material-ui/core";
-
-const styles = {
-  input: {
-    color: "white"
-  }
-};
+import { TextField, InputAdornment } from "@material-ui/core";
 
 const TextInput: React.FunctionComponent<{
   label: string;
@@ -19,7 +13,7 @@ const TextInput: React.FunctionComponent<{
     id="value-input"
     defaultValue={10}
     InputProps={{
-      className: classes.input,
+      className: "text-field-input",
       endAdornment: unit ? (
         <InputAdornment position="start">{`[${unit}]`}</InputAdornment>
       ) : null
@@ -27,4 +21,4 @@ const TextInput: React.FunctionComponent<{
   />
 );
 
-export default withStyles(styles)(TextInput);
+export default TextInput;
