@@ -1,7 +1,15 @@
 import * as React from "react";
 import DialogComponent from "../components/DialogComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { DialogVariant, REFILL, PARAMS, AQUARIUM, HIDDEN } from "../actions";
+import {
+  DialogVariant,
+  REFILL,
+  PARAMS,
+  AQUARIUM,
+  HIDDEN,
+  ADD_AQUARIUM,
+  ActionTypes
+} from "../actions";
 import { UIActionTypes, SET_DIALOG_STATE } from "../actions";
 import { State } from "../store";
 
@@ -12,9 +20,20 @@ const Dialog: React.FunctionComponent<{
     new Date()
   );
 
-  const dispatch = useDispatch<React.Dispatch<UIActionTypes>>();
+  const { allaquariumsIds } = useSelector((state: State) => state.aquariums);
+
+  const dispatch = useDispatch<React.Dispatch<ActionTypes | UIActionTypes>>();
   const setDialogState = (variant: DialogVariant) =>
     dispatch({ type: SET_DIALOG_STATE, variant });
+
+  const addAquariumDispatch = (size: number) =>
+    dispatch({
+      type: ADD_AQUARIUM,
+      id: allaquariumsIds[allaquariumsIds.length - 1] + 1,
+      payload: {
+        size
+      }
+    });
 
   const { aquariumsById } = useSelector((state: State) => state.aquariums);
   const paramList = [...new Set([...aquariumsById[0].params.map(e => e.name)])];
@@ -24,7 +43,8 @@ const Dialog: React.FunctionComponent<{
     label: "",
     unit: "",
     paramNames: null,
-    dateLabel: ""
+    dateLabel: "",
+    handleSubmit: (_: any) => {}
   };
 
   switch (variant) {
@@ -42,6 +62,7 @@ const Dialog: React.FunctionComponent<{
       dialogData.label = "Aquarium Size";
       dialogData.unit = "l";
       dialogData.dateLabel = "Start Date";
+      dialogData.handleSubmit = addAquariumDispatch;
       break;
     default:
       break;
@@ -56,6 +77,7 @@ const Dialog: React.FunctionComponent<{
       dateLabel={dialogData.dateLabel}
       selectedDate={selectedDate}
       onClose={() => setDialogState(HIDDEN)}
+      handleSubmit={dialogData.handleSubmit}
       setSelectedDate={setSelectedDate}
     />
   ) : null;

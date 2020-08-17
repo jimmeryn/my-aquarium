@@ -17,6 +17,8 @@ const DialogComponent: React.FunctionComponent<{
   selectedDate?: Date;
   setSelectedDate?: React.Dispatch<React.SetStateAction<Date>>;
   dateLabel?: string;
+  // TODO: any
+  handleSubmit: (_: any) => void;
 }> = ({
   title,
   onClose,
@@ -25,8 +27,10 @@ const DialogComponent: React.FunctionComponent<{
   paramNames,
   selectedDate,
   setSelectedDate,
-  dateLabel
+  dateLabel,
+  handleSubmit
 }) => {
+  const [textFieldValue, handleTextFieldChange] = React.useState(10);
   return (
     <div className="dialog">
       <div className="dialog-title-wrappper">
@@ -34,7 +38,14 @@ const DialogComponent: React.FunctionComponent<{
         <div className="dialog-title">{title}</div>
         <Divider />
       </div>
-      {label ? <TextInput label={label} unit={unit} /> : null}
+      {label ? (
+        <TextInput
+          value={textFieldValue}
+          onChange={handleTextFieldChange}
+          label={label}
+          unit={unit}
+        />
+      ) : null}
       {paramNames ? <DialogParamTable paramNames={paramNames} /> : null}
       {selectedDate && setSelectedDate ? (
         <DatePicker
@@ -46,8 +57,9 @@ const DialogComponent: React.FunctionComponent<{
       <GroupButton
         className={"dialog-button"}
         typography={"group-list-title"}
-        onClick={() => {
+        handleButtonClick={() => {
           onClose();
+          handleSubmit(textFieldValue);
         }}
         name="Submit"
       />

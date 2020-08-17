@@ -4,14 +4,14 @@ import { TextField, InputAdornment } from "@material-ui/core";
 const TextInput: React.FunctionComponent<{
   label: string;
   unit?: string;
-  classes: {
-    input: string;
-  };
-}> = ({ label, unit, classes }) => (
+  value: number;
+  onChange: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ label, unit, value, onChange }) => (
   <TextField
     label={label}
+    value={value}
+    onChange={e => onChange(e.target.value ? parseInt(e.target.value) : 0)}
     id="value-input"
-    defaultValue={10}
     InputProps={{
       className: "text-field-input",
       endAdornment: unit ? (
