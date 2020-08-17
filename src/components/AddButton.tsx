@@ -6,8 +6,7 @@ const AddButton: React.FunctionComponent<{
   className: string;
   name: string;
   value?: number | string;
-  // TODO: any!
-  onClick?: any;
+  onClick?: () => void;
 }> = ({ className, onClick, name, value }) => (
   <ListItem divider dense>
     <ListItemText className={className} primary={name} secondary={value} />

@@ -4,7 +4,7 @@ var classNames = require("classnames");
 
 const Hamburger: React.FunctionComponent<{
   active: boolean;
-  setActive: any;
+  setActive: () => void;
 }> = ({ active, setActive }) => {
   const hamClass = classNames({
     hamburger: !active,
@@ -12,7 +12,7 @@ const Hamburger: React.FunctionComponent<{
   });
 
   return (
-    <button className={hamClass} onClick={() => setActive(!active)}>
+    <button className={hamClass} onClick={() => setActive()}>
       <span className="hamburger-box">
         <span className="hamburger-inner"></span>
       </span>

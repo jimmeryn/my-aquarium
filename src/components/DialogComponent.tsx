@@ -6,10 +6,11 @@ import CloseButton from "./CloseButton";
 import DatePicker from "./DatePicker";
 import DialogParamTable from "./DialogParamTable";
 import TextInput from "./TextInput";
+import { DialogVariant } from "src/actions";
 
 const DialogComponent: React.FunctionComponent<{
   title: string;
-  onClose: any;
+  onClose: (variant?: DialogVariant) => void;
   label?: string;
   unit?: string;
   paramNames?: string[];
@@ -29,7 +30,7 @@ const DialogComponent: React.FunctionComponent<{
   return (
     <div className="dialog">
       <div className="dialog-title-wrappper">
-        <CloseButton onClick={onClose} />
+        <CloseButton handleClick={onClose} />
         <div className="dialog-title">{title}</div>
         <Divider />
       </div>

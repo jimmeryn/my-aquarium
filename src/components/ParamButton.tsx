@@ -5,8 +5,8 @@ const ParamButton: React.FunctionComponent<{
   className: string;
   name: string;
   value: number | undefined;
-  onClick?: any;
   active?: boolean;
+  handleParamClick?: () => void;
 }> = ({ className, name, value, handleParamClick }) => (
   <ListItem button divider onClick={() => handleParamClick()}>
     <ListItemText className={className} primary={name} />

@@ -7,7 +7,7 @@ const GroupButton: React.FunctionComponent<{
   name: string;
   dividers?: boolean;
   typography?: string;
-  onClick?: any;
+  onClick?: () => void;
 }> = ({ className, name, dividers = false, typography, onClick }) => (
   <React.Fragment>
     {dividers ? <Divider /> : null}

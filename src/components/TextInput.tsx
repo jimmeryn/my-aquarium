@@ -10,7 +10,9 @@ const styles = {
 const TextInput: React.FunctionComponent<{
   label: string;
   unit?: string;
-  classes: any;
+  classes: {
+    input: string;
+  };
 }> = ({ label, unit, classes }) => (
   <TextField
     label={label}
