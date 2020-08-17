@@ -5,13 +5,13 @@ import ParamButton from "./ParamButton";
 // TODO: map on param list
 const ParamList: React.FunctionComponent<{
   params: Param[];
-  handleAddButton: () => void;
+  handleCloseMenu: () => void;
   handleParamClick: (label: string) => () => void;
-}> = ({ params, handleAddButton, handleParamClick }) => (
+}> = ({ params, handleCloseMenu, handleParamClick }) => (
   <div
     className="param-list"
     onClick={() => {
-      handleAddButton();
+      handleCloseMenu();
     }}
   >
     {params.map(({ name, value }, index) => (
@@ -20,7 +20,7 @@ const ParamList: React.FunctionComponent<{
         name={name}
         value={value}
         key={index}
-        onClick={() => handleParamClick(name)()}
+        handleParamClick={handleParamClick(name)}
       />
     ))}
   </div>

@@ -7,14 +7,14 @@ import AddButton from "./AddButton";
 const AquariumGroupList: React.FunctionComponent<{
   refill?: Param;
   params: Param[];
-  handleAddButton: () => void;
+  handleCloseMenu: () => void;
   handleAddParamClick: () => void;
   handleRefillClick: () => void;
   handleParamClick: (paramFilter: string) => () => void;
 }> = ({
   refill,
   params,
-  handleAddButton,
+  handleCloseMenu,
   handleParamClick,
   handleAddParamClick,
   handleRefillClick
@@ -33,7 +33,7 @@ const AquariumGroupList: React.FunctionComponent<{
     />
     <ParamList
       params={params}
-      handleAddButton={handleAddButton}
+      handleCloseMenu={handleCloseMenu}
       handleParamClick={handleParamClick}
     />
   </List>

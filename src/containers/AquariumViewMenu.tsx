@@ -70,7 +70,7 @@ const AquariumViewMenu: React.FunctionComponent<{
         <AquariumGroupList
           refill={getLatestRefill(params)}
           params={getLatestParams(params)}
-          handleAddButton={setMenuStateDispatch}
+          handleCloseMenu={setMenuStateDispatch}
           handleParamClick={handleParamClick}
           handleRefillClick={() => setDialogStateDispatch(REFILL)}
           handleAddParamClick={() => setDialogStateDispatch(PARAMS)}
