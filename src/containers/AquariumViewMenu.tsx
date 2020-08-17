@@ -48,7 +48,7 @@ const AquariumViewMenu: React.FunctionComponent<{
         className={"title"}
         typography={"title-h1"}
         name={"My Aquarium"}
-        onClick={() => {
+        handleButtonClick={() => {
           visibleAquariumDispatch(-1);
           setMenuStateDispatch();
           setDialogStateDispatch(null);
@@ -60,7 +60,7 @@ const AquariumViewMenu: React.FunctionComponent<{
           typography={"group-list-title"}
           name={name ?? `Aquarium #${id + 1}`}
           dividers={true}
-          onClick={() => {
+          handleButtonClick={() => {
             visibleAquariumDispatch(id);
             setMenuStateDispatch();
           }}

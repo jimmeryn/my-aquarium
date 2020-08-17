@@ -7,15 +7,15 @@ const GroupButton: React.FunctionComponent<{
   name: string;
   dividers?: boolean;
   typography?: string;
-  onClick?: () => void;
-}> = ({ className, name, dividers = false, typography, onClick }) => (
+  handleButtonClick?: () => void;
+}> = ({ className, name, dividers = false, typography, handleButtonClick }) => (
   <React.Fragment>
     {dividers ? <Divider /> : null}
     <div className={className}>
       <Button
         onClick={e => {
           e.preventDefault();
-          if (onClick) onClick();
+          if (handleButtonClick) handleButtonClick();
         }}
         classes={{ label: typography }}
       >

@@ -32,7 +32,7 @@ const LandingPageMenu: React.FunctionComponent<{
         className={"title"}
         typography={"title-h1"}
         name={"My Aquarium"}
-        onClick={() => {
+        handleButtonClick={() => {
           visibleAquariumDispatch(-1);
           setMenuStateDispatch();
           setDialogStateDispatch(HIDDEN);
@@ -54,7 +54,9 @@ const LandingPageMenu: React.FunctionComponent<{
         typography="group-list-title"
         name="Add Aquarium"
         dividers={true}
-        onClick={() => setDialogStateDispatch(AQUARIUM)}
+        handleButtonClick={() => {
+          setDialogStateDispatch(AQUARIUM);
+        }}
       />
     </React.Fragment>
   );

@@ -26,7 +26,7 @@ const AquariumOverviewList: React.FunctionComponent<{
         typography={"group-list-title"}
         name={aquariumName ?? `Aquarium #${index + 1}`}
         dividers={true}
-        onClick={() => {
+        handleButtonClick={() => {
           setVisibleAquariumIndex(index);
           setMenuActive();
           setDialogHidden();
@@ -37,7 +37,7 @@ const AquariumOverviewList: React.FunctionComponent<{
       <GroupButton
         className={"overview-component"}
         name={"Show Params"}
-        onClick={() => {
+        handleButtonClick={() => {
           setVisibleAquariumIndex(index);
           setMenuActive();
           setDialogHidden();
@@ -48,14 +48,14 @@ const AquariumOverviewList: React.FunctionComponent<{
       <GroupButton
         className={"overview-component"}
         name={"Add Params"}
-        onClick={setDialogParams}
+        handleButtonClick={setDialogParams}
       />
     </Grid>
     <Grid item xs>
       <GroupButton
         className={"overview-component"}
         name={"Add Refill"}
-        onClick={setDialogRefill}
+        handleButtonClick={setDialogRefill}
       />
     </Grid>
   </Grid>
