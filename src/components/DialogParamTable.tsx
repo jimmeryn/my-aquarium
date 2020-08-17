@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import AddIcon from "@material-ui/icons/Add";
 import {
   TableBody,
@@ -30,7 +31,10 @@ const DialogParamTable: React.FunctionComponent<{
           {paramNames.map((paramName, i) => (
             <TableRow hover role="checkbox" tabIndex={i} key={i}>
               <TableCell key={1} className="dialog-table-cell">
-                {paramName}
+                <Button>
+                  <DeleteForeverIcon />
+                  {paramName}
+                </Button>
               </TableCell>
               <TableCell key={2} align="center" className="dialog-table-cell">
                 <TextField
