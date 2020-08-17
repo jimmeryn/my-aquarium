@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import AddIcon from "@material-ui/icons/Add";
 import {
   TableBody,
   TableRow,
@@ -8,7 +9,7 @@ import {
   TableContainer,
   TableHead,
   TextField,
-  withStyles
+  Button
 } from "@material-ui/core";
 
 const DialogParamTable: React.FunctionComponent<{
@@ -46,6 +47,14 @@ const DialogParamTable: React.FunctionComponent<{
               </TableCell>
             </TableRow>
           ))}
+          <TableRow>
+            <TableCell className="dialog-table-cell value" colSpan={2}>
+              <Button>
+                {"Add new param"}
+                <AddIcon />
+              </Button>
+            </TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>
