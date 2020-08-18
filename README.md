@@ -13,6 +13,7 @@ This app was created with:
 - [Chart.js](https://www.chartjs.org/)
 - [Webpack](https://webpack.js.org/)
 - [Material-UI](https://material-ui.com/)
+- [GSAP](https://greensock.com/gsap/)
 
 ## Design
 
