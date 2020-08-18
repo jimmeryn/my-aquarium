@@ -17,8 +17,7 @@ const DialogComponent: React.FunctionComponent<{
   selectedDate?: Date;
   setSelectedDate?: React.Dispatch<React.SetStateAction<Date>>;
   dateLabel?: string;
-  // TODO: any
-  handleSubmit: (_: any) => void;
+  handleSubmit: (textFieldValue: number) => void;
 }> = ({
   title,
   onClose,
@@ -30,7 +29,8 @@ const DialogComponent: React.FunctionComponent<{
   dateLabel,
   handleSubmit
 }) => {
-  const [textFieldValue, handleTextFieldChange] = React.useState(10);
+  const [inputValue, handleInputChange] = React.useState(10);
+
   return (
     <div className="dialog">
       <div className="dialog-title-wrappper">
@@ -40,8 +40,8 @@ const DialogComponent: React.FunctionComponent<{
       </div>
       {label ? (
         <TextInput
-          value={textFieldValue}
-          onChange={handleTextFieldChange}
+          value={inputValue}
+          onChange={handleInputChange}
           label={label}
           unit={unit}
         />
@@ -59,7 +59,7 @@ const DialogComponent: React.FunctionComponent<{
         typography={"group-list-title"}
         handleButtonClick={() => {
           onClose();
-          handleSubmit(textFieldValue);
+          handleSubmit(inputValue);
         }}
         name="Submit"
       />
