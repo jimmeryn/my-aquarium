@@ -20,10 +20,13 @@ const Dialog: React.FunctionComponent<{
     new Date()
   );
 
-  const { allaquariumsIds } = useSelector((state: State) => state.aquariums);
+  const { allaquariumsIds, dialogState } = useSelector((state: State) => ({
+    allaquariumsIds: state.aquariums.allaquariumsIds,
+    dialogState: state.userInterface.dialog
+  }));
 
   const dispatch = useDispatch<React.Dispatch<ActionTypes | UIActionTypes>>();
-  const setDialogState = (variant: DialogVariant) =>
+  const setDialogState = (variant?: DialogVariant) =>
     dispatch({ type: SET_DIALOG_STATE, variant });
 
   const addAquariumDispatch = (size: number) =>
@@ -37,6 +40,26 @@ const Dialog: React.FunctionComponent<{
 
   const { aquariumsById } = useSelector((state: State) => state.aquariums);
   const paramList = [...new Set([...aquariumsById[0].params.map(e => e.name)])];
+
+  const handleMouseClick = (event: MouseEvent) => {
+    const popover = document.getElementsByClassName("MuiPopover-root")[0];
+    if (
+      dialogState !== HIDDEN &&
+      !popover &&
+      !document
+        .getElementsByClassName("dialog")[0]
+        .contains(event.target as Node)
+    ) {
+      setDialogState();
+    }
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("mousedown", handleMouseClick);
+    return () => {
+      window.removeEventListener("mousedown", handleMouseClick);
+    };
+  }, [handleMouseClick]);
 
   const dialogData = {
     title: "",
