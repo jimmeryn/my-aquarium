@@ -21,6 +21,27 @@ const Menu: React.FunctionComponent = () => {
     "menu--active": menuState
   });
 
+  const dispatch = useDispatch<React.Dispatch<UIActionTypes>>();
+  const setMenuStateDispatch = () => dispatch({ type: SET_MENU_STATE });
+
+  const handleMouseClick = (event: MouseEvent) => {
+    if (
+      menuClass === "menu--active" &&
+      !document
+        .getElementsByClassName("menu--active")[0]
+        .contains(event.target as Node)
+    ) {
+      setMenuStateDispatch();
+    }
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("mousedown", handleMouseClick);
+    return () => {
+      window.removeEventListener("mousedown", handleMouseClick);
+    };
+  }, [handleMouseClick]);
+
   return (
     <div className={menuClass}>
       {visibleAquarium === -1 ? <LandingPageMenu /> : <AquariumViewMenu />}
