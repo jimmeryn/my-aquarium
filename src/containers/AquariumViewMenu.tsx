@@ -1,8 +1,7 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Grid } from "@material-ui/core";
-import { Aquarium } from "../models";
 import {
   ActionTypes,
   SET_VISIBLE_AQUARIUM,
@@ -19,18 +18,22 @@ import {
 import { getLatestParams, getLatestRefill } from "../api/filteringFunctions";
 import AquariumGroupList from "../components/AquariumGroupList";
 import GroupButton from "../components/GroupButton";
+import { State } from "../store";
 
-const AquariumViewMenu: React.FunctionComponent<{
-  aquarium: Aquarium;
-}> = ({ aquarium }) => {
-  const { name, id, params } = aquarium;
+const AquariumViewMenu: React.FunctionComponent = () => {
+  const { name, id, params } = useSelector(
+    (state: State) => state.aquariums.aquariumsById[state.visibleAquarium]
+  );
 
   const dispatch = useDispatch<
     React.Dispatch<ActionTypes | UIActionTypes | GraphActionTypes>
   >();
+
   const visibleAquariumDispatch = (id: number) =>
     dispatch({ type: SET_VISIBLE_AQUARIUM, id });
+
   const setMenuStateDispatch = () => dispatch({ type: SET_MENU_STATE });
+
   const setDialogStateDispatch = (variant: DialogVariant) =>
     dispatch({ type: SET_DIALOG_STATE, variant });
 

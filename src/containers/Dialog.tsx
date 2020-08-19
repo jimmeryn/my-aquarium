@@ -13,17 +13,20 @@ import {
 import { UIActionTypes, SET_DIALOG_STATE } from "../actions";
 import { State } from "../store";
 
-const Dialog: React.FunctionComponent<{
-  variant: DialogVariant;
-}> = ({ variant }) => {
+const Dialog: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(
     new Date()
   );
 
-  const { allaquariumsIds, dialogState } = useSelector((state: State) => ({
-    allaquariumsIds: state.aquariums.allaquariumsIds,
-    dialogState: state.userInterface.dialog
-  }));
+  const { allaquariumsIds, dialogState, aquariumsById } = useSelector(
+    (state: State) => ({
+      allaquariumsIds: state.aquariums.allaquariumsIds,
+      dialogState: state.userInterface.dialog,
+      aquariumsById: state.aquariums.aquariumsById
+    })
+  );
+
+  const paramList = [...new Set([...aquariumsById[0].params.map(e => e.name)])];
 
   const dispatch = useDispatch<React.Dispatch<ActionTypes | UIActionTypes>>();
   const setDialogState = (variant?: DialogVariant) =>
@@ -37,9 +40,6 @@ const Dialog: React.FunctionComponent<{
         size
       }
     });
-
-  const { aquariumsById } = useSelector((state: State) => state.aquariums);
-  const paramList = [...new Set([...aquariumsById[0].params.map(e => e.name)])];
 
   const handleMouseClick = (event: MouseEvent) => {
     const popover = document.getElementsByClassName("MuiPopover-root")[0];
@@ -70,7 +70,7 @@ const Dialog: React.FunctionComponent<{
     handleSubmit: (_: any) => {}
   };
 
-  switch (variant) {
+  switch (dialogState) {
     case PARAMS:
       dialogData.title = "Parameters";
       dialogData.paramNames = paramList;
@@ -91,7 +91,7 @@ const Dialog: React.FunctionComponent<{
       break;
   }
 
-  return variant !== HIDDEN ? (
+  return dialogState !== HIDDEN ? (
     <DialogComponent
       title={dialogData.title}
       label={dialogData.label}

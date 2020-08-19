@@ -13,11 +13,14 @@ import {
   AQUARIUM,
   HIDDEN
 } from "../actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { State } from "../store";
 
-const LandingPageMenu: React.FunctionComponent<{
-  allaquariumsIds: number[];
-}> = ({ allaquariumsIds }) => {
+const LandingPageMenu: React.FunctionComponent = () => {
+  const allAquariumsIds = useSelector(
+    (state: State) => state.aquariums.allaquariumsIds
+  );
+
   const dispatch = useDispatch<React.Dispatch<ActionTypes | UIActionTypes>>();
 
   const visibleAquariumDispatch = (id: number) =>
@@ -38,7 +41,7 @@ const LandingPageMenu: React.FunctionComponent<{
           setDialogStateDispatch(HIDDEN);
         }}
       />
-      {allaquariumsIds.map(i => (
+      {allAquariumsIds.map(i => (
         <AquariumOverviewList
           index={i}
           key={i}
