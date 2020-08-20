@@ -18,6 +18,10 @@ export default function normalize({ aquariums }: UnnormalizedStateData): State {
       byId: aquariumsById,
       allIds: aquariumsById.map(({ id }) => id)
     },
+    params: {
+      byId: paramsById,
+      allIds: paramsById.map(({ id }) => id)
+    },
     visibleAquarium: -1
   };
 }
@@ -103,5 +107,5 @@ const refactorAquarium = (
 ) => ({
   id,
   size,
-  params
+  params: params.map(param => param.id)
 });
