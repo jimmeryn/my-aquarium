@@ -1,5 +1,3 @@
-import { Param } from "../models";
-
 // Describing different ACTION NAMES available
 export const ADD_AQUARIUM = "ADD_AQUARIUM";
 export const ADD_AQUARIUM_DATA = "ADD_AQUARIUM_DATA";
