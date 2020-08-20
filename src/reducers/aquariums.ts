@@ -40,12 +40,8 @@ const aquariumsById = (
 };
 
 const aquariums = combineReducers({
-  aquariumsById,
-  allaquariumsIds
+  byId: aquariumsById,
+  allIds: allaquariumsIds
 });
-
-// mapping aquariums by it's id to aquariums array
-const getAllAquariums = (state: State) =>
-  state.aquariums.allIds.map(id => state.aquariums.byId[id]);
 
 export default aquariums;
