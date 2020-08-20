@@ -15,7 +15,7 @@ const aquarium = (aquariumState: Aquarium, action: ActionTypes) => {
       }
       return {
         ...aquariumState,
-        data: [...aquariumState.params, action.payload.newData]
+        params: [...aquariumState.params, aquariumState.params.length]
       };
     default:
       return aquariumState;
