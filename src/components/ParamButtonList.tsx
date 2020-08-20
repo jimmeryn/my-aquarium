@@ -1,25 +1,19 @@
 import * as React from "react";
 import { Tabs, Tab } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
-import { Aquarium } from "src/models";
+import { Param } from "src/models";
 
 const ParamButtonList: React.FunctionComponent<{
-  aquariumsById: {
-    [id: number]: Aquarium;
-  };
-  visibleAquarium: number;
+  params: Param[];
   filter: string;
   onClick: (filter: string) => void;
-}> = ({ aquariumsById, visibleAquarium, onClick, filter }) => {
+}> = ({ params, onClick, filter }) => {
   const initValue: { [key: string]: number } = {};
-  const paramList = [
-    ...new Set([
-      "refills",
-      ...aquariumsById[visibleAquarium].params.map(e => e.name)
-    ])
+  const paramNames = [
+    ...new Set(["refills", ...params.map(param => param.name)])
   ];
   const [value, setValue] = React.useState(
-    paramList.reduce((acc, cur, i) => {
+    paramNames.reduce((acc, cur, i) => {
       acc[cur] = i;
       return acc;
     }, initValue)[`${filter}`]
@@ -41,7 +35,7 @@ const ParamButtonList: React.FunctionComponent<{
           scrollButtons="auto"
           aria-label="parameters tabs"
         >
-          {paramList.map((paramName, i) => (
+          {paramNames.map((paramName, i) => (
             <Tab
               label={paramName}
               key={i}
