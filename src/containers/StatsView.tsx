@@ -14,8 +14,8 @@ const StatsView: React.FunctionComponent = () => {
 
   const { paramFilter, labels, params } = useSelector((state: State) => ({
     aquariumsById: state.aquariums.byId,
-      visibleAquarium: state.visibleAquarium,
-      paramFilter: state.paramFilter,
+    visibleAquarium: state.visibleAquarium,
+    paramFilter: state.paramFilter,
     labels: state.graphLabels,
     params: state.params.allIds
       .map(id => state.params.byId[id])
@@ -53,12 +53,18 @@ const StatsView: React.FunctionComponent = () => {
         return paramWithGivenDate ? paramWithGivenDate.value : null;
       })
     )
+    // If there is null in values array change it to:
+    // - average of value before and after null or
+    // - value before null if value after not exist
     .map(dataArray =>
-      dates.map(date =>
-        dataArray.find(data => data.date === date)
-          ? dataArray.find(data => data.date === date).value
-          : null
-      )
+      dataArray.map((currentValue, i, dataArr) => {
+        if (currentValue == null) {
+          return dataArr[i + 1]
+            ? (dataArr[i - 1] + dataArr[i + 1]) / 2
+            : dataArr[i - 1];
+        }
+        return currentValue;
+      })
     );
 
   return (
