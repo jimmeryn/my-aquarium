@@ -1,28 +1,28 @@
 import * as React from "react";
-import { Aquarium } from "src/models";
+import { Param } from "src/models";
 import ParamButtonList from "./ParamButtonList";
 import CurrentParamTable from "./CurrentParamTable";
 import GraphModifiButtonsList from "../containers/GraphModifiButtonsList";
 
 const StatsTable: React.FunctionComponent<{
-  aquariumsById: { [key: number]: Aquarium };
-  visibleAquarium: number;
   paramFilter: string;
   paramFilterDispatch: (filter: string) => void;
-}> = ({ aquariumsById, visibleAquarium, paramFilter, paramFilterDispatch }) => (
-  <div className="stats-table">
-    <ParamButtonList
-      aquariumsById={aquariumsById}
-      visibleAquarium={visibleAquarium}
-      onClick={paramFilterDispatch}
-      filter={paramFilter}
-    />
-    <CurrentParamTable
-      aquarium={aquariumsById[visibleAquarium]}
-      filter={paramFilter}
-    />
-    <GraphModifiButtonsList />
-  </div>
-);
+  params: Param[];
+}> = ({ paramFilter, paramFilterDispatch, params }) => {
+  const filteredParams = params
+    .filter(e => e.name.toLocaleLowerCase() === paramFilter.toLowerCase())
+    .reverse();
+  return (
+    <div className="stats-table">
+      <ParamButtonList
+        params={params}
+        onClick={paramFilterDispatch}
+        filter={paramFilter}
+      />
+      <CurrentParamTable params={filteredParams} />
+      <GraphModifiButtonsList />
+    </div>
+  );
+};
 
 export default StatsTable;
