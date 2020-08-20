@@ -24,7 +24,10 @@ interface AddAquariumData {
   readonly type: typeof ADD_AQUARIUM_DATA;
   id: number;
   payload: {
-    newData: Param;
+    paramId: number;
+    date: Date;
+    value: number | null;
+    name: string;
   };
 }
 
