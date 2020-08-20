@@ -12,13 +12,19 @@ const StatsView: React.FunctionComponent = () => {
   const paramFilterDispatch = (filter: string) =>
     dispatch({ type: CHANGE_PARAM_FILTER, filter });
 
-  const { aquariumsById, visibleAquarium, paramFilter, labels } = useSelector(
-    (state: State) => ({
-      aquariumsById: state.aquariums.aquariumsById,
+  const { paramFilter, labels, params } = useSelector((state: State) => ({
+    aquariumsById: state.aquariums.byId,
       visibleAquarium: state.visibleAquarium,
       paramFilter: state.paramFilter,
-      labels: state.graphLabels
-    })
+    labels: state.graphLabels,
+    params: state.params.allIds
+      .map(id => state.params.byId[id])
+      .filter(param =>
+        state.visibleAquarium !== -1
+          ? param.aquariumId === state.visibleAquarium
+          : param.aquariumId === 0
+      )
+  }));
   );
 
   // TODO: This code shouldyn't be so hard to understand...
@@ -73,10 +79,9 @@ const StatsView: React.FunctionComponent = () => {
     <div className="stats-view">
       <Graph dates={dates} labels={labels} paramData={data} />
       <StatsTable
-        aquariumsById={aquariumsById}
-        visibleAquarium={visibleAquarium}
         paramFilter={paramFilter}
         paramFilterDispatch={paramFilterDispatch}
+        params={params}
       />
     </div>
   );
