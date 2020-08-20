@@ -21,9 +21,14 @@ import GroupButton from "../components/GroupButton";
 import { State } from "../store";
 
 const AquariumViewMenu: React.FunctionComponent = () => {
-  const { name, id, params } = useSelector(
-    (state: State) => state.aquariums.aquariumsById[state.visibleAquarium]
-  );
+  const { aquarium, params } = useSelector((state: State) => ({
+    aquarium: state.aquariums.byId[state.visibleAquarium],
+    params: state.params.allIds
+      .map(id => state.params.byId[id])
+      .filter(param => param.aquariumId === state.visibleAquarium)
+  }));
+
+  const { id, name } = aquarium;
 
   const dispatch = useDispatch<
     React.Dispatch<ActionTypes | UIActionTypes | GraphActionTypes>
