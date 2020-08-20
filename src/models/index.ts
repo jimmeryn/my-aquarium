@@ -20,7 +20,7 @@ export interface Aquarium {
   id: number;
   name?: string;
   size: number;
-  params: Param[];
+  params: number[];
 }
 
 export interface Param {
@@ -38,5 +38,6 @@ export interface NormalizedObject<T> {
 
 export interface State {
   aquariums: NormalizedObject<Aquarium>;
+  params: NormalizedObject<Param>;
   visibleAquarium: number;
 }
