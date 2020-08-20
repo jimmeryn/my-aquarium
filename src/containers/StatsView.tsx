@@ -25,47 +25,33 @@ const StatsView: React.FunctionComponent = () => {
           : param.aquariumId === 0
       )
   }));
+
+  const filteredParams = labels.map(label =>
+    params
+      .filter(param => param.name === label)
+      .map(param => ({
+        value: param.value,
+        date: param.date.toISOString().split("T")[0]
+      }))
   );
 
-  // TODO: This code shouldyn't be so hard to understand...
-  const dates = [
+  // Getting all dates from params with given label
+  const dates: string[] = [
     ...new Set(
-      labels
-        .map(label =>
-          aquariumsById[visibleAquarium].params.reduce(
-            (paramsArray, currentParam) =>
-              currentParam.name === label
-                ? [
-                    currentParam.date.toISOString().split("T")[0],
-                    ...paramsArray
-                  ]
-                : paramsArray,
-            []
-          )
-        )
+      filteredParams
+        .map(paramArr => paramArr.map(param => param.date))
         .reduce((ac, cur) => [...cur, ...ac], [])
     )
   ].sort();
 
-  // For every label create data array with name, value and date
-  // then create array based on dates (if param exist on given date use it if not set to null)
-  // Not pretty, but so far the best solution I could find...
-  const data = labels
-    .map(label =>
-      aquariumsById[visibleAquarium].params.reduce(
-        (paramsArray, currentParam) =>
-          currentParam.name === label
-            ? [
-                {
-                  name: currentParam.name,
-                  value: currentParam.value,
-                  date: currentParam.date.toISOString().split("T")[0]
-                },
-                ...paramsArray
-              ]
-            : paramsArray,
-        []
-      )
+  // Set value for given date as param value if exists or null if doesn't.
+  // Data is given for 2 charts so it's tuple of data
+  const data: number[][] = filteredParams
+    .map(dataArray =>
+      dates.map(date => {
+        const paramWithGivenDate = dataArray.find(data => data.date === date);
+        return paramWithGivenDate ? paramWithGivenDate.value : null;
+      })
     )
     .map(dataArray =>
       dates.map(date =>
