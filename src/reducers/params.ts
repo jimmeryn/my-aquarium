@@ -1,7 +1,7 @@
 import { Param, NormalizedObject } from "../models";
 import { ActionTypes, ADD_AQUARIUM_DATA } from "../actions";
 import normalize from "./normalize";
-import { combineReducers } from "redux";
+import param from "./param";
 
 let dataFromJson: NormalizedObject<Param>;
 try {
@@ -29,13 +29,8 @@ const paramsById = (
   switch (action.type) {
     case ADD_AQUARIUM_DATA:
       return {
-        ...(state[action.payload.paramId] = {
-          id: action.payload.paramId,
-          aquariumId: action.id,
-          date: action.payload.date,
-          value: action.payload.value,
-          name: action.payload.name
-        })
+        ...state,
+        [action.payload.paramId]: param(state[action.payload.paramId], action),
       };
     default:
       return state;
