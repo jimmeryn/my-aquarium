@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { DialogVariant, HIDDEN, ActionTypes, ADD_AQUARIUM } from "../actions";
 import { UIActionTypes, SET_DIALOG_STATE } from "../actions";
 import { State } from "../store";
-import TextInput from "../components/TextInput";
+import InputField from "../components/InputField";
 
 const AddAquariumDialog: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState(new Date());
@@ -57,7 +57,7 @@ const AddAquariumDialog: React.FunctionComponent = () => {
       handleDialogClose={() => setDialogState(HIDDEN)}
       dateLabel={"Start Date"}
     >
-      <TextInput
+      <InputField
         value={inputValue}
         handleInputChange={setInputValue}
         label={"Size"}

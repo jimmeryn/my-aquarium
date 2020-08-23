@@ -1,7 +1,7 @@
 import * as React from "react";
 import { TextField, InputAdornment } from "@material-ui/core";
 
-const TextInput: React.FunctionComponent<{
+const InputField: React.FunctionComponent<{
   label: string;
   unit?: string;
   value: number;
@@ -23,4 +23,4 @@ const TextInput: React.FunctionComponent<{
   />
 );
 
-export default TextInput;
+export default InputField;

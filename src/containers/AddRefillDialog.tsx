@@ -9,7 +9,7 @@ import {
 } from "../actions";
 import { UIActionTypes, SET_DIALOG_STATE } from "../actions";
 import { State } from "../store";
-import TextInput from "../components/TextInput";
+import InputField from "../components/InputField";
 
 const AddRefillDialog: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(
@@ -78,7 +78,7 @@ const AddRefillDialog: React.FunctionComponent = () => {
       }
       handleDialogClose={() => setDialogState(HIDDEN)}
     >
-      <TextInput
+      <InputField
         value={inputValue}
         handleInputChange={setInputValue}
         label={"Refill Value"}
