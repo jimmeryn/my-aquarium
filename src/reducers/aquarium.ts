@@ -7,7 +7,7 @@ const aquarium = (aquariumState: Aquarium, action: ActionTypes) => {
       return {
         id: action.id,
         size: action.payload.size,
-        params: []
+        params: [],
       };
     case ADD_AQUARIUM_DATA:
       if (aquariumState.id !== action.id) {

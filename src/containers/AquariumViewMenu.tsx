@@ -13,7 +13,7 @@ import {
   DialogVariant,
   REFILL,
   PARAMS,
-  HIDDEN
+  HIDDEN,
 } from "../actions";
 import { getLatestParams, getLatestRefill } from "../api/filteringFunctions";
 import AquariumGroupList from "../components/AquariumGroupList";

@@ -8,7 +8,7 @@ const Hamburger: React.FunctionComponent<{
 }> = ({ active, setActive }) => {
   const hamClass = classNames({
     hamburger: !active,
-    "hamburger--active": active
+    "hamburger--active": active,
   });
 
   return (

@@ -16,7 +16,7 @@ const TextInput: React.FunctionComponent<{
       className: "text-field-input",
       endAdornment: unit ? (
         <InputAdornment position="start">{`[${unit}]`}</InputAdornment>
-      ) : null
+      ) : null,
     }}
   />
 );

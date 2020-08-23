@@ -11,7 +11,7 @@ import {
   REFILL,
   PARAMS,
   AQUARIUM,
-  HIDDEN
+  HIDDEN,
 } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { State } from "../store";

@@ -17,7 +17,7 @@ const AquariumGroupList: React.FunctionComponent<{
   handleCloseMenu,
   handleParamClick,
   handleAddParamClick,
-  handleRefillClick
+  handleRefillClick,
 }) => (
   <List component="nav">
     <AddButton

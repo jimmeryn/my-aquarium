@@ -23,7 +23,7 @@ const StatsView: React.FunctionComponent = () => {
         state.visibleAquarium !== -1
           ? param.aquariumId === state.visibleAquarium
           : param.aquariumId === 0
-      )
+      ),
   }));
 
   const filteredParams = labels.map(label =>
@@ -41,7 +41,7 @@ const StatsView: React.FunctionComponent = () => {
       filteredParams
         .map(paramArr => paramArr.map(param => param.date))
         .reduce((ac, cur) => [...cur, ...ac], [])
-    )
+    ),
   ].sort();
 
   // Set value for given date as param value if exists or null if doesn't.

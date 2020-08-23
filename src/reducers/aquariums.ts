@@ -32,7 +32,7 @@ const aquariumsById = (
     case ADD_AQUARIUM_DATA:
       return {
         ...state,
-        [action.id]: aquarium(state[action.id], action)
+        [action.id]: aquarium(state[action.id], action),
       };
     default:
       return state;
@@ -41,7 +41,7 @@ const aquariumsById = (
 
 const aquariums = combineReducers({
   byId: aquariumsById,
-  allIds: allaquariumsIds
+  allIds: allaquariumsIds,
 });
 
 export default aquariums;

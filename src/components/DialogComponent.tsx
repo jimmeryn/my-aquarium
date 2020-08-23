@@ -19,7 +19,7 @@ const DialogComponent: React.FunctionComponent<{
   setSelectedDate,
   handleSubmit,
   handleDialogClose,
-  children
+  children,
 }) => (
   <div className="dialog">
     <div className="dialog-title-wrappper">

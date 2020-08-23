@@ -10,18 +10,18 @@ const options = {
       {
         id: "y-axis-0",
         type: "linear",
-        position: "left"
+        position: "left",
       },
       {
         id: "y-axis-1",
         type: "linear",
         position: "right",
         gridLines: {
-          display: false
-        }
-      }
-    ]
-  }
+          display: false,
+        },
+      },
+    ],
+  },
 };
 
 const Graph: React.FunctionComponent<{
@@ -39,13 +39,13 @@ const Graph: React.FunctionComponent<{
           yAxisID: `y-axis-${i}`,
           data: currentDataArray,
           fill: false,
-          borderColor: colors[i]
+          borderColor: colors[i],
           // pointBorderColor: "red" // TODO: Add this as top or bot. Value over or under max
         },
-        ...acc
+        ...acc,
       ],
       []
-    )
+    ),
   };
 
   return (

@@ -44,7 +44,7 @@ const paramsById = (
 
 const params = combineReducers({
   byId: paramsById,
-  allIds: allParamsIds
+  allIds: allParamsIds,
 });
 
 export default params;

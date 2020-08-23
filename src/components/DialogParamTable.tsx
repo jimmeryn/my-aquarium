@@ -10,7 +10,7 @@ import {
   TableContainer,
   TableHead,
   TextField,
-  Button
+  Button,
 } from "@material-ui/core";
 
 const DialogParamTable: React.FunctionComponent<{
@@ -41,11 +41,11 @@ const DialogParamTable: React.FunctionComponent<{
                   id="number-input"
                   defaultValue={0}
                   InputLabelProps={{
-                    shrink: true
+                  shrink: true,
                   }}
                   InputProps={{
                     className: "dialog-table-cell",
-                    disableUnderline: true
+                  disableUnderline: true,
                   }}
                 />
               </TableCell>

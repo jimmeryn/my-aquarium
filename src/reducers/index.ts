@@ -12,7 +12,7 @@ const reducer = combineReducers({
   visibleAquarium,
   paramFilter,
   graphLabels,
-  userInterface
+  userInterface,
 });
 
 export default reducer;

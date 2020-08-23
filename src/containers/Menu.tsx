@@ -18,7 +18,7 @@ const Menu: React.FunctionComponent = () => {
 
   const menuClass = classNames({
     menu: window.innerWidth > 800 || !menuState,
-    "menu--active": menuState
+    "menu--active": menuState,
   });
 
   const dispatch = useDispatch<React.Dispatch<UIActionTypes>>();

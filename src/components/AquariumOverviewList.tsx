@@ -17,7 +17,7 @@ const AquariumOverviewList: React.FunctionComponent<{
   setDialogHidden,
   setDialogParams,
   setDialogRefill,
-  aquariumName
+  aquariumName,
 }) => (
   <Grid container spacing={0} direction="column" alignItems="stretch">
     <Grid item xs>

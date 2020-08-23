@@ -10,7 +10,7 @@ const ParamButtonList: React.FunctionComponent<{
 }> = ({ params, onClick, filter }) => {
   const initValue: { [key: string]: number } = {};
   const paramNames = [
-    ...new Set(["refills", ...params.map(param => param.name)])
+    ...new Set(["refills", ...params.map(param => param.name)]),
   ];
   const [value, setValue] = React.useState(
     paramNames.reduce((acc, cur, i) => {
