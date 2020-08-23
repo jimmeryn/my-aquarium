@@ -18,7 +18,7 @@ const allParamsIds = (
 ) => {
   switch (action.type) {
     case ADD_AQUARIUM_DATA:
-      return [...state, state[state.length - 1] + 1];
+      return [...state, action.payload.paramId];
     default:
       return state;
   }
