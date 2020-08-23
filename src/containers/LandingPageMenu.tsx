@@ -17,7 +17,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { State } from "../store";
 
 const LandingPageMenu: React.FunctionComponent = () => {
-  const allAquariumsIds = useSelector((state: State) => state.aquariums.allIds);
+  const allAquariumsIds: number[] = useSelector(
+    (state: State) => state.aquariums.allIds
+  );
 
   const dispatch = useDispatch<React.Dispatch<ActionTypes | UIActionTypes>>();
 
