@@ -3,6 +3,16 @@ export interface UnnormalizedStateData {
 }
 
 // TODO: Add upper and lower bound for params
+// TODO v2: now use them (upper and lower bound must be fixed)
+
+export const defaultParams = {
+  Cl2: { upper: 10, lower: 10 },
+  pH: { upper: 10, lower: 10 },
+  KH: { upper: 10, lower: 10 },
+  GH: { upper: 10, lower: 10 },
+  NO2: { upper: 10, lower: 10 },
+  NO3: { upper: 10, lower: 10 },
+};
 
 export interface UnnormalizedAquarium {
   id: number;
