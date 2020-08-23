@@ -23,9 +23,9 @@ import { State } from "../store";
 const AquariumViewMenu: React.FunctionComponent = () => {
   const { aquarium, params, visibleAquariumId } = useSelector(
     (state: State) => ({
-    aquarium: state.aquariums.byId[state.visibleAquarium],
-    params: state.params.allIds
-      .map(id => state.params.byId[id])
+      aquarium: state.aquariums.byId[state.visibleAquarium],
+      params: state.params.allIds
+        .map(id => state.params.byId[id])
         .filter(param => param.aquariumId === state.visibleAquarium),
       visibleAquariumId: state.visibleAquarium,
     })
@@ -62,7 +62,7 @@ const AquariumViewMenu: React.FunctionComponent = () => {
         handleButtonClick={() => {
           visibleAquariumDispatch(-1);
           setMenuStateDispatch();
-          setDialogStateDispatch(null);
+          setDialogStateDispatch(HIDDEN);
         }}
       />
       <Grid item xs>
