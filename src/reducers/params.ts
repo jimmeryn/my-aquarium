@@ -1,3 +1,5 @@
+import { combineReducers } from "redux";
+
 import { Param, NormalizedObject } from "../models";
 import { ActionTypes, ADD_AQUARIUM_DATA } from "../actions";
 import normalize from "./normalize";
