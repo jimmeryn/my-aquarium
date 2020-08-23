@@ -24,8 +24,8 @@ const LandingPageMenu: React.FunctionComponent = () => {
   const visibleAquariumDispatch = (id: number) =>
     dispatch({ type: SET_VISIBLE_AQUARIUM, id });
   const setMenuStateDispatch = () => dispatch({ type: SET_MENU_STATE });
-  const setDialogStateDispatch = (variant: DialogVariant) =>
-    dispatch({ type: SET_DIALOG_STATE, variant });
+  const setDialogStateDispatch = (variant: DialogVariant, aquariumId = -1) =>
+    dispatch({ type: SET_DIALOG_STATE, variant, aquariumId });
 
   return (
     <React.Fragment>
@@ -46,8 +46,8 @@ const LandingPageMenu: React.FunctionComponent = () => {
           setVisibleAquariumIndex={visibleAquariumDispatch}
           setMenuActive={setMenuStateDispatch}
           setDialogHidden={() => setDialogStateDispatch(HIDDEN)}
-          setDialogParams={() => setDialogStateDispatch(PARAMS)}
-          setDialogRefill={() => setDialogStateDispatch(REFILL)}
+          setDialogParams={() => setDialogStateDispatch(PARAMS, i)}
+          setDialogRefill={() => setDialogStateDispatch(REFILL, i)}
         />
       ))}
       <GroupButton
