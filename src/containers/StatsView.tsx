@@ -31,7 +31,7 @@ const StatsView: React.FunctionComponent = () => {
       .filter(param => param.name === label)
       .map(param => ({
         value: param.value,
-        date: param.date.toISOString().split("T")[0]
+        date: param.date.toISOString().split("T")[0],
       }))
   );
 
