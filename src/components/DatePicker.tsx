@@ -3,15 +3,15 @@ import * as React from "react";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
-  KeyboardDatePicker
+  KeyboardDatePicker,
 } from "@material-ui/pickers";
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 
 const theme = createMuiTheme({
   palette: {
-    type: "dark"
-  }
+    type: "dark",
+  },
 });
 
 const DatePicker: React.FunctionComponent<{
@@ -37,7 +37,7 @@ const DatePicker: React.FunctionComponent<{
           onChange={handleDateChange}
           autoOk={true}
           KeyboardButtonProps={{
-            "aria-label": "change date"
+            "aria-label": "change date",
           }}
         />
       </MuiPickersUtilsProvider>

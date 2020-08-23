@@ -4,7 +4,7 @@ import dialog from "./dialog";
 
 const userInterface = combineReducers({
   menu,
-  dialog
+  dialog,
 });
 
 export default userInterface;

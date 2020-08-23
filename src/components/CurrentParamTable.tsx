@@ -4,20 +4,14 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow
+  TableRow,
 } from "@material-ui/core";
 import ParamTableBody from "./ParamTableBody";
-import { Aquarium } from "../models";
+import { Param } from "../models";
 
-// TODO: CurrentParamTable + CurrentParamFilteredTable
 const CurrentParamTable: React.FunctionComponent<{
-  aquarium: Aquarium;
-  filter: string;
-}> = ({ aquarium, filter }) => {
-  const params = aquarium.params
-    .filter(e => e.name.toLocaleLowerCase() === filter.toLowerCase())
-    .reverse();
-
+  params: Param[];
+}> = ({ params }) => {
   return (
     <div className="current-param-table">
       <TableContainer>

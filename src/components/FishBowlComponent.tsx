@@ -27,7 +27,7 @@ const FishBowlComponent = () => {
       fish2,
       data1,
       data2,
-      data3
+      data3,
     ] = elements.children;
     gsap.set(
       [
@@ -49,7 +49,7 @@ const FishBowlComponent = () => {
         fish2,
         data1,
         data2,
-        data3
+        data3,
       ],
       { autoAlpha: 0 }
     );
@@ -61,7 +61,7 @@ const FishBowlComponent = () => {
         flower1FShadows,
         flower1Stone,
         flower1StoneShadow,
-        flower2
+        flower2,
       ],
       { transformOrigin: "50% 100%" }
     );
@@ -103,7 +103,7 @@ const FishBowlComponent = () => {
       {
         scaleY: 1,
         duration: 0.3,
-        autoAlpha: 1
+        autoAlpha: 1,
       },
       "-=0.5"
     );
@@ -114,20 +114,20 @@ const FishBowlComponent = () => {
       {
         scaleY: 1,
         duration: 0.3,
-        autoAlpha: 0.5
+        autoAlpha: 0.5,
       },
       "-=0.3"
     );
 
     tl.to(flower1F, {
       duration: 0.3,
-      autoAlpha: 1
+      autoAlpha: 1,
     });
     tl.to(
       flower1FShadows,
       {
         duration: 0.3,
-        autoAlpha: 0.3
+        autoAlpha: 0.3,
       },
       "-=0.2"
     );
@@ -138,7 +138,7 @@ const FishBowlComponent = () => {
       {
         duration: 0.5,
         scaleY: 1,
-        autoAlpha: 1
+        autoAlpha: 1,
       },
       "-=0.5"
     );
@@ -156,15 +156,15 @@ const FishBowlComponent = () => {
 
     // Loop timeline
     const tl2 = gsap.timeline({
-      defaults: { ease: "Power3.inOut", repeat: -1, yoyo: true }
+      defaults: { ease: "Power3.inOut", repeat: -1, yoyo: true },
     });
 
     gsap.set([ball1b, ball1s, ball2b, ball2s, ball3b, ball3s], {
-      transformOrigin: "50% 50%"
+      transformOrigin: "50% 50%",
     });
 
     gsap.set(square, {
-      transformOrigin: "100% 100%"
+      transformOrigin: "100% 100%",
     });
 
     tl2.fromTo(fish1, { rotateZ: "-=10" }, { duration: 3, rotateZ: "+=10" });

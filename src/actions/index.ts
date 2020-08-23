@@ -1,5 +1,3 @@
-import { Param } from "../models";
-
 // Describing different ACTION NAMES available
 export const ADD_AQUARIUM = "ADD_AQUARIUM";
 export const ADD_AQUARIUM_DATA = "ADD_AQUARIUM_DATA";
@@ -26,7 +24,10 @@ interface AddAquariumData {
   readonly type: typeof ADD_AQUARIUM_DATA;
   id: number;
   payload: {
-    newData: Param;
+    paramId: number;
+    date: Date;
+    value: number | null;
+    name: string;
   };
 }
 
@@ -66,9 +67,15 @@ export type DialogVariant =
   | typeof AQUARIUM
   | typeof HIDDEN;
 
+export interface DialogState {
+  variant?: DialogVariant;
+  aquariumId: number;
+}
+
 interface SetDialogState {
   readonly type: typeof SET_DIALOG_STATE;
   readonly variant: DialogVariant;
+  aquariumId: number;
 }
 
 export type GraphActionTypes = AddGraphData | ShowGraphData;

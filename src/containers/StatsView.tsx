@@ -12,71 +12,68 @@ const StatsView: React.FunctionComponent = () => {
   const paramFilterDispatch = (filter: string) =>
     dispatch({ type: CHANGE_PARAM_FILTER, filter });
 
-  const { aquariumsById, visibleAquarium, paramFilter, labels } = useSelector(
-    (state: State) => ({
-      aquariumsById: state.aquariums.aquariumsById,
-      visibleAquarium: state.visibleAquarium,
-      paramFilter: state.paramFilter,
-      labels: state.graphLabels
-    })
+  const { paramFilter, labels, params } = useSelector((state: State) => ({
+    aquariumsById: state.aquariums.byId,
+    visibleAquarium: state.visibleAquarium,
+    paramFilter: state.paramFilter,
+    labels: state.graphLabels,
+    params: state.params.allIds
+      .map(id => state.params.byId[id])
+      .filter(param =>
+        state.visibleAquarium !== -1
+          ? param.aquariumId === state.visibleAquarium
+          : param.aquariumId === 0
+      ),
+  }));
+
+  const filteredParams = labels.map(label =>
+    params
+      .filter(param => param.name === label)
+      .map(param => ({
+        value: param.value,
+        date: param.date.toISOString().split("T")[0],
+      }))
   );
 
-  // TODO: This code shouldyn't be so hard to understand...
-  const dates = [
+  // Getting all dates from params with given label
+  const dates: string[] = [
     ...new Set(
-      labels
-        .map(label =>
-          aquariumsById[visibleAquarium].params.reduce(
-            (paramsArray, currentParam) =>
-              currentParam.name === label
-                ? [
-                    currentParam.date.toISOString().split("T")[0],
-                    ...paramsArray
-                  ]
-                : paramsArray,
-            []
-          )
-        )
+      filteredParams
+        .map(paramArr => paramArr.map(param => param.date))
         .reduce((ac, cur) => [...cur, ...ac], [])
-    )
+    ),
   ].sort();
 
-  // For every label create data array with name, value and date
-  // then create array based on dates (if param exist on given date use it if not set to null)
-  // Not pretty, but so far the best solution I could find...
-  const data = labels
-    .map(label =>
-      aquariumsById[visibleAquarium].params.reduce(
-        (paramsArray, currentParam) =>
-          currentParam.name === label
-            ? [
-                {
-                  name: currentParam.name,
-                  value: currentParam.value,
-                  date: currentParam.date.toISOString().split("T")[0]
-                },
-                ...paramsArray
-              ]
-            : paramsArray,
-        []
-      )
-    )
+  // Set value for given date as param value if exists or null if doesn't.
+  // Data is given for 2 charts so it's tuple of data
+  const data: number[][] = filteredParams
     .map(dataArray =>
-      dates.map(date =>
-        dataArray.find(data => data.date === date)
-          ? dataArray.find(data => data.date === date).value
-          : null
-      )
+      dates.map(date => {
+        const paramWithGivenDate = dataArray.find(data => data.date === date);
+        return paramWithGivenDate ? paramWithGivenDate.value : null;
+      })
+    )
+    // If there is null in values array change it to:
+    // - average of value before and after null or
+    // - value before null if value after not exist
+    .map(dataArray =>
+      dataArray.map((currentValue, i, dataArr) => {
+        if (currentValue == null) {
+          return dataArr[i + 1]
+            ? (dataArr[i - 1] + dataArr[i + 1]) / 2
+            : dataArr[i - 1];
+        }
+        return currentValue;
+      })
     );
 
   return (
     <div className="stats-view">
       <Graph dates={dates} labels={labels} paramData={data} />
       <StatsTable
-        aquariumsById={aquariumsById}
-        visibleAquarium={visibleAquarium}
         paramFilter={paramFilter}
         paramFilterDispatch={paramFilterDispatch}
+        params={params}
       />
     </div>
   );

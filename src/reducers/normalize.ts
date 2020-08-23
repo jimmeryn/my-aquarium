@@ -4,7 +4,7 @@ import {
   UnnormalizedAquarium,
   State,
   Param,
-  Aquarium
+  Aquarium,
 } from "../models";
 
 // NOTE: Not pretty but doing it's job.
@@ -16,9 +16,13 @@ export default function normalize({ aquariums }: UnnormalizedStateData): State {
   return {
     aquariums: {
       byId: aquariumsById,
-      allIds: aquariumsById.map(({ id }) => id)
+      allIds: aquariumsById.map(({ id }) => id),
     },
-    visibleAquarium: -1
+    params: {
+      byId: paramsById,
+      allIds: paramsById.map(({ id }) => id),
+    },
+    visibleAquarium: -1,
   };
 }
 
@@ -45,7 +49,7 @@ const createParam = (
     aquariumId,
     date: new Date(`${year}-${month}-${day}`),
     name: name !== "value" ? name : "refills",
-    value
+    value,
   };
 };
 
@@ -92,7 +96,7 @@ const getAquariumsById = (
       refactorAquarium(
         currentAquarium,
         params.filter(e => e.aquariumId === currentAquarium.id)
-      )
+      ),
     ],
     []
   );
@@ -103,5 +107,5 @@ const refactorAquarium = (
 ) => ({
   id,
   size,
-  params
+  params: params.map(param => param.id),
 });

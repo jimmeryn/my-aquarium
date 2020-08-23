@@ -13,7 +13,7 @@ import {
   DialogVariant,
   REFILL,
   PARAMS,
-  HIDDEN
+  HIDDEN,
 } from "../actions";
 import { getLatestParams, getLatestRefill } from "../api/filteringFunctions";
 import AquariumGroupList from "../components/AquariumGroupList";
@@ -21,9 +21,17 @@ import GroupButton from "../components/GroupButton";
 import { State } from "../store";
 
 const AquariumViewMenu: React.FunctionComponent = () => {
-  const { name, id, params } = useSelector(
-    (state: State) => state.aquariums.aquariumsById[state.visibleAquarium]
+  const { aquarium, params, visibleAquariumId } = useSelector(
+    (state: State) => ({
+      aquarium: state.aquariums.byId[state.visibleAquarium],
+      params: state.params.allIds
+        .map(id => state.params.byId[id])
+        .filter(param => param.aquariumId === state.visibleAquarium),
+      visibleAquariumId: state.visibleAquarium,
+    })
   );
+
+  const { id, name } = aquarium;
 
   const dispatch = useDispatch<
     React.Dispatch<ActionTypes | UIActionTypes | GraphActionTypes>
@@ -34,8 +42,8 @@ const AquariumViewMenu: React.FunctionComponent = () => {
 
   const setMenuStateDispatch = () => dispatch({ type: SET_MENU_STATE });
 
-  const setDialogStateDispatch = (variant: DialogVariant) =>
-    dispatch({ type: SET_DIALOG_STATE, variant });
+  const setDialogStateDispatch = (variant?: DialogVariant, aquariumId = -1) =>
+    dispatch({ type: SET_DIALOG_STATE, variant, aquariumId });
 
   const showOnGraphDispatch = (paramFilter: string) =>
     dispatch({ type: SHOW_ON_GRAPH, label: paramFilter });
@@ -54,7 +62,7 @@ const AquariumViewMenu: React.FunctionComponent = () => {
         handleButtonClick={() => {
           visibleAquariumDispatch(-1);
           setMenuStateDispatch();
-          setDialogStateDispatch(null);
+          setDialogStateDispatch(HIDDEN);
         }}
       />
       <Grid item xs>
@@ -75,8 +83,12 @@ const AquariumViewMenu: React.FunctionComponent = () => {
           params={getLatestParams(params)}
           handleCloseMenu={setMenuStateDispatch}
           handleParamClick={handleParamClick}
-          handleRefillClick={() => setDialogStateDispatch(REFILL)}
-          handleAddParamClick={() => setDialogStateDispatch(PARAMS)}
+          handleRefillClick={() =>
+            setDialogStateDispatch(REFILL, visibleAquariumId)
+          }
+          handleAddParamClick={() =>
+            setDialogStateDispatch(PARAMS, visibleAquariumId)
+          }
         />
       </Grid>
     </Grid>

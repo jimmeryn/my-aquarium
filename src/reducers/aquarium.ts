@@ -1,24 +1,24 @@
 import { Aquarium } from "../models";
 import { ActionTypes, ADD_AQUARIUM, ADD_AQUARIUM_DATA } from "../actions";
 
-const aquarium = (aquariumState: Aquarium, action: ActionTypes) => {
+const aquarium = (state: Aquarium, action: ActionTypes) => {
   switch (action.type) {
     case ADD_AQUARIUM:
       return {
         id: action.id,
         size: action.payload.size,
-        params: []
+        params: [],
       };
     case ADD_AQUARIUM_DATA:
-      if (aquariumState.id !== action.id) {
-        return aquariumState;
+      if (state.id !== action.id) {
+        return state;
       }
       return {
-        ...aquariumState,
-        data: [...aquariumState.params, action.payload.newData]
+        ...state,
+        params: [...state.params, state.params.length],
       };
     default:
-      return aquariumState;
+      return state;
   }
 };
 
