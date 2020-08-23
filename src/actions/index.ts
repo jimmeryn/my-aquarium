@@ -67,9 +67,15 @@ export type DialogVariant =
   | typeof AQUARIUM
   | typeof HIDDEN;
 
+export interface DialogState {
+  variant?: DialogVariant;
+  aquariumId: number;
+}
+
 interface SetDialogState {
   readonly type: typeof SET_DIALOG_STATE;
   readonly variant: DialogVariant;
+  aquariumId: number;
 }
 
 export type GraphActionTypes = AddGraphData | ShowGraphData;
