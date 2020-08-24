@@ -212,7 +212,8 @@
   .dialog {
     visibility: visible;
     min-width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 600px;
     border-radius: 0;
     top: 0;
     left: 0;
@@ -220,12 +221,15 @@
   }
 
   .dialog > * {
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 70%;
   }
 
   .dialog-title-wrappper {
     width: 100%;
     padding-top: 0;
+    padding-bottom: 0;
     margin-top: 0;
   }
 
@@ -264,7 +268,8 @@
   }
 
   .dialog-button {
-    margin-bottom: 100px;
+    margin-bottom: 40px;
+    margin-top: 40px;
   }
 
   .new-param-table {
