@@ -37,8 +37,10 @@ const Menu: React.FunctionComponent = () => {
   const setMenuStateDispatch = () => dispatch({ type: SET_MENU_STATE });
 
   const handleMouseClick = (event: MouseEvent) => {
+    const popover = document.getElementsByClassName("MuiPopover-root")[0];
     if (
       menuClass === "menu--active" &&
+      !popover &&
       !document
         .getElementsByClassName("menu--active")[0]
         .contains(event.target as Node)
