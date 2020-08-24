@@ -46,12 +46,27 @@ const StatsView: React.FunctionComponent = () => {
 
   // Set value for given date as param value if exists or null if doesn't.
   // Data is given for 2 charts so it's tuple of data
-  const data: number[][] = filteredParams.map(dataArray =>
-    dates.map(date => {
-      const paramWithGivenDate = dataArray.find(data => data.date === date);
-      return paramWithGivenDate ? paramWithGivenDate.value : null;
-    })
-  );
+  const data: number[][] = filteredParams
+    .map(dataArray =>
+      dates.map(date => {
+        const paramWithGivenDate = dataArray.find(data => data.date === date);
+        return paramWithGivenDate ? paramWithGivenDate.value : null;
+      })
+    )
+    // If there is null in values array change it to:
+    // - average of value before and after null or
+    // - value before null if value after not exist
+    // TODO: Fix Error - ading average to one value
+    .map(dataArray =>
+      dataArray.map((currentValue, i, dataArr) => {
+        if (currentValue == null) {
+          return dataArr[i + 1]
+            ? (dataArr[i - 1] + dataArr[i + 1]) / 2
+            : dataArr[i - 1];
+        }
+        return currentValue;
+      })
+    );
 
   return (
     <div className="stats-view">
