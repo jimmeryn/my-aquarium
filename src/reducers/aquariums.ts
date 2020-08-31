@@ -11,6 +11,7 @@ try {
 } catch (error) {
   console.error(error);
 }
+
 const allaquariumsIds = (
   state: number[] = defaultState.allIds,
   action: ActionTypes
