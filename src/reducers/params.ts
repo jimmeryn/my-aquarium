@@ -7,7 +7,7 @@ import param from "./param";
 
 let dataFromJson: NormalizedObject<Param>;
 try {
-  dataFromJson = normalize(require("../store/data.json")).params;
+  dataFromJson = normalize(require("../../db.json")).params;
 } catch (e) {
   dataFromJson = { byId: {}, allIds: [] };
 }

@@ -6,7 +6,7 @@ import aquarium from "./aquarium";
 
 let dataFromJson: NormalizedObject<Aquarium>;
 try {
-  dataFromJson = normalize(require("../store/data.json")).aquariums;
+  dataFromJson = normalize(require("../../db.json")).aquariums;
 } catch (e) {
   dataFromJson = { byId: {}, allIds: [] };
 }
