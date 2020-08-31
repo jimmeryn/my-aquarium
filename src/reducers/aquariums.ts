@@ -4,15 +4,15 @@ import { ActionTypes, ADD_AQUARIUM, ADD_AQUARIUM_DATA } from "../actions";
 import normalize from "./normalize";
 import aquarium from "./aquarium";
 
-let dataFromJson: NormalizedObject<Aquarium>;
-try {
-  dataFromJson = normalize(require("../../db.json")).aquariums;
-} catch (e) {
-  dataFromJson = { byId: {}, allIds: [] };
-}
+let defaultState: NormalizedObject<Aquarium> = { byId: {}, allIds: [] };
 
+try {
+  defaultState = normalize(require("../../db.json")).aquariums;
+} catch (error) {
+  console.error(error);
+}
 const allaquariumsIds = (
-  state: number[] = dataFromJson.allIds,
+  state: number[] = defaultState.allIds,
   action: ActionTypes
 ) => {
   switch (action.type) {
@@ -24,7 +24,7 @@ const allaquariumsIds = (
 };
 
 const aquariumsById = (
-  state: { [id: number]: Aquarium } = dataFromJson.byId,
+  state: { [id: number]: Aquarium } = defaultState.byId,
   action: ActionTypes
 ) => {
   switch (action.type) {
