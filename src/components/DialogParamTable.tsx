@@ -11,10 +11,30 @@ import {
   Button,
 } from "@material-ui/core";
 
+const handleSetInputValues = (
+  inputValues: string[],
+  setInputValues: React.Dispatch<React.SetStateAction<string[]>>,
+  i: number,
+  event: { target: { value: string } }
+) => {
+  setInputValues(
+    inputValues.map((value, idx) =>
+      idx === i ? formatInputNumber(event.target.value) : value
+    )
+  );
+};
+
+const formatInputNumber = (value: string) => {
+  if (value.length === 0 || value.match(/[^0-9]+\.|^\./)) return "0";
+  if (value.match(/0+\./)) return value;
+  if (value !== "0") return value.replace(/^0+/, "");
+  return value;
+};
+
 const DialogParamTable: React.FunctionComponent<{
   paramNames: string[];
-  inputValues: number[];
-  setInputValues: React.Dispatch<React.SetStateAction<number[]>>;
+  inputValues: string[];
+  setInputValues: React.Dispatch<React.SetStateAction<string[]>>;
 }> = ({ paramNames, inputValues, setInputValues }) => (
   <TableContainer className="new-param-table">
     <Table size={window.innerWidth < 800 ? "medium" : "small"}>
@@ -37,15 +57,7 @@ const DialogParamTable: React.FunctionComponent<{
                 id="number-input"
                 value={inputValues[i]}
                 onChange={(event: { target: { value: string } }) => {
-                  setInputValues(
-                    inputValues.map((value, idx) =>
-                      idx === i
-                        ? event.target.value
-                          ? parseInt(event.target.value)
-                          : 0
-                        : value
-                    )
-                  );
+                  handleSetInputValues(inputValues, setInputValues, i, event);
                 }}
                 InputLabelProps={{
                   shrink: true,
@@ -55,15 +67,7 @@ const DialogParamTable: React.FunctionComponent<{
                   disableUnderline: true,
                 }}
                 onBlur={(event: { target: { value: string } }) => {
-                  setInputValues(
-                    inputValues.map((value, idx) =>
-                      idx === i
-                        ? event.target.value
-                          ? parseInt(event.target.value)
-                          : 0
-                        : value
-                    )
-                  );
+                  handleSetInputValues(inputValues, setInputValues, i, event);
                 }}
               />
             </TableCell>
