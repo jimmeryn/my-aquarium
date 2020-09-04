@@ -228,14 +228,8 @@
 
   .dialog-title-wrappper {
     width: 100%;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-  }
-
-  .dialog-title {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    padding: 0;
+    margin: 0;
   }
 
   .close-button {
@@ -243,7 +237,7 @@
     display: block;
     position: absolute;
     right: 32px;
-    top: 46px;
+    top: 29px;
     width: 32px;
     height: 32px;
     opacity: 0.3;
@@ -273,7 +267,11 @@
   }
 
   .new-param-table {
-    width: 70% !important;
+    width: 100% !important;
     max-height: 40%;
+    margin-top: 0;
+    /* calc(minSize(px) + (maxSize - minSize) * (100vw - minScreenSize(px)) / (maxScreenSize - minScreenSize) */
+    padding-left: calc(50px + 150 * (100vw - 400px) / 400);
+    padding-right: calc(50px + 50 * (100vw - 400px) / 400);
   }
 }
