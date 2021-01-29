@@ -1,5 +1,10 @@
 # [My aquarium](https://jimmeryn.github.io/my-aquarium/)
 
+This is an old version of app. For current version visit:
+
+- [My-Aquarium-App](https://github.com/jimmeryn/my-aquarium-app)
+- [My-Aquarium-API](https://github.com/jimmeryn/my-aquarium-api)
+
 My aquarium is an application created to collect data from the aquarium and display it in a clear and simple way using tables and graphs.
 
 ## Used technologies
