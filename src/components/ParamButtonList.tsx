@@ -5,21 +5,18 @@ import { Param } from "src/models";
 
 const ParamButtonList: React.FunctionComponent<{
   params: Param[];
-  filter: string;
   onClick: (filter: string) => void;
-}> = ({ params, onClick, filter }) => {
+}> = ({ params, onClick }) => {
   const initValue: { [key: string]: number } = {};
-  const paramNames = [
-    ...new Set(["refills", ...params.map(param => param.name)]),
-  ];
+  const paramNames = [...new Set([...params.map(param => param.name)])];
   const [value, setValue] = React.useState(
     paramNames.reduce((acc, cur, i) => {
       acc[cur] = i;
       return acc;
-    }, initValue)[`${filter}`]
+    }, initValue)[paramNames[0]]
   );
 
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  const handleChange = (_event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
 

@@ -6,7 +6,8 @@ import { State } from "../store";
 
 const Center: React.FunctionComponent = () => {
   const { visibleAquarium } = useSelector((state: State) => state);
-
+  // const state = useSelector((state: State) => state);
+  // console.log(JSON.stringify(state));
   return (
     <div className="center">
       {visibleAquarium !== -1 ? <StatsView /> : <LandingPage />}

@@ -14,13 +14,9 @@ const StatsTable: React.FunctionComponent<{
     .reverse();
   return (
     <div className="stats-table">
-      <ParamButtonList
-        params={params}
-        onClick={paramFilterDispatch}
-        filter={paramFilter}
-      />
-      <CurrentParamTable params={filteredParams} />
       <GraphModifiButtonsList />
+      <ParamButtonList params={params} onClick={paramFilterDispatch} />
+      <CurrentParamTable params={filteredParams} />
     </div>
   );
 };

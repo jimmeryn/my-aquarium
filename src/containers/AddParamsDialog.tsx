@@ -29,8 +29,8 @@ const AddParamsDialog: React.FunctionComponent = () => {
   ];
 
   const [selectedDate, setSelectedDate] = React.useState(new Date());
-  const [inputValues, setInputValues] = React.useState<number[]>(
-    new Array(paramNames.length).fill(0)
+  const [inputValues, setInputValues] = React.useState<string[]>(
+    new Array(paramNames.length).fill("0")
   );
 
   const dispatch = useDispatch<React.Dispatch<ActionTypes | UIActionTypes>>();
@@ -84,7 +84,7 @@ const AddParamsDialog: React.FunctionComponent = () => {
         inputValues.forEach((inputValue, i) => {
           addAquariumDataDispatch(
             dialogState.aquariumId,
-            inputValue,
+            parseFloat(inputValue),
             selectedDate,
             paramNames[i],
             params.length + i
