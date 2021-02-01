@@ -1,23 +1,41 @@
 import * as React from "react";
-import { Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
+const colors = ["#317B22", "#A74482 ", "#758BFD"];
 const options = {
-  maintainAspectRatio: false, // Don't maintain width/height ratio
+  maintainAspectRatio: false,
   layout: { padding: 20 },
   fullWidth: false,
   scales: {
     yAxes: [
       {
-        id: "y-axis-0",
         type: "linear",
-        position: "left",
+        display: true,
+        position: "right",
+        id: "y-axis-param-1",
+        labels: {
+          show: true,
+        },
       },
       {
-        id: "y-axis-1",
         type: "linear",
+        display: true,
         position: "right",
+        id: "y-axis-param-2",
+        labels: {
+          show: true,
+        },
+      },
+      {
+        type: "linear",
+        display: true,
+        position: "left",
+        id: "y-axis-refills",
         gridLines: {
           display: false,
+        },
+        labels: {
+          show: true,
         },
       },
     ],
@@ -28,29 +46,48 @@ const Graph: React.FunctionComponent<{
   dates: string[];
   labels: string[];
   paramData: number[][];
-}> = ({ dates, labels, paramData }) => {
-  const colors = ["lightblue", "green"];
+  refills?: number[];
+}> = ({ dates, labels, paramData, refills }) => {
   const data = {
     labels: dates,
     datasets: paramData.reduce(
       (acc, currentDataArray, i) => [
         {
           label: labels[i],
-          yAxisID: `y-axis-${i}`,
+          type: "line",
           data: currentDataArray,
           fill: false,
           borderColor: colors[i],
-          // pointBorderColor: "red" // TODO: Add this as top or bot. Value over or under max
+          backgroundColor: colors[i],
+          pointBorderColor: colors[i],
+          pointBackgroundColor: colors[i],
+          pointHoverBackgroundColor: colors[i],
+          pointHoverBorderColor: colors[i],
+          yAxisID: `y-axis-param-${i + 1}`,
         },
         ...acc,
       ],
-      []
+      refills
+        ? [
+            {
+              type: "bar",
+              label: "Refills",
+              data: refills,
+              fill: false,
+              backgroundColor: colors[2],
+              borderColor: colors[2],
+              hoverBackgroundColor: colors[2],
+              hoverBorderColor: colors[2],
+              yAxisID: "y-axis-refills",
+            },
+          ]
+        : []
     ),
   };
 
   return (
     <div className="graph">
-      <Line data={data as unknown} options={options} />
+      <Bar data={data} options={options} />
     </div>
   );
 };
